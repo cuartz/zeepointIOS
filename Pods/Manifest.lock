@@ -1,0 +1,28 @@
+PODS:
+  - jetfire (0.1.2)
+  - JSQMessagesViewController (7.1.0):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
+  - WebsocketStompKit (0.1.1):
+    - jetfire (= 0.1.2)
+
+DEPENDENCIES:
+  - JSQMessagesViewController
+  - WebsocketStompKit (from `https://github.com/rguldener/WebsocketStompKit.git`)
+
+EXTERNAL SOURCES:
+  WebsocketStompKit:
+    :git: https://github.com/rguldener/WebsocketStompKit.git
+
+CHECKOUT OPTIONS:
+  WebsocketStompKit:
+    :commit: 782fd061f13540ec2517c239335e01f6b1072cff
+    :git: https://github.com/rguldener/WebsocketStompKit.git
+
+SPEC CHECKSUMS:
+  jetfire: 5e823aa9248d3de1fac2b7b6d9c6e31ab7d90f0c
+  JSQMessagesViewController: ca11f86fa68ca70835f05e169df9244147c1dc40
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  WebsocketStompKit: 31de925ffc7094b569dedcd4a9a4838e649e0860
+
+COCOAPODS: 0.37.1
