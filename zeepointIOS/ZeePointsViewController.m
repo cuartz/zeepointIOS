@@ -434,7 +434,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         controller.zeePointJoined = self.zeePointJoined;
         controller.lat = self.lat;
         controller.lon = self.lon;
-        controller.RoomNavBar.title = self.zeePointJoined.name;
+        //controller.RoomNavBar.title = self.zeePointJoined.name;
     }
 }
 

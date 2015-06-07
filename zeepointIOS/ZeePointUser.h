@@ -14,7 +14,9 @@
 @property NSString *userId;
 @property NSString *userName;
 @property NSString *fbId;
+@property NSString *gender;
 @property NSString *history;
+@property NSString *age;
 @property JSQMessagesAvatarImage *userImage;
 
 +(NSArray *) getSortDescriptors;

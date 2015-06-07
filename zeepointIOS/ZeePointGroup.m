@@ -42,7 +42,7 @@
         distanceValue=[NSNumber numberWithInt:[distance intValue]/1000];
     }
     if ([distance intValue]>99){
-        return [NSString stringWithFormat: @"%@%@%@", [distanceValue stringValue], unit, @" Away"];
+        return [NSString stringWithFormat: @"%@%@%@", @"At ", [distanceValue stringValue], unit];
     }else{
         return @"";
     }
@@ -75,9 +75,9 @@
 
 +(UIFont *)getDistanceFontStyle:(NSNumber *)friends{
     if ([friends intValue]>0){
-        return [UIFont boldSystemFontOfSize:14];
+        return [UIFont boldSystemFontOfSize:8];
     }else{
-        return [UIFont systemFontOfSize:14];
+        return [UIFont systemFontOfSize:8];
     }
 }
 

@@ -47,7 +47,7 @@
     
  //   [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
 //     (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-    
+    application.applicationIconBadgeNumber=0;
     return YES;
 }
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken

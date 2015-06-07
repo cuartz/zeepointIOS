@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZeePointGroup.h"
 
 @interface ZiPointUsersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchDisplayDelegate>
+
+@property ZeePointGroup *zeePointJoined;
 
 @end

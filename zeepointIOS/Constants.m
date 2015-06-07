@@ -21,4 +21,11 @@ NSString *const JOIN_ZPOINT_SERVICE =@"%@/mobilews/zeepointgroups/join?id=%@&use
 NSString *const SAVE_USER_INFO =@"%@/mobilews/users/saveuser?name=%@&fb_id=%@&gender=%@&email=%@";
 NSString *const FB_USER_PIC =@"http://graph.facebook.com/%@/picture?type=square";
 NSString *const GET_PREVIOUS_MSGS =@"%@/mobilews/zeepointgroups/getmessages?id=%@&user_id=%@&last_message=%@";
+NSString *const GET_USERS_SERVICE = @"%@/mobilews/zeepointgroups/getusers?id=%@";
+
+NSString *const CLOUDINARY_SERVICE = @"cloudinary://388324436659163:9i593lnMS89RoF9lp6iAcOc1qCA@zipoints";
+
+NSString *const PHOTO_MESSAGE = @"1";
+
+NSString *const TEXT_MESSAGE = @"0";
 @end

@@ -28,6 +28,7 @@
 
 #import "SWRevealViewController.h"
 #import "ZeePointViewController.h"
+#import "ZiPointUsersViewController.h"
 
 
 #pragma mark - StatusBar Helper Function
@@ -739,9 +740,9 @@ const int FrontViewPositionNone = 0xff;
     
     
     
-    NSArray *stack = self.navigationController.viewControllers;
+    //NSArray *stack = self.navigationController.viewControllers;
     //SecondViewController *secondVC = stack[stack.count-2];
-    
+    /*
     SWRevealViewController *revealViewController = stack[1];//self.revealViewController;
     if ( revealViewController )
     {
@@ -749,13 +750,24 @@ const int FrontViewPositionNone = 0xff;
         [self.sideBarButton setAction: @selector( rightRevealToggle: )];
         //[self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
+    */
+    //AQUI DEBE DE ESTAR UN ZEEPOINTLISTENER PARA LOS CANALES FUERA DE RANGO
     ZeePointViewController *zeePointViewController = _frontViewController.childViewControllers[0];//stack[0];
     if ( zeePointViewController )
     {
         zeePointViewController.zeePoint=self.zeePointJoined;
         zeePointViewController.lat=self.lat;
         zeePointViewController.lon=self.lon;
+        
+        [self.navigationController setNavigationBarHidden: YES animated:NO];
+        //zeePointViewController.navigationController=[self.navigationController  ;
     }
+    ZiPointUsersViewController *ziPointUsersViewController = _rightViewController.childViewControllers[0];
+    if ( ziPointUsersViewController )
+    {
+        ziPointUsersViewController.zeePointJoined=self.zeePointJoined;
+    }
+    
 }
 
 
@@ -781,8 +793,6 @@ const int FrontViewPositionNone = 0xff;
     // and resume it back to the previous state, it is possible to override this behaviour by
     // intercepting it on the panGestureBegan and panGestureEnded delegates
     _userInteractionStore = _contentView.userInteractionEnabled;
-    
-
     
 }
 

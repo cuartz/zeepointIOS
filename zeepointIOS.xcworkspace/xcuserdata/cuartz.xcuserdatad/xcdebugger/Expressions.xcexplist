@@ -14,8 +14,19 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[ZiPointUsersViewController populateTable:]:ZiPointUsersViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.sortedZiPointUsers">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[ZeePointViewController collectionView:cellForItemAtIndexPath:]:ZeePointViewController.m">
          <PersistentStrings>
+            <PersistentString
+               value = "[msg.senderId isEqualToString:self.senderId]">
+            </PersistentString>
             <PersistentString
                value = "msg.received">
             </PersistentString>
@@ -23,12 +34,12 @@
                value = "msg.received==NULL">
             </PersistentString>
             <PersistentString
-               value = "[msg.senderId isEqualToString:self.senderId]">
-            </PersistentString>
-            <PersistentString
                value = "([msg.senderId isEqualToString:self.senderId] &amp;&amp; (msg.received==NULL || !msg.received))">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__45-[ZiPointUsersViewController viewWillAppear:]_block_invoke:ZiPointUsersViewController.m">
       </ContextState>
       <ContextState
          contextName = "-[ZeePointsViewController filterContentForSearchText:scope:]:ZeePointsViewController.m">
@@ -77,10 +88,10 @@
                value = "self.myMsgsIds">
             </PersistentString>
             <PersistentString
-               value = "[self.userId isEqualToNumber:[message objectForKey:@&quot;userId&quot;]]">
+               value = "[self.demoData.messages objectAtIndex:[((NSNumber *)[message objectForKey:@&quot;id&quot;]) intValue]]">
             </PersistentString>
             <PersistentString
-               value = "[self.demoData.messages objectAtIndex:[((NSNumber *)[message objectForKey:@&quot;id&quot;]) intValue]]">
+               value = "[self.userId isEqualToNumber:[message objectForKey:@&quot;userId&quot;]]">
             </PersistentString>
             <PersistentString
                value = "[NSDate dateWithTimeIntervalSince1970:1432961569000/1000.0]">
@@ -170,10 +181,10 @@
                value = "[zeePointGroup zpointId]">
             </PersistentString>
             <PersistentString
-               value = "[self name]">
+               value = "[zeePointGroup name]">
             </PersistentString>
             <PersistentString
-               value = "[zeePointGroup name]">
+               value = "[self name]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -217,10 +228,10 @@
          contextName = "-[JSQMessagesViewController scrollToBottomAnimated:]:JSQMessagesViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "self.collectionView.collectionViewLayout">
+               value = "[self.collectionView.collectionViewLayout collectionViewContentSize]">
             </PersistentString>
             <PersistentString
-               value = "[self.collectionView.collectionViewLayout collectionViewContentSize]">
+               value = "self.collectionView.collectionViewLayout">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

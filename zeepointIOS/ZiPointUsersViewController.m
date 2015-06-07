@@ -11,6 +11,7 @@
 #import "ZeePointGroup.h"
 #import "ZiPointUserTableCell.h"
 #import "SWRevealViewController.h"
+#import "Constants.h"
 
 @interface ZiPointUsersViewController ()
 
@@ -18,9 +19,6 @@
 @property (strong, nonatomic) NSArray *sortedZiPointUsers;
 @property (strong, nonatomic) NSArray *filteredZiPointUsers;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property double lat;
-@property double lon;
-@property ZeePointGroup *zeePointJoined;
 @end
 
 @implementation ZiPointUsersViewController
@@ -35,7 +33,7 @@
     self.filteredZiPointUsers=[[NSArray alloc] init];
     //[locationManager startUpdatingLocation];
     
-    self.searchDisplayController.navigationItem.title = @"title";
+    //self.searchDisplayController.navigationItem.title = @"title";
     
 }
 
@@ -43,6 +41,32 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    NSLog(@"entro a will apear");
+    
+    NSString *zpointFinalURL=[NSString stringWithFormat:GET_USERS_SERVICE,WS_ENVIROMENT,self.zeePointJoined.zpointId];
+    NSURL *url = [NSURL URLWithString:zpointFinalURL];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response,
+                                               NSData *data, NSError *connectionError)
+     {
+         if (data.length > 0 && connectionError == nil)
+         {
+             [self.ziPointUsers removeAllObjects];
+             [self populateTable:data];
+             
+             
+         }else{
+             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Code 014"
+                                                             message:@"Problem Occurred, go to www.zipoints.com and report it so we start fixing it!"
+                                                            delegate:nil
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles: nil];
+             [alert show];
+         }
+     }];
+    
 }
 
 
@@ -92,7 +116,7 @@
              [alert show];
          }
      }];
-}*/
+}
 
 -(void)viewDidLayoutSubviews{
     
@@ -102,31 +126,30 @@
         
         self.edgesForExtendedLayout = UIRectEdgeNone;   // iOS 7 specific
     
-}
+}*/
 
 
 -(void)populateTable:(NSData *)data{
     NSDictionary *greeting = [NSJSONSerialization JSONObjectWithData:data
                                                              options:0
                                                                error:NULL];
-    NSArray *zpointUsersArray=[greeting objectForKey:@"zeePointsOut"];
+    NSArray *zpointUsersArray=[greeting objectForKey:@"users"];
     
     
     for (id zpointUser in zpointUsersArray) {
         ZeePointUser *item = [[ZeePointUser alloc] init];
-        /*
-        item.zpointId=[zpointUser objectForKey:@"id"];
-        item.name = [zpointUser objectForKey:@"name"];
-        item.users = [zpointUser objectForKey:@"users"];
+        
+        item.fbId=[zpointUser objectForKey:@"fbId"];
+        item.gender = [zpointUser objectForKey:@"gender"];
+        item.userId = [zpointUser objectForKey:@"id"];
         //item.range = [zpoint objectForKey:@"name"];
-        item.distance = [zpointUser objectForKey:@"distance"];
+        item.age = [zpointUser objectForKey:@"age"];
         //item.friends = [zpoint objectForKey:@"name"];
-        item.listeners = [zpointUser objectForKey:@"listeners"];
-        item.referenceId = [zpointUser objectForKey:@"referenceId"];
+        //item.email = [zpointUser objectForKey:@"listeners"];
+        item.userName = [zpointUser objectForKey:@"name"];
         //item8.hiddenn=@YES;
         
-        item.joined=[[zpointUser objectForKey:@"joined"] boolValue];
-         */
+
         [self.ziPointUsers addObject:item];
     }
     
@@ -164,7 +187,7 @@
         zeePointUser=[self.sortedZiPointUsers objectAtIndex:indexPath.row];
     }
     
-    //ziPointUserCell.zeePointNameLabel.text = zeePoint.name;
+    ziPointUserCell.userNameLabel.text = zeePointUser.userName;
     //ziPointUserCell.zeePointUsersLabel.text =
     //[ZeePointUser getUsersLabelText:zeePoint.users friendsParam:zeePoint.friends listenersParam:zeePoint.listeners];
     
@@ -245,7 +268,7 @@
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchText];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"userName contains[c] %@", searchText];
     self.filteredZiPointUsers = [self.sortedZiPointUsers filteredArrayUsingPredicate:resultPredicate];
 }
 
@@ -286,8 +309,8 @@
         
         
         controller.zeePointJoined = self.zeePointJoined;
-        controller.lat = self.lat;
-        controller.lon = self.lon;
+        //controller.lat = self.lat;
+        //controller.lon = self.lon;
         controller.RoomNavBar.title = self.zeePointJoined.name;
     }
 }

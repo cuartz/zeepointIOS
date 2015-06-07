@@ -25,7 +25,6 @@
 @end
 
 @interface ZiPointListenerViewController : JSQMessagesViewController <UIActionSheetDelegate>
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
 //@property (nonatomic, strong) IBOutlet UILabel *zeePointNameLabel;
 @property ZeePointGroup *zeePoint;

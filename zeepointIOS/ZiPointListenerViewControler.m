@@ -25,6 +25,8 @@
 @property NSNumber *oldestMessage;
 //@property NSNumber *alreadyProcessedMessage;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sideBarButton;
+
 @end
 
 @implementation ZiPointListenerViewController
@@ -109,8 +111,8 @@
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
     {
-        //[self.sidebarButton setTarget: self.revealViewController];
-        //[self.sidebarButton setAction: @selector( revealToggle: )];
+        [self.sideBarButton setTarget: self.revealViewController];
+        [self.sideBarButton setAction: @selector( rightRevealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
@@ -150,7 +152,6 @@
              [self connect:nil messageId:nil];
          }
      }];
-    
     
     
     
@@ -285,6 +286,25 @@
             
             NSString *picFinalURL=[NSString stringWithFormat:FB_USER_PIC,messageUser.fbId];
             NSURL *imageURL = [NSURL URLWithString:[picFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+            
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    @try {
+                        // Update the UI
+                        //self.imageView.image = [UIImage imageWithData:imageData];
+                        messageUser.userImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageWithData:imageData]
+                                                                                           diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
+                        [self.demoData.avatars setObject:messageUser.userImage forKey:messageUser.userId];
+                        [self finishReceivingMessageAnimatedNoScroll];
+                    }
+                    @catch (NSException *exception) {
+                        NSLog(@"%@", exception.reason);
+                    }
+                });
+            });
             // NSURL *imageURL = [NSURL URLWithString:@"http://example.com/demo.jpg"];
             /*
              dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 1), ^{
@@ -316,7 +336,7 @@
              [self.zeePointUsers addObject:messageUser];
              }
              }];*/
-            
+            /*
             @try {
                 
                 NSData *data = [NSData dataWithContentsOfURL:imageURL];
@@ -327,7 +347,7 @@
             }
             @catch (NSException *exception) {
                 NSLog(@"%@", exception.reason);
-            }
+            }*/
             [self.zeePointUsers addObject:messageUser];
             
             
@@ -397,7 +417,7 @@
     [self disconnect];
 }
 
-
+/*
 #pragma mark - Testing
 
 - (void)pushMainViewController

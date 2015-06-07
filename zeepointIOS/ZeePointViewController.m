@@ -11,11 +11,14 @@
 #import <WebsocketStompKit/WebsocketStompKit.h>
 #import "Constants.h"
 #import "JSQMessage.h"
+#import "SWRevealViewController.h"
 #import "ZeePointUser.h"
+#import "Cloudinary.h"
+
 #define kHost     @"localhost"
 #define kPort     8080
 
-@interface ZeePointViewController ()
+@interface ZeePointViewController () <CLUploaderDelegate>
 
 @property NSString *username;
 @property NSNumber *userId;
@@ -24,6 +27,9 @@
 @property (strong, nonatomic) NSMutableSet *zeePointUsers;
 @property NSNumber *oldestMessage;
 //@property NSNumber *alreadyProcessedMessage;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sideBarButton;
+@property CLCloudinary *cloudinary;
 
 @end
 
@@ -32,6 +38,9 @@
 
 - (void)viewDidLoad
 {
+    self.cloudinary = [[CLCloudinary alloc] initWithUrl: CLOUDINARY_SERVICE];
+    
+    
     [super viewDidLoad];
     //self.toolbarHeightConstraint.constant = 0.0;
     
@@ -110,8 +119,8 @@
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
     {
-        //[self.sidebarButton setTarget: self.revealViewController];
-        //[self.sidebarButton setAction: @selector( revealToggle: )];
+        [self.sideBarButton setTarget: self.revealViewController];
+        [self.sideBarButton setAction: @selector( rightRevealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
@@ -152,10 +161,12 @@
          }
      }];
     
-    
- self.searchDisplayController.displaysSearchBarInNavigationBar = YES;
+    //self.navBar.title=self.zeePoint.name;
+ //self.searchDisplayController.displaysSearchBarInNavigationBar = YES;
     
 }
+
+
 
 - (void)sendMessage:(NSString *)message
           messageId:(NSNumber *)myMsgId
@@ -299,6 +310,26 @@
     
     NSString *picFinalURL=[NSString stringWithFormat:FB_USER_PIC,messageUser.fbId];
     NSURL *imageURL = [NSURL URLWithString:[picFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+        
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                @try {
+                // Update the UI
+                //self.imageView.image = [UIImage imageWithData:imageData];
+                messageUser.userImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageWithData:imageData]
+                                                                                                           diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
+                                         [self.demoData.avatars setObject:messageUser.userImage forKey:messageUser.userId];
+                    [self finishReceivingMessageAnimatedNoScroll];
+                }
+                @catch (NSException *exception) {
+                    NSLog(@"%@", exception.reason);
+                }
+            });
+        });
+        
        // NSURL *imageURL = [NSURL URLWithString:@"http://example.com/demo.jpg"];
         /*
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 1), ^{
@@ -331,17 +362,14 @@
              }
          }];*/
         
-        @try {
         
-        NSData *data = [NSData dataWithContentsOfURL:imageURL];
-        UIImage *img = [[UIImage alloc] initWithData:data];
-        messageUser.userImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:img
-                                                                           diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
-        [self.demoData.avatars setObject:messageUser.userImage forKey:messageUser.userId];
-        }
-        @catch (NSException *exception) {
-            NSLog(@"%@", exception.reason);
-        }
+        
+       // NSData *data = [NSData dataWithContentsOfURL:imageURL];
+       // UIImage *img = [[UIImage alloc] initWithData:data];
+       // messageUser.userImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:img
+         //                                                                  diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
+        //[self.demoData.avatars setObject:messageUser.userImage forKey:messageUser.userId];
+
         [self.zeePointUsers addObject:messageUser];
         
         
@@ -412,7 +440,7 @@
     [self disconnect];
 }
 
-
+/*
 #pragma mark - Testing
 
 - (void)pushMainViewController
@@ -421,7 +449,7 @@
     UINavigationController *nc = [sb instantiateInitialViewController];
     [self.navigationController pushViewController:nc.topViewController animated:YES];
 }
-
+*/
 /*
 #pragma mark - Actions
 
@@ -643,7 +671,13 @@
     
     switch (buttonIndex) {
         case 0:
-            [self.demoData addPhotoMediaMessage];
+        {
+            __weak UICollectionView *weakView = self.collectionView;
+            
+            [self addPhotoMediaMessageCompletion:^{
+                [weakView reloadData];
+            }];
+        }
             break;
             
         case 1:
@@ -656,15 +690,84 @@
         }
             break;
             
-        case 2:
+/*        case 2:
             [self.demoData addVideoMediaMessage];
-            break;
+            break;*/
     }
     
     [JSQSystemSoundPlayer jsq_playMessageSentSound];
     
     [self finishSendingMessageAnimated:YES];
 }
+
+/*
+- (void)addPhotoMediaMessage
+{
+    JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageNamed:@"goldengate"]];
+    JSQMessage *photoMessage = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
+                                                   displayName:kJSQDemoAvatarDisplayNameSquires
+                                                         media:photoItem];
+    [self.messages addObject:photoMessage];
+}*/
+JSQMessage *photoMessage;
+JSQPhotoMediaItem *photoItem;
+- (void)addPhotoMediaMessageCompletion:(JSQLocationMediaItemCompletionBlock)completion
+{
+    CLUploader* uploader = [[CLUploader alloc] init:self.cloudinary delegate:self];
+    NSString *imageFilePath = [[NSBundle mainBundle] pathForResource:@"goldengate" ofType:@"png"];
+    
+    [uploader upload:imageFilePath options:@{}];
+    
+    //photoItem = [[JSQPhotoMediaItem alloc] initWithMaskAsOutgoing:NO];
+    
+    JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageNamed:@"goldengate"]];
+    photoMessage = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
+                                                   displayName:kJSQDemoAvatarDisplayNameSquires
+                                                         media:photoItem];
+    photoItem.appliesMediaViewMaskAsOutgoing=FALSE;
+    [self.demoData.messages addObject:photoMessage];
+
+}
+
+
+- (void) uploaderSuccess:(NSDictionary*)result context:(id)context {
+    photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageNamed:@"goldengate"]];
+    photoMessage = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
+                                                   displayName:kJSQDemoAvatarDisplayNameSquires
+                                                         media:photoItem];
+    [self.demoData.messages addObject:photoMessage];
+    [self finishSendingMessageAnimated:YES];
+    NSString* publicId = [result valueForKey:@"public_id"];
+    NSLog(@"Upload success. Public ID=%@, Full result=%@", publicId, result);
+}
+
+- (void) uploaderError:(NSString *)result code:(NSInteger)code context:(id)context {
+    NSLog(@"Upload error: %@, %ld", result, (long)code);
+}
+
+- (void) uploaderProgress:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite context:(id)context {
+    NSLog(@"Upload progress: %ld/%ld (+%ld)", (long)totalBytesWritten, (long)totalBytesExpectedToWrite, (long)bytesWritten);
+}
+
+/*
+- (void)addPhotoMediaMessage
+{
+    
+    CLUploader* uploader = [[CLUploader alloc] init:self.cloudinary delegate:self];
+    NSString *imageFilePath = [[NSBundle mainBundle] pathForResource:@"goldengate" ofType:@"png"];
+    
+    [uploader upload:imageFilePath options:@{}];
+    
+    
+    
+    JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageNamed:@"goldengate"]];
+    JSQMessage *photoMessage = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
+                                                   displayName:kJSQDemoAvatarDisplayNameSquires
+                                                         media:photoItem];
+    [self.demoData.messages addObject:photoMessage];
+}
+
+*/
 
 
 

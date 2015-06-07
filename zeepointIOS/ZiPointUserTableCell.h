@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ZiPointUserTableCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 
 @end
