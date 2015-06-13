@@ -29,6 +29,7 @@
 #import "SWRevealViewController.h"
 #import "ZeePointViewController.h"
 #import "ZiPointUsersViewController.h"
+#import "ZiPointWSService.h"
 
 
 #pragma mark - StatusBar Helper Function
@@ -755,9 +756,10 @@ const int FrontViewPositionNone = 0xff;
     ZeePointViewController *zeePointViewController = _frontViewController.childViewControllers[0];//stack[0];
     if ( zeePointViewController )
     {
-        zeePointViewController.zeePoint=self.zeePointJoined;
-        zeePointViewController.lat=self.lat;
-        zeePointViewController.lon=self.lon;
+        ZiPointWSService *zipService = [ZiPointWSService sharedManager];
+        zipService.zeePoint=self.zeePointJoined;
+        zipService.lat=self.lat;
+        zipService.lon=self.lon;
         
         [self.navigationController setNavigationBarHidden: YES animated:NO];
         //zeePointViewController.navigationController=[self.navigationController  ;
@@ -796,7 +798,10 @@ const int FrontViewPositionNone = 0xff;
     
 }
 
-
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
+}
 
 - (NSUInteger)supportedInterfaceOrientations
 {

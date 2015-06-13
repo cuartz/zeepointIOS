@@ -54,7 +54,7 @@
 {
     // Store the deviceToken.
     
-    NSLog(@"token: %@", newDeviceToken);
+    //NSLog(@"token: %@", newDeviceToken);
     //NSLog(@"token: %@", [UIDevice currentDevice].identifierForVendor.UUIDString);
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     //NSString *userId=[prefs objectForKey:@"userId"];
@@ -68,7 +68,7 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles: nil];
     [alert show];
-    NSLog(@"Failed To Register For Remote Notifications With Error: %@", error);
+    //NSLog(@"Failed To Register For Remote Notifications With Error: %@", error);
 }
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];

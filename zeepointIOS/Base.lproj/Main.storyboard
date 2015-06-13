@@ -262,7 +262,7 @@
             </objects>
             <point key="canvasLocation" x="185" y="1951"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Table View Controller-->
         <scene sceneID="Ji2-d3-OTo">
             <objects>
                 <tableViewController id="aWj-bb-Jer" sceneMemberID="viewController">
@@ -283,7 +283,14 @@
                             <outlet property="delegate" destination="aWj-bb-Jer" id="z2l-Bc-fo4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="eWM-H1-1Wz"/>
+                    <navigationItem key="navigationItem" id="eWM-H1-1Wz">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="tIy-hP-JDW" customClass="LoadingView">
+                            <rect key="frame" x="180" y="5.5" width="240" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lDf-qV-ZgE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -484,14 +491,14 @@
                         <viewControllerLayoutGuide type="bottom" id="RhT-y6-Lky"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ozv-rd-uIL">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Room" id="JUm-Ad-fgh">
                         <barButtonItem key="rightBarButtonItem" title="Users" id="Eoe-cR-Oil"/>
                     </navigationItem>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="RoomNavBar" destination="JUm-Ad-fgh" id="Y1A-f5-QWt"/>
                         <outlet property="sideBarButton" destination="Eoe-cR-Oil" id="v9u-B6-261"/>
@@ -758,6 +765,6 @@
         <image name="zipoint_map.png" width="2246" height="1113"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DCl-4f-SeQ"/>
+        <segue reference="5oI-cB-jfV"/>
     </inferredMetricsTieBreakers>
 </document>

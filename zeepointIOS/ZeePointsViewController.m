@@ -13,6 +13,7 @@
 #import "CreateZeePointViewController.h"
 #import "Constants.h"
 #import "SWRevealViewController.h"
+#import "LoadingView.h"
 
 @interface ZeePointsViewController ()
 
@@ -23,7 +24,7 @@
 @property double lat;
 @property double lon;
 @property ZeePointGroup *zeePointJoined;
-@property BOOL *searching;
+//@property BOOL *searching;
 @end
 
 @implementation ZeePointsViewController
@@ -48,7 +49,23 @@
     
     self.filteredZeePoints=[[NSArray alloc] init];
     //[locationManager startUpdatingLocation];
-
+    
+    
+    
+    
+    
+   // UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    //activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    //UIBarButtonItem * barButton = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+    //[self navigationItem].title = barButton;
+    //[activityIndicator startAnimating];
+    
+    UIView *aiView = [[LoadingView alloc] init];
+    //aiView.hidesWhenStopped = NO; //I added this just so I could see it
+    self.navigationItem.titleView = aiView;
+//[aiView startAnimating];
+    
+    //self.navigationItem.title=@"ddd";
     
 }
 

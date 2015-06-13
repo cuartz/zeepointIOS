@@ -34,6 +34,7 @@
  */
 @property (copy, nonatomic, readonly) NSString *senderId;
 @property (nonatomic) BOOL *received;
+//@property (nonatomic) NSString *localFile;
 
 /**
  *  Returns the display name for the user who sent the message. This value does not have to be unique.
@@ -56,13 +57,13 @@
  *  Returns the body text of the message, or `nil` if the message is a media message.
  *  That is, if `isMediaMessage` is equal to `YES` then this value will be `nil`.
  */
-@property (copy, nonatomic, readonly) NSString *text;
+@property (copy, nonatomic) NSString *text;
 
 /**
  *  Returns the media item attachment of the message, or `nil` if the message is not a media message.
  *  That is, if `isMediaMessage` is equal to `NO` then this value will be `nil`.
  */
-@property (copy, nonatomic, readonly) id<JSQMessageMediaData> media;
+@property (copy, nonatomic) id<JSQMessageMediaData> media;
 
 
 #pragma mark - Initialization

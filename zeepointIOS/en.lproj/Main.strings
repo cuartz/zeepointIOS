@@ -1,0 +1,84 @@
+
+/* Class = "UIBarButtonItem"; title = "Create"; ObjectID = "2QY-Hc-rDL"; */
+"2QY-Hc-rDL.title" = "Create";
+
+/* Class = "UIViewController"; title = "Reveal View Controller"; ObjectID = "7pB-y3-Uv2"; */
+"7pB-y3-Uv2.title" = "Reveal View Controller";
+
+/* Class = "UINavigationItem"; title = "ZeePointListenerRoom"; ObjectID = "8aY-G9-VEj"; */
+"8aY-G9-VEj.title" = "ZeePointListenerRoom";
+
+/* Class = "UINavigationItem"; title = "ZiPoints"; ObjectID = "9kt-fm-L1H"; */
+"9kt-fm-L1H.title" = "ZiPoints";
+
+/* Class = "UITabBarController"; title = "ZeePoints Rooms"; ObjectID = "DCY-4l-FmZ"; */
+"DCY-4l-FmZ.title" = "ZeePoints Rooms";
+
+/* Class = "UIBarButtonItem"; title = "Users"; ObjectID = "Eoe-cR-Oil"; */
+"Eoe-cR-Oil.title" = "Users";
+
+/* Class = "UIViewController"; title = "Reveal Listener View Controller"; ObjectID = "FDs-OV-k2O"; */
+"FDs-OV-k2O.title" = "Reveal Listener View Controller";
+
+/* Class = "UIBarButtonItem"; title = "Users"; ObjectID = "Izv-z6-aqr"; */
+"Izv-z6-aqr.title" = "Users";
+
+/* Class = "UINavigationItem"; title = "Room"; ObjectID = "JUm-Ad-fgh"; */
+"JUm-Ad-fgh.title" = "Room";
+
+/* Class = "UIBarButtonItem"; title = "ZiPoints"; ObjectID = "L5O-Tk-v9P"; */
+"L5O-Tk-v9P.title" = "ZiPoints";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "LRZ-fx-yRy"; */
+"LRZ-fx-yRy.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "ZiPoints"; ObjectID = "OTd-bw-bXq"; */
+"OTd-bw-bXq.title" = "ZiPoints";
+
+/* Class = "UINavigationItem"; title = "Root View Controller"; ObjectID = "P98-cv-2gX"; */
+"P98-cv-2gX.title" = "Root View Controller";
+
+/* Class = "UINavigationItem"; title = "Create ZiPoint"; ObjectID = "PdI-MX-Gb3"; */
+"PdI-MX-Gb3.title" = "Create ZiPoint";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "PyE-fm-4TL"; */
+"PyE-fm-4TL.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Root View Controller"; ObjectID = "SLV-iZ-K2y"; */
+"SLV-iZ-K2y.title" = "Root View Controller";
+
+/* Class = "UIBarButtonItem"; title = "Users"; ObjectID = "STp-zv-foP"; */
+"STp-zv-foP.title" = "Users";
+
+/* Class = "UINavigationItem"; title = "People in Here"; ObjectID = "WzT-UP-YjA"; */
+"WzT-UP-YjA.title" = "People in Here";
+
+/* Class = "UITextField"; placeholder = "ZiPoint Name"; ObjectID = "dcw-tU-T8e"; */
+"dcw-tU-T8e.placeholder" = "ZiPoint Name";
+
+/* Class = "UINavigationItem"; title = "Root View Controller"; ObjectID = "eWM-H1-1Wz"; */
+"eWM-H1-1Wz.title" = "Root View Controller";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hWe-KU-2Lr"; */
+"hWe-KU-2Lr.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Root View Controller"; ObjectID = "hde-kV-Uc8"; */
+"hde-kV-Uc8.title" = "Root View Controller";
+
+/* Class = "UIBarButtonItem"; title = "Users"; ObjectID = "mKC-cy-h38"; */
+"mKC-cy-h38.title" = "Users";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "nvU-be-1a0"; */
+"nvU-be-1a0.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "ZiPoints"; ObjectID = "tb5-2n-lyA"; */
+"tb5-2n-lyA.title" = "ZiPoints";
+
+/* Class = "UITabBarItem"; title = "My Account"; ObjectID = "wZB-gp-Vcy"; */
+"wZB-gp-Vcy.title" = "My Account";
+
+/* Class = "UINavigationItem"; title = "Room Listener"; ObjectID = "xER-z5-i4u"; */
+"xER-z5-i4u.title" = "Room Listener";
+
+/* Class = "UINavigationItem"; title = "ZeePointRoom"; ObjectID = "xg2-Bp-wC2"; */
+"xg2-Bp-wC2.title" = "ZeePointRoom";

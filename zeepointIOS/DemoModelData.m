@@ -65,6 +65,7 @@
                                                                                       diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
         */
         self.avatars =[[NSMutableDictionary alloc] init];
+        self.images =[[NSMutableDictionary alloc] init];
   /*@{ kJSQDemoAvatarIdSquires : jsqImage,
                           kJSQDemoAvatarIdCook : cookImage,
                           kJSQDemoAvatarIdJobs : jobsImage,

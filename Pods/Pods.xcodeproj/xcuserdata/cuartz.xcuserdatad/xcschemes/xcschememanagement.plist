@@ -14,6 +14,21 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-MMPReactiveStompClient.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ReactiveCocoa.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-SocketRocket.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-WebsocketStompKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,27 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2E740BD0BD57EF241A3E271B</key>
+		<key>076E4947D941A826807EF175</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>369533759B89AF9538746E72</key>
+		<key>368F4C81277262228E07A999</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6F576285A7D05AB57FDAB122</key>
+		<key>403281C087C07C9E31A3C7CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7BDA8C42166C990E9D2C8F7A</key>
+		<key>569BB09E8C4FB0FF1FBA144A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8C5D3C35CD32CE394870AB6F</key>
+		<key>5BC2EBD1263203CE799C6084</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6CC070D16986262107FDD3A0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8EA0014DFA4DAB9C9E5281A3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D9D0373E71F125E0139D17D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

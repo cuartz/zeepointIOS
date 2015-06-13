@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>error.report</key>
+	<string>Error occurred, if the error persists go to www.zipoints.com and report it so we fix it for the next week release.</string>
+	<key>error.connection</key>
+	<string>Oops... there was a problem trying to connect to the server.</string>
+</dict>
+</plist>

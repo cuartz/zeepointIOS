@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7BDA8C42166C990E9D2C8F7A"
+               BlueprintIdentifier = "368F4C81277262228E07A999"
                BuildableName = "libPods-WebsocketStompKit.a"
                BlueprintName = "Pods-WebsocketStompKit"
                ReferencedContainer = "container:Pods.xcodeproj">

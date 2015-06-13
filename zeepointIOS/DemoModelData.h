@@ -46,6 +46,8 @@ static NSString * const kJSQDemoAvatarIdWoz = @"309-41802-93823";
 
 @property (strong, nonatomic) NSMutableDictionary *avatars;
 
+@property (strong, nonatomic) NSMutableDictionary *images;
+
 @property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImageData;
 
 @property (strong, nonatomic) JSQMessagesBubbleImage *incomingBubbleImageData;

@@ -83,8 +83,8 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
          startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
                                       id result, NSError *error) {
              if (error) {
-                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Code 002"
-                                                                 message:@"Problem Occurred, go to www.zipoints.com and report it so we start fixing it!"
+                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error Code 002","Error code")
+                                                                 message:NSLocalizedString(@"Problem Occurred, go to www.zipoints.com and report it so we start fixing it!","Report message")
                                                                 delegate:nil
                                                        cancelButtonTitle:@"OK"
                                                        otherButtonTitles: nil];
@@ -96,7 +96,7 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                  NSString *gender=[result valueForKeyPath:@"gender"];
                  NSString *email=[result valueForKeyPath:@"email"];
                  
-                 NSString *zpointFinalURL=[NSString stringWithFormat:SAVE_USER_INFO,WS_ENVIROMENT,username,fbUserId, gender, email];
+                 NSString *zpointFinalURL=[NSString stringWithFormat:SAVE_USER_INFO,WS_ENVIROMENT,IP,username,fbUserId, gender, email];
                  NSURL *url = [NSURL URLWithString:[zpointFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
                  NSURLRequest *request = [NSURLRequest requestWithURL:url];
                  [NSURLConnection sendAsynchronousRequest:request
@@ -126,7 +126,7 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                           
                           
                       }else{
-                          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Code 003"
+                          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error Code 002","Error code")
                                                                           message:@"Problem Occurred, go to www.zipoints.com and report it so we start fixing it!"
                                                                          delegate:nil
                                                                 cancelButtonTitle:@"OK"
@@ -140,7 +140,7 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
              }
          }];
     }else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Code 006"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error Code 002","Error code")
                                                         message:@"Problem Occurred, go to www.zipoints.com and report it so we start fixing it!"
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
@@ -171,11 +171,11 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
         // User is logged in, do work such as go to next view controller.
    // }
 }
-UIActivityIndicatorView   *indicator;
+//UIActivityIndicatorView   *indicator;
 - (void)saveUserInfo:(NSString *) fbUserId :(NSString *)deviceToken{
     //
     //CGRect b = self.view.bounds;
-    indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
+    /*indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
                  UIActivityIndicatorViewStyleWhite];
     //center the indicator in the view
     [indicator setFrame:self.view.frame];
@@ -188,7 +188,7 @@ UIActivityIndicatorView   *indicator;
     [indicator startAnimating];
     
       //load NSUserDefaults
-    //NSString *fbUserId = userId;  //declare array to be stored in NSUserDefaults
+    //NSString *fbUserId = userId;  //declare array to be stored in NSUserDefaults*/
     NSString *zpointFinalURL=[NSString stringWithFormat:LOGIN_USER_SERVICE,WS_ENVIROMENT,fbUserId, deviceToken];
     NSURL *url = [NSURL URLWithString:[zpointFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -219,7 +219,7 @@ UIActivityIndicatorView   *indicator;
              [self presentViewController:uiViewController animated:YES completion:nil];
          }
          else{
-             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Code 001"
+             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error Code 002","Error code")
                                                              message:@"Problem Occurred, go to www.zipoints.com and report it so we start fixing it!"
                                                             delegate:nil
                                                    cancelButtonTitle:@"OK"
@@ -228,8 +228,8 @@ UIActivityIndicatorView   *indicator;
              //[alert rerelease];
              
          }
-         [indicator removeFromSuperview];
-         indicator = nil;
+         //[indicator removeFromSuperview];
+         //indicator = nil;
      }];
 }
 
