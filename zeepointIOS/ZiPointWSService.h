@@ -8,17 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import "ZeePointGroup.h"
+#import "ZeePointUser.h"
+#import "ZiPointMessage.h"
 
 @class ZiPointWSService;
 
-// define the protocol for the delegate
 @protocol ZiPointWSServiceDelegate
 
 // define protocol functions that can be used in any class using this delegate
 
--(void)receiveMessage:(NSDictionary *)message putMessageAtFirst:(BOOL *)atFirst;
+-(void)receiveWSMessage:(ZiPointMessage *)message;
 
--(void)connecting;
+-(void)connecting:(UIView *)loadingView;
+
+-(void)imageLoaded:(NSData *)imageData messageKey:(NSString *)key isImageForMessage:(bool) isMessage;
 
 -(void)didJustConnect;
 
@@ -26,14 +29,20 @@
 
 @interface ZiPointWSService : NSObject {
     ZeePointGroup *zeePoint;
+    NSMutableSet *zeePointUsers;
     double lat;
     double lon;
+    NSMutableDictionary *avatars;
+    NSMutableDictionary *images;
     
 }
 @property (nonatomic, strong) ZeePointGroup *zeePoint;
+@property (nonatomic, strong) NSMutableSet *zeePointUsers;
 @property (nonatomic) double lat;
 @property (nonatomic) double lon;
 @property (nonatomic, assign) id  delegate;
+@property (strong, nonatomic) NSMutableDictionary *avatars;
+@property (strong, nonatomic) NSMutableDictionary *images;
 
 // define public functions
 
@@ -43,33 +52,40 @@
 
 - (void)subscribeZip:(NSString *) newChannel;
 
+-(NSData *)loadImageAsync:(NSURL *)imageURL imageKey:(NSString *)key isImageForAmessage:(bool)isMessage secondImageKey:(NSString *)secKey;
+
+-(void)setDeviceToken:(NSString *) deviceToken;
+
+-(NSString *) getDeviceToken;
+
+-(void)setUserId:(NSString *) userId;
+
+-(NSString *) getUserId;
+
+-(void)setFbUserId:(NSString *)fbUserId;
+
+-(NSString *) getFbUserId;
+
+-(void)setEmail:(NSString *)email;
+
+-(NSString *) getEmail;
+
+-(void)setUserName:(NSString *)name;
+
+-(NSString *) getUserName;
+
+-(ZeePointGroup *)createZipointGroup:(NSDictionary *)dict;
+
+-(NSMutableSet *)createZipointGroups:(NSDictionary *)dict;
+
+-(NSMutableSet *)createZipointUsers:(NSDictionary *)dict;
+
+-(ZeePointUser *)createZipointUser:(NSDictionary *)dict;
+
+-(ZiPointMessage *)createZipointMessage:(NSDictionary *)dict;
+
+-(NSMutableArray *)createZipointMessages:(NSDictionary *)dict;
+
 //- (id)unsubscribe;
 
 @end
-
-
-/*
- 
- prefs = [NSUserDefaults standardUserDefaults];
- *userId=[prefs objectForKey:@"userId"];
- NSString *fbUserId=[prefs objectForKey:@"fbUserId"];
- NSString *email=[prefs objectForKey:@"email"];
- }
- 
- @property (retain) NSMutableArray *zipUsers;
- 
- @property (nonatomic, retain) NSMutableArray *ziPoints;
- 
- @property (nonatomic, retain) ZeePointGroup *ziPointJoined;
- 
- @property (nonatomic, retain) NSMutableDictionary *avatars;
- 
- @property (nonatomic, retain) NSString *userId;
- @property (nonatomic, retain) NSString *fbUserId;
- @property (nonatomic, retain) NSString *email;
- @property (nonatomic, retain) NSUserDefaults *prefs;
- 
- //@property (strong, nonatomic) NSMutableDictionary *users;
- //@property(nonatomic,retain)NSString *str;
- +(ZipOintService*)getInstance;
- @end*/

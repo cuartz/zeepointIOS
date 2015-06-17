@@ -33,7 +33,7 @@
  *  Returns the string identifier that uniquely identifies the user who sent the message. 
  */
 @property (copy, nonatomic, readonly) NSString *senderId;
-@property (nonatomic) BOOL *received;
+@property (nonatomic) bool received;
 //@property (nonatomic) NSString *localFile;
 
 /**

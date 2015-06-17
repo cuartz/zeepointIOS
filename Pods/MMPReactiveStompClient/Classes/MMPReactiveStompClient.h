@@ -81,6 +81,7 @@
 - (RACSignal *)open:(NSURLRequest *)urlRequest;
 - (RACSignal *)open;
 - (void)close;
+-(void)unSubscribe;
 
 /** @name Settings */
 

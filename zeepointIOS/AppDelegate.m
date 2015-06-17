@@ -19,13 +19,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
     
     [FBSDKLoginButton class];
     [NSUserDefaults saveIncomingAvatarSetting:YES];
     [NSUserDefaults saveOutgoingAvatarSetting:NO];
-    //[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
-   // [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
     {
@@ -45,19 +42,12 @@
          UIRemoteNotificationTypeSound];
     }
     
- //   [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-//     (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     application.applicationIconBadgeNumber=0;
     return YES;
 }
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken
 {
-    // Store the deviceToken.
-    
-    //NSLog(@"token: %@", newDeviceToken);
-    //NSLog(@"token: %@", [UIDevice currentDevice].identifierForVendor.UUIDString);
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    //NSString *userId=[prefs objectForKey:@"userId"];
     [prefs setObject:newDeviceToken forKey:@"DeviceToken"];
 }
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
@@ -68,51 +58,9 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles: nil];
     [alert show];
-    //NSLog(@"Failed To Register For Remote Notifications With Error: %@", error);
 }
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setObject:[notification description] forKey:@"DeviceToken"];
-    NSLog(@"remote notification: %@", [notification description]);
 }
-
-/*
-- (BOOL) pushNotificationOnOrOff
-{
-    if ([UIApplication instancesRespondToSelector:@selector(isRegisteredForRemoteNotifications)]) {
-        return ([[UIApplication sharedApplication] isRegisteredForRemoteNotifications]);
-    } else {
-        UIRemoteNotificationType types = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
-        return (types & UIRemoteNotificationTypeAlert);
-    }
-}
-
-#ifdef __IPHONE_8_0
-- (void)application:(UIApplication *)application   didRegisterUserNotificationSettings:   (UIUserNotificationSettings *)notificationSettings
-{
-    //register to receive notifications
-    [application registerForRemoteNotifications];
-}
-
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString   *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
-{
-    //handle the actions
-    if ([identifier isEqualToString:@"declineAction"]){
-    }
-    else if ([identifier isEqualToString:@"answerAction"]){
-    }
-}
-#endif
-
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSLog(@"Did Register for Remote Notifications with Device Token (%@)", deviceToken);
-}
-
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    NSLog(@"Did Fail to Register for Remote Notifications");
-    NSLog(@"%@, %@", error, error.localizedDescription);
-    
-}*/
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

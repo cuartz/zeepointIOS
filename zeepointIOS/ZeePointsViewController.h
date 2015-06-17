@@ -12,8 +12,6 @@
 @interface ZeePointsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchDisplayDelegate, CLLocationManagerDelegate> {
     CLLocationManager *locationManager;
 }
-//, UITableViewDataSource>
-//,UISearchBarDelegate>
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue;
 
 @end

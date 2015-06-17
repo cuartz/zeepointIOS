@@ -14,21 +14,13 @@
 #import "SWRevealViewController.h"
 #import "ZeePointUser.h"
 #import "Cloudinary.h"
-//#import "ZipOintService.h"
 #import "ZiPointWSService.h"
 
-#define kHost     @"localhost"
-#define kPort     8080
 
 @interface ZeePointViewController () <CLUploaderDelegate, ZiPointWSServiceDelegate>
 
-@property NSString *username;
-@property NSNumber *userId;
-@property NSString *fbUserId;
-//@property NSMutableSet *myMsgsIds;
-@property (strong, nonatomic) NSMutableSet *zeePointUsers;
+
 @property int oldestMessage;
-//@property NSNumber *alreadyProcessedMessage;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sideBarButton;
 @property CLCloudinary *cloudinary;
@@ -42,9 +34,6 @@
 
 - (void)viewDidLoad
 {
-    
-    
-    
     [super viewDidLoad];
     
     zipService = [ZiPointWSService sharedManager];
@@ -52,37 +41,11 @@
     
     self.cloudinary = [[CLCloudinary alloc] initWithUrl: CLOUDINARY_SERVICE];
     
-    //self.toolbarHeightConstraint.constant = 0.0;
-    
-    //side bar code
-    /*
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    SideBarController *uiViewController = [storyboard instantiateViewControllerWithIdentifier:@"SideBarView"];
-    //uiViewController.sidebarButton=self.sideBarButton;
-    SWRevealViewController *revealViewController = self.revealViewController;
-    if ( revealViewController )
-    {
-        [uiViewController.sideBarButton setTarget: self.revealViewController];
-        [uiViewController.sideBarButton setAction: @selector( rightRevealToggle: )];
-        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    }*/
-    //self.inputToolbar.contentView.leftBarButtonItem = nil;//self.sidebarButton;
-    //side bar code
-    
-    //self.zeePointNameLabel.text=self.zeePoint.name;
-    
-    self.title = zipService.zeePoint.name;
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    self.username=[prefs objectForKey:@"name"];
-    self.userId=[prefs objectForKey:@"userId"];
-    self.fbUserId=[prefs objectForKey:@"fbUserId"];
-    //self.myMsgsIds=[[NSMutableSet alloc] init];
-    
     /**
      *  You MUST set your senderId and display name
      */
-    self.senderId = [self.userId description];//kJSQDemoAvatarIdSquires;
-    self.senderDisplayName = self.username;//kJSQDemoAvatarDisplayNameSquires;
+    self.senderId = [zipService getUserId];
+    self.senderDisplayName = [zipService getUserId];
     
     
     /**
@@ -103,28 +66,6 @@
     }
     
     self.showLoadEarlierMessagesHeader = YES;
-/*
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage jsq_defaultTypingIndicatorImage]
-                                                                              style:UIBarButtonItemStyleBordered
-                                                                             target:self
-                                                                             action:@selector(receiveMessagePressed:)];
-*/
-    /**
-     *  Customize your toolbar buttons
-     *
-     *  self.inputToolbar.contentView.leftBarButtonItem = custom button or nil to remove
-     *  self.inputToolbar.contentView.rightBarButtonItem = custom button or nil to remove
-     */
-/*
-    NSDictionary *headers = @{
-                              @"content-type": @"application/json;charset=utf-8",
-                              @"origin": WS_ENVIROMENT
-                              };
-    
-    NSURL *websocketUrl = [NSURL URLWithString:WS];
-    self.client = [[STOMPClient alloc] initWithURL:websocketUrl webSocketHeaders:headers useHeartbeat:NO];//initWithURL:websocketUrl websocketHeaders:nil useHeartbeat:NO];
-    
-    */
     
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
@@ -135,10 +76,10 @@
     }
     
     
-    self.zeePointUsers=[[NSMutableSet alloc] init];
+    //self.zeePointUsers=[[NSMutableSet alloc] init];
     
 
-    NSString *zpointFinalURL=[NSString stringWithFormat:JOIN_ZPOINT_SERVICE,WS_ENVIROMENT,zipService.zeePoint.zpointId,self.userId,zipService.lat,zipService.lon];
+    NSString *zpointFinalURL=[NSString stringWithFormat:JOIN_ZPOINT_SERVICE,WS_ENVIROMENT,zipService.zeePoint.zpointId,zipService.getUserId,zipService.lat,zipService.lon];
     NSURL *url = [NSURL URLWithString:[zpointFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request
@@ -153,351 +94,39 @@
                                                                       options:0
                                                                         error:NULL];
              
-             NSArray *messages=[ziPointJoinInfo objectForKey:@"zMessages"];
+             NSMutableArray *messages=[zipService createZipointMessages:ziPointJoinInfo];//[ziPointJoinInfo objectForKey:@"zMessages"];
              
-             for (NSDictionary *message in messages) {
+             for (ZiPointMessage *message in messages) {
                  
-                 //NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-                 //id json = [NSJSONSerialization JSONObjectWithData:message options:0 error:nil];
                  [self receiveMessage:message putMessageAtFirst:false];
              }
              [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
              [self finishReceivingMessageAnimated:YES];
              
-             //[self populateTable:data];
-             //[self receiveMessage:message];
-             
-             //[self connect:nil messageId:nil messageType:nil];
              [zipService subscribeZip:zipService.zeePoint.referenceId];
+             
+             zipService.zeePointUsers=[zipService createZipointUsers:ziPointJoinInfo];
          }
      }];
     
-    //self.navBar.title=self.zeePoint.name;
- //self.searchDisplayController.displaysSearchBarInNavigationBar = YES;
-    
-}
-
-
-
-- (void)sendMessage:(NSString *)message
-          messageId:(NSNumber *)myMsgId
-          messageType:(NSString *)messageType
-{
-    // build a static NSDateFormatter to display the current date in ISO-8601
-    static NSDateFormatter *dateFormatter = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = @"yyyy-MM-d'T'HH:mm:ssZZZZZ";
-    });
-    
-    // send the message to the truck's topic
-    //NSString *destination = @"/app/chat";//"//[NSString stringWithFormat:@"/topic/device.%@.location", @1];
-    //NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    //NSNumber *userId=[prefs objectForKey:@"userId"];
-    // build a dictionary containing all the information to send
-
-    NSDictionary *dict = @{
-                           @"message": message,
-                           @"id": myMsgId,
-                           @"channel":zipService.zeePoint.referenceId,
-                           @"userId":self.userId,
-                           @"fbId":self.fbUserId,
-                           @"userName":self.username,
-                           @"messageType":messageType
-                           };
-    // create a JSON string from this dictionary
-    NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
-    NSString *body =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
- /*   NSDictionary *headers = @{
-                              @"content-type": @"application/json;charset=utf-8",
-                              @"origin": @"http://localhost:8080"
-                              };
-    */
-    // send the message
-    [zipService sendMessage:body];
-
-}
-
-- (void)sendMessageTry:(NSString *)message
-       messageId:(NSNumber *)myMsgId
-       messageType:(NSString *)messageType
-{
-        [self sendMessage:message messageId:myMsgId
-                                  messageType:messageType];
-}
-/*
-- (void)connect:(NSString *)newMessage
-      messageId:(NSNumber *)myMsgId
-      messageType:(NSString *)messageType
-{
-    
-    NSLog(@"Connecting...");
-    [self.client connectWithLogin:@"''" passcode:@"''"
-                  completionHandler:^(STOMPFrame *connectedFrame, NSError *error) {
-                      if (error) {
-                          // We have not been able to connect to the broker.
-                          // Let's log the error
-                          NSLog(@"Error during connection: %@", error);
-                      } else {
-                          [self.client subscribeTo:[NSString stringWithFormat:@"/topic/channels/%@",self.zeePoint.referenceId] messageHandler:^(STOMPMessage *message) {
-                              NSString *jsonString=[message body];
-                              NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-                              //id *json = [NSJSONSerialization JSONObjectWithData:message options:0 error:nil];
-                              NSDictionary *messageData=[NSJSONSerialization JSONObjectWithData:data
-                                                              options:0
-                                                                error:NULL];
-                              [self receiveMessage:messageData putMessageAtFirst:false];
-                              [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
-                              [self finishReceivingMessageAnimated:YES];
-                          }];
-                          // we are connected to the STOMP broker without an error
-                          NSLog(@"Connected");
-                          if (newMessage!=nil && [newMessage length]>0){
-                              [self sendMessage:newMessage messageId:myMsgId
-                                                           messageType:messageType];
-                          }
-                          //[self.client sendTo:@"/app/chat" body:@"{\"message\":\"iphone\",\"id\":821849,\"channel\":\"zp-1883563241\"}"];
-                          
-                      }
-                  }];
-     
-    // when the method returns, we can not assume that the client is connected
-}*/
-
-- (void)receiveMessage:(NSDictionary *)message putMessageAtFirst:(BOOL *)atFirst
-{
-    
-/*    NSDictionary *greeting = [NSJSONSerialization JSONObjectWithData:data
-                                                             options:0
-                                                               error:NULL];
- */
-     //NSLog(@"message: %@", message);
-/*    NSDictionary *message = [NSJSONSerialization JSONObjectWithData:data
-                                                             options:0
-                                                               error:NULL];
-*/
-    
-    
-    NSString *receivedMessage= [message objectForKey:@"message"];
-    //NSLog(@"received message: %@", receivedMessage );
-    NSNumber *newOldestMessage=[message objectForKey:@"messageId"];
-    //if ([self.userId isEqualToNumber:[message objectForKey:@"userId"]] && [self.myMsgsIds containsObject:[message objectForKey:@"id"]] && (self.oldestMessage!=nil && (newOldestMessage!=nil && self.oldestMessage<=newOldestMessage))){
-    if ([self.userId isEqualToNumber:[message objectForKey:@"userId"]] && ([message objectForKey:@"messageId"]==nil || [message objectForKey:@"messageId"]==(id)[NSNull null])){
-       // YOUR MESSAGE HAS BEEN RECEIVED
-        //[self.myMsgsIds removeObject:[message objectForKey:@"id"]];
-        //[[self.demoData.messages objectAtIndex:[((NSNumber *)[message objectForKey:@"id"]) intValue]]  setText:receivedMessage];
-        if ([self.demoData.messages count] > [((NSNumber *)[message objectForKey:@"id"]) intValue] &&
-           [[[self.demoData.messages objectAtIndex:[((NSNumber *)[message objectForKey:@"id"]) intValue]] text] isEqualToString:receivedMessage] &&
-            [[self.demoData.messages objectAtIndex:[((NSNumber *)[message objectForKey:@"id"]) intValue]] received]==FALSE){
-            [[self.demoData.messages objectAtIndex:[((NSNumber *)[message objectForKey:@"id"]) intValue]] setReceived:(BOOL*)TRUE];
-/*            if ([[self.demoData.messages objectAtIndex:[((NSNumber *)[message objectForKey:@"id"]) intValue]] isMediaMessage]){
-                
-                [[self.demoData.messages objectAtIndex:[((NSNumber *)[message objectForKey:@"id"]) intValue]] setMedia:[self.demoData.images objectForKey:receivedMessage]];
-            }*/
-            
-            
-        }else{
-            for (JSQMessage *msg in self.demoData.messages){
-                if ([msg isMediaMessage] && ![msg received]){
-                    [msg setReceived:(BOOL*)TRUE];
-                    [msg setMedia:[self.demoData.images objectForKey:receivedMessage]];
-                } else if ([[msg text] isEqualToString:receivedMessage] && ![msg received]){
-                    [msg setReceived:(BOOL*)TRUE];
-                    break;
-                }
-            }
-        }
-        //JSQMessage *msg=[self.demoData.messages objectAtIndex:[((NSNumber *)[message objectForKey:@"id"]) intValue]];
-        //msg.received=(BOOL*)TRUE;
-        
-    }else{// if(self.oldestMessage==nil || newOldestMessage==nil || self.oldestMessage<newOldestMessage){
-        
-        if (newOldestMessage!=nil && newOldestMessage!=(id)[NSNull null] && (self.oldestMessage==0 || self.oldestMessage>[newOldestMessage intValue])){
-            self.oldestMessage=[newOldestMessage intValue];
-        }
-        
-    
-    ZeePointUser *checkUser=[[ZeePointUser alloc] init];
-    checkUser.userId=[[message objectForKey:@"userId"] description];
-    ZeePointUser *messageUser=[self.zeePointUsers member:checkUser];
-    if (messageUser==nil){
-     messageUser=[[ZeePointUser alloc] init];
-        messageUser.userId=[[message objectForKey:@"userId"] description];//@"4";//(NSString *)[message objectForKey:@"userId"];
-    messageUser.userName=[message objectForKey:@"userName"];
-    messageUser.fbId=[message objectForKey:@"fbId"];
-    messageUser.userImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageNamed:@"demo_avatar_cook"]
-                                                                                   diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
-    
-        //[self.demoData.avatars setObject:messageUser.userImage forKey:messageUser.userId];
-    
-    NSString *picFinalURL=[NSString stringWithFormat:FB_USER_PIC,messageUser.fbId];
-    NSURL *imageURL = [NSURL URLWithString:[picFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
-        
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                @try {
-                // Update the UI
-                //self.imageView.image = [UIImage imageWithData:imageData];
-                messageUser.userImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageWithData:imageData]
-                                                                                                           diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
-                                         [self.demoData.avatars setObject:messageUser.userImage forKey:messageUser.userId];
-                    [self finishReceivingMessageAnimatedNoScroll];
-                }
-                @catch (NSException *exception) {
-                    NSLog(@"%@", exception.reason);
-                }
-            });
-        });
-
-        [self.zeePointUsers addObject:messageUser];
-        
-        
-        
-        [self.demoData.users setObject:messageUser.userName forKey:messageUser.userId];
-        
-        
-    }
-    
-        JSQMessage *newMessage;
-        if ([[[message objectForKey:@"messageType"] description] isEqualToString:PHOTO_MESSAGE]){
-            JSQPhotoMediaItem *photoItem;
-            if ([self.demoData.images objectForKey:receivedMessage]==nil){
-                if ([messageUser.userId isEqual:self.senderId]){
-                    photoItem = [[JSQPhotoMediaItem alloc] initWithMaskAsOutgoing:YES];
-                }else{
-                    photoItem = [[JSQPhotoMediaItem alloc] initWithMaskAsOutgoing:NO];
-                }
-                newMessage=  [[JSQMessage alloc] initWithSenderId:messageUser.userId//kJSQDemoAvatarIdJobs
-                                                senderDisplayName:messageUser.userName//self.demoData.users[randomUserId]
-                                                             date:[NSDate dateWithTimeIntervalSince1970:[(NSNumber *)[message objectForKey:@"time"] longValue] /1000.0]
-                                                            media:photoItem];
-                NSString *picFinalURL=receivedMessage;
-                NSURL *imageURL = [NSURL URLWithString:[picFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
-                
-                
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        @try {
-                            
-                            //JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageWithData:imageData]];
-                            [photoItem setImage:[UIImage imageWithData:imageData]];
-                            [self.demoData.images setObject:photoItem forKey:receivedMessage];
-                            
-                            //for (JSQMessage *msg in self.demoData.messages){
-                            //    if ([msg isMediaMessage] && [self.demoData.images objectForKey:[msg text]]){
-                                    
-                                   // [newMessage setMedia:[self.demoData.images objectForKey:receivedMessage]];
-                            //    }
-                            //}
-                            
-                            
-                            [self finishReceivingMessageAnimatedNoScroll];
-                        }
-                        @catch (NSException *exception) {
-                            NSLog(@"%@", exception.reason);
-                        }
-                    });
-                });
-            }else{
-                photoItem=[self.demoData.images objectForKey:receivedMessage];
-                newMessage=  [[JSQMessage alloc] initWithSenderId:messageUser.userId//kJSQDemoAvatarIdJobs
-                                                senderDisplayName:messageUser.userName//self.demoData.users[randomUserId]
-                                                             date:[NSDate dateWithTimeIntervalSince1970:[(NSNumber *)[message objectForKey:@"time"] longValue] /1000.0]
-                                                            media:photoItem];
-            }
-
-            
-        }else{
-            newMessage=  [[JSQMessage alloc] initWithSenderId:messageUser.userId//kJSQDemoAvatarIdJobs
-                                     senderDisplayName:messageUser.userName//self.demoData.users[randomUserId]
-                                        date:[NSDate dateWithTimeIntervalSince1970:[(NSNumber *)[message objectForKey:@"time"] longValue] /1000.0]
-                                            text:receivedMessage];
-        }
-        newMessage.received=(BOOL*)TRUE;
-
-
-/**
- *  Upon receiving a message, you should:
- *
- *  1. Play sound (optional)
- *  2. Add new id<JSQMessageData> object to your data source
- *  3. Call `finishReceivingMessage`
- */
-        if (atFirst){
-            [self.demoData.messages insertObject:newMessage atIndex:0];
-        }else{
-            [self.demoData.messages addObject:newMessage];
-        }
-        
-        if ([message objectForKey:@"messageType"]==PHOTO_MESSAGE){
-        if ([self.demoData.images objectForKey:receivedMessage]==nil){
-            NSString *picFinalURL=receivedMessage;
-            NSURL *imageURL = [NSURL URLWithString:[picFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
-            
-            
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    @try {
-                        
-                        JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageWithData:imageData]];
-                        [self.demoData.images setObject:photoItem forKey:receivedMessage];
-                        
-                        for (JSQMessage *msg in self.demoData.messages){
-                            if ([msg isMediaMessage] && [self.demoData.images objectForKey:[msg text]]){
-                                
-                                [msg setMedia:[self.demoData.images objectForKey:[msg text]]];
-                            }
-                        }
-                        
-                        
-                        [self finishReceivingMessageAnimatedNoScroll];
-                    }
-                    @catch (NSException *exception) {
-                        NSLog(@"%@", exception.reason);
-                    }
-                });
-            });
-            
-        }else{
-            for (JSQMessage *msg in self.demoData.messages){
-                if ([msg isMediaMessage] && [self.demoData.images objectForKey:[msg text]]){
-                    
-                    [msg setMedia:[self.demoData.images objectForKey:[msg text]]];
-                }
-            }
-        }
-        }
-        
-
-        
-    }
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.navigationItem.title=zipService.zeePoint.name;
     
-    if (self.delegateModal) {
+    /*if (self.delegateModal) {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
                                                                                               target:self
                                                                                               action:@selector(closePressed:)];
-    }
+    }*/
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+    //self.title = zipService.zeePoint.name;
     /**
      *  Enable/disable springy bubbles, default is NO.
      *  You must set this from `viewDidAppear:`
@@ -508,6 +137,161 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+}
+
+
+
+- (void)sendMessage:(NSString *)message
+          messageId:(NSNumber *)myMsgId
+          messageType:(NSString *)messageType{
+    // build a static NSDateFormatter to display the current date in ISO-8601
+    /*static NSDateFormatter *dateFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"yyyy-MM-d'T'HH:mm:ssZZZZZ";
+    });*/
+    
+    // send the message to the truck's topic
+    // build a dictionary containing all the information to send
+
+    NSDictionary *dict = @{
+                           @"message": message,
+                           @"id": myMsgId,
+                           @"channel":zipService.zeePoint.referenceId,
+                           @"userId":zipService.getUserId,
+                           @"fbId":zipService.getFbUserId,
+                           @"userName":zipService.getUserName,
+                           @"messageType":messageType
+                           };
+    // create a JSON string from this dictionary
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
+    NSString *body =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    [zipService sendMessage:body];
+
+}
+
+- (void)receiveWSMessage:(ZiPointMessage *)message
+{
+    [self receiveMessage:message putMessageAtFirst:false];
+    [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
+    [self finishReceivingMessageAnimated:YES];
+}
+
+- (void)receiveMessage:(ZiPointMessage *)message putMessageAtFirst:(bool)atFirst{
+    
+    if ([zipService.getUserId isEqualToString:message.userId]  && (message.messageId==nil || message.messageId==(id)[NSNull null])){
+       // YOUR MESSAGE HAS BEEN RECEIVED
+ 
+        if ([self.demoData.messages count] > [(message.tempId) intValue] &&
+           [[[self.demoData.messages objectAtIndex:[((NSNumber *)message.tempId) intValue]] text] isEqualToString:message.message] &&
+            [[self.demoData.messages objectAtIndex:[((NSNumber *)message.tempId) intValue]] received]==false){
+            [[self.demoData.messages objectAtIndex:[((NSNumber *)message.tempId) intValue]] setReceived:true];
+            
+        }else{
+            for (JSQMessage *msg in self.demoData.messages){
+                if ([msg isMediaMessage] && ![msg received]){
+
+                } else if ([[msg text] isEqualToString:message.message] && ![msg received]){
+                    [msg setReceived:true];
+                    break;
+                }
+            }
+        }
+        
+    }else{
+        //other user message or own message that was just sent
+        if (message.messageId!=nil && message.messageId!=(id)[NSNull null] && (self.oldestMessage==0 || self.oldestMessage>[message.messageId intValue])){
+            self.oldestMessage=[message.messageId intValue];
+        }
+        if ([zipService.images objectForKey:[message.userId description]]==nil){
+            NSString *picFinalURL=[NSString stringWithFormat:FB_USER_PIC,message.fbId];
+            NSURL *imageURL = [NSURL URLWithString:[picFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+            [zipService loadImageAsync:imageURL imageKey:[message.userId description] isImageForAmessage:false secondImageKey:nil];
+            
+        }
+    
+        JSQMessage *newMessage;
+        if ([[message.messageType description] isEqualToString:PHOTO_MESSAGE]){
+            JSQPhotoMediaItem *photoItem;
+            //if ([zipService.images objectForKey:message.message]==nil){
+                if ([message.userId isEqual:self.senderId]){
+                    photoItem = [[JSQPhotoMediaItem alloc] initWithMaskAsOutgoing:YES];
+                }else{
+                    photoItem = [[JSQPhotoMediaItem alloc] initWithMaskAsOutgoing:NO];
+                }
+                newMessage=  [[JSQMessage alloc] initWithSenderId:message.userId
+                                                senderDisplayName:message.userName
+                                                             date:[NSDate dateWithTimeIntervalSince1970:[(NSNumber *)message.time longValue] /1000.0]
+                                                            media:photoItem];
+                newMessage.text=message.message;
+                if (atFirst){
+                    [self.demoData.messages insertObject:newMessage atIndex:0];
+                }else{
+                    [self.demoData.messages addObject:newMessage];
+                }
+                [self imageMessageReceived:message];
+
+        }else{
+            newMessage=  [[JSQMessage alloc] initWithSenderId:message.userId
+                                     senderDisplayName:message.userName
+                                        date:[NSDate dateWithTimeIntervalSince1970:[(NSNumber *)message.time longValue] /1000.0]
+                                            text:message.message];
+            newMessage.received=true;
+            if (atFirst){
+                [self.demoData.messages insertObject:newMessage atIndex:0];
+            }else{
+                [self.demoData.messages addObject:newMessage];
+            }
+        }
+    }
+}
+
+-(void)imageMessageReceived:(ZiPointMessage*) message{
+    
+    if ([zipService.images objectForKey:message.message]==nil){
+        NSString *picFinalURL=message.message;
+        NSURL *imageURL = [NSURL URLWithString:[picFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+        
+        [zipService loadImageAsync:imageURL imageKey:message.message isImageForAmessage:true secondImageKey:nil];
+        
+    }else{
+        for (JSQMessage *msg in self.demoData.messages){
+            if ([msg isMediaMessage] && [zipService.images objectForKey:[msg text]] && !msg.received){
+                JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageWithData:[zipService.images objectForKey:[msg text]]]];
+                [msg setMedia:photoItem];
+                msg.received=true;
+            }
+        }
+        [self finishReceivingMessageAnimatedNoScroll];
+    }
+}
+
+-(void)imageLoaded:(NSData *)imageData messageKey:(NSString *)key isImageForMessage:(bool)isMessage{
+    if (isMessage){
+        for (JSQMessage *msg in self.demoData.messages){
+            if ([msg isMediaMessage] && [zipService.images objectForKey:key] && [[msg text] isEqualToString:key] && !msg.received){
+
+                JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageWithData:imageData]];
+                if ([msg.senderId isEqual:self.senderId]){
+                    [photoItem setAppliesMediaViewMaskAsOutgoing:YES];
+                }else{
+                    [photoItem setAppliesMediaViewMaskAsOutgoing:NO];
+                }
+                
+                [msg setMedia:photoItem];
+                msg.received=true;
+                [self finishReceivingMessageAnimatedNoScroll];
+            }
+        }
+    }else{
+        //is avatar
+        [zipService.avatars setObject:[JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageWithData:imageData]
+                                                                                 diameter:kJSQMessagesCollectionViewAvatarSizeDefault] forKey:key];
+        [self finishReceivingMessageAnimatedNoScroll];
+    }
+    
 }
 
 - (void)closePressed:(UIBarButtonItem *)sender
@@ -527,8 +311,7 @@
                       date:(NSDate *)date
 {
     NSNumber *myMsgid = @((NSUInteger)self.demoData.messages.count);
-    //[self.myMsgsIds addObject:myMsgid];
-    [self sendMessageTry:text messageId:myMsgid messageType:TEXT_MESSAGE];
+    [self sendMessage:text messageId:myMsgid messageType:TEXT_MESSAGE];
     /**
      *  Sending a message. Your implementation of this method should do *at least* the following:
      *
@@ -582,11 +365,11 @@
             
         case 1:
         {
-            __weak UICollectionView *weakView = self.collectionView;
+            /*__weak UICollectionView *weakView = self.collectionView;
             
             [self.demoData addLocationMediaMessageCompletion:^{
                 [weakView reloadData];
-            }];
+            }];*/
         }
             break;
             
@@ -600,16 +383,6 @@
     [self finishSendingMessageAnimated:YES];
 }
 
-/*
-- (void)addPhotoMediaMessage
-{
-    JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageNamed:@"goldengate"]];
-    JSQMessage *photoMessage = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
-                                                   displayName:kJSQDemoAvatarDisplayNameSquires
-                                                         media:photoItem];
-    [self.messages addObject:photoMessage];
-}*/
-
 - (void)addPhotoMediaMessage
 {
     
@@ -618,64 +391,61 @@
     imagePickController.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
     imagePickController.delegate=self;
     imagePickController.allowsEditing=TRUE;
-    //imagePickController.mediaTypes=@[kUTTypeImage]
-    //[[NSArray alloc] initWithObjects: (NSString *) kUTTypeImage, nil];
     [self presentViewController:imagePickController animated:YES completion:NULL];
 }
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypePhotoLibrary])
     {
     UIImage *selectedImage = info[UIImagePickerControllerEditedImage];
-        
-       // NSURL *imageFileURL = [info objectForKey:UIImagePickerControllerReferenceURL];
-    
-    //self.imageView.image = selectedImage;
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
     NSData *dataImage = UIImagePNGRepresentation(selectedImage);
     
-    /*
-    NSData *webData = UIImagePNGRepresentation(selectedImage);
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *localFilePath = [documentsDirectory stringByAppendingPathComponent:@"png"];//;// stringByAppendingPathComponent:png];
-    [webData writeToFile:localFilePath atomically:YES];
-    */
-    
-    //NSString *localFile=@"goldengate";
-    
     CLUploader* uploader = [[CLUploader alloc] init:self.cloudinary delegate:self];
-    
-    //NSString *imageFilePath = selectedImage;//[[NSBundle mainBundle] pathForResource:localFile ofType:@"png"];
     
     
     CLTransformation *transformation = [CLTransformation transformation];
     [transformation setWidthWithInt: 210];
     [transformation setHeightWithInt: 150];
     [transformation setCrop: @"fill"];
+        /*
+        UIImage *image = selectedImage;
+        UIImage *tempImage = nil;
+        CGSize targetSize = CGSizeMake(210,150);
+        UIGraphicsBeginImageContext(targetSize);
+        
+        CGRect thumbnailRect = CGRectMake(0, 0, 0, 0);
+        thumbnailRect.origin = CGPointMake(0.0,0.0);
+        thumbnailRect.size.width  = targetSize.width;
+        thumbnailRect.size.height = targetSize.height;
+        
+        [image drawInRect:thumbnailRect];
+        
+        tempImage = UIGraphicsGetImageFromCurrentImageContext();
+        
+        UIGraphicsEndImageContext();
+        
+        dataImage = UIImagePNGRepresentation(tempImage);
+        */
+        
+        
+        //JSQPhotoMediaItem *photoProcessed = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageWithData:dataImage]];
+        //dataImage = UIImagePNGRepresentation(photoProcessed.mediaView.image);
+        
     NSNumber *randomPublicId = [[NSNumber alloc] initWithInt:arc4random_uniform(99999999)];
-        [uploader upload:dataImage options:@{@"resource_type": @"auto",@"transformation": transformation,@"public_id": randomPublicId}];
+    [uploader upload:dataImage options:@{@"resource_type": @"auto",@"transformation": transformation,@"public_id": randomPublicId}];
     
     JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithMaskAsOutgoing:YES];
-    //JSQMessage *photoMessage;
-    //JSQPhotoMediaItem *photoItem;
-    
-    //JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageNamed:localFile]];
     JSQMessage *photoMessage = [JSQMessage messageWithSenderId:self.senderId
                                                    displayName:self.senderDisplayName
                                                          media:photoItem];
-        [photoMessage setText:[randomPublicId description]];
-    //photoItem.appliesMediaViewMaskAsOutgoing=FALSE;
+     
+    [photoMessage setText:[randomPublicId description]];
     [self.demoData.messages addObject:photoMessage];
         [self finishReceivingMessageAnimatedNoScroll];
     }
 }
-//localFilePath	NSPathStore2 *	@"/Users/cuartz/Library/Developer/CoreSimulator/Devices/6DDFC138-4E1B-4BAB-B403-163EAC968F60/data/Containers/Data/Application/F1285939-C21C-4BE2-820A-22B97DC7C2CC/Documents/png"	0x00007fb0b3d52300
-//documentsDirectory	NSPathStore2 *	@"/Users/cuartz/Library/Developer/CoreSimulator/Devices/6DDFC138-4E1B-4BAB-B403-163EAC968F60/data/Containers/Data/Application/EA777CD4-DD2E-48B5-AFA5-D61CEC1959D1/Documents"	0x00007fed5df56670
-
-
-
-
 
 - (void) uploaderSuccess:(NSDictionary*)result context:(id)context {
     
@@ -683,63 +453,10 @@
     NSString* fileName = [result valueForKey:@"public_id"];
     NSString* urlMessage = [result valueForKey:@"url"];
     
-    NSString *picFinalURL=urlMessage;
-    NSURL *imageURL = [NSURL URLWithString:[picFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
-    
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            @try {
-                
-                JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageWithData:imageData]];
-
-                [self.demoData.images setObject:photoItem forKey:urlMessage];
-                [self.demoData.images setObject:photoItem forKey:fileName];
-                NSNumber *myMsgid = @((NSUInteger)self.demoData.messages.count);
-                [self sendMessageTry:urlMessage messageId:myMsgid messageType:PHOTO_MESSAGE];
-                //[self finishReceivingMessageAnimatedNoScroll];
-            }
-            @catch (NSException *exception) {
-                NSLog(@"%@", exception.reason);
-            }
-        });
-    });
-    
-    
-    //[self.myMsgsIds addObject:myMsgid];
-    
-    
-    
-    
-    
-    /*
-    
-    for (JSQMessage *msg in self.demoData.messages){
-        if ([[msg localFile] isEqualToString:fileName] && [[msg senderId] isEqual:self.senderId]){
-            
-            [msg setMedia:photoItem];
-            //break;
-        }
-    }
-    JSQMessage *photoMessage = [JSQMessage messageWithSenderId:self.senderId
-                                                   displayName:self.senderDisplayName
-                                                         media:photoItem];
-    [self.demoData.messages addObject:photoMessage];*/
-    
-    /*
-    
-    
-    photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageNamed:@"goldengate"]];
-    photoMessage = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
-                                                   displayName:kJSQDemoAvatarDisplayNameSquires
-                                                         media:photoItem];
-    [self.demoData.messages addObject:photoMessage];
-    [self finishSendingMessageAnimated:YES];*/
-    //NSString* publicId = [result valueForKey:@"public_id"];
-    //NSLog(@"Upload success. Public ID=%@, Full result=%@", publicId, result);
-    //[self finishReceivingMessageAnimatedNoScroll];
+    NSNumber *myMsgid = @((NSUInteger)self.demoData.messages.count);
+    [self sendMessage:urlMessage messageId:myMsgid messageType:PHOTO_MESSAGE];
+    NSURL *imageURL = [NSURL URLWithString:[urlMessage stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+    [zipService loadImageAsync:imageURL imageKey:urlMessage isImageForAmessage:true secondImageKey:fileName];
 }
 
 - (void) uploaderError:(NSString *)result code:(NSInteger)code context:(id)context {
@@ -749,28 +466,6 @@
 - (void) uploaderProgress:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite context:(id)context {
     NSLog(@"Upload progress: %ld/%ld (+%ld)", (long)totalBytesWritten, (long)totalBytesExpectedToWrite, (long)bytesWritten);
 }
-
-/*
-- (void)addPhotoMediaMessage
-{
-    
-    CLUploader* uploader = [[CLUploader alloc] init:self.cloudinary delegate:self];
-    NSString *imageFilePath = [[NSBundle mainBundle] pathForResource:@"goldengate" ofType:@"png"];
-    
-    [uploader upload:imageFilePath options:@{}];
-    
-    
-    
-    JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageNamed:@"goldengate"]];
-    JSQMessage *photoMessage = [JSQMessage messageWithSenderId:kJSQDemoAvatarIdSquires
-                                                   displayName:kJSQDemoAvatarDisplayNameSquires
-                                                         media:photoItem];
-    [self.demoData.messages addObject:photoMessage];
-}
-
-*/
-
-
 
 #pragma mark - JSQMessages CollectionView DataSource
 
@@ -833,7 +528,7 @@
     }
     
     
-    return [self.demoData.avatars objectForKey:message.senderId];
+    return [zipService.avatars objectForKey:message.senderId];
 }
 
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath
@@ -911,7 +606,7 @@
     
     JSQMessage *msg = [self.demoData.messages objectAtIndex:indexPath.item];
     
-    if (!msg.isMediaMessage) {
+    if (!(BOOL*)msg.isMediaMessage) {
         
         if ([msg.senderId isEqualToString:self.senderId]) {
             if (!msg.received) {
@@ -990,18 +685,8 @@
 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView
                 header:(JSQMessagesLoadEarlierHeaderView *)headerView didTapLoadEarlierMessagesButton:(UIButton *)sender
-{/*
-    
-    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:self.senderId
-                                             senderDisplayName:self.senderDisplayName
-                                                          date:[NSDate dateWithTimeIntervalSince1970:1432961871000 /1000.0]
-                                                          text:@"mensaje anterior"];
-    
-    */
-    
-    
-    
-    NSString *zpointFinalURL=[NSString stringWithFormat:GET_PREVIOUS_MSGS,WS_ENVIROMENT,zipService.zeePoint.zpointId,self.userId,self.oldestMessage];
+{
+    NSString *zpointFinalURL=[NSString stringWithFormat:GET_PREVIOUS_MSGS,WS_ENVIROMENT,zipService.zeePoint.zpointId,[zipService getUserId],self.oldestMessage];
     NSURL *url = [NSURL URLWithString:[zpointFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request
@@ -1015,35 +700,17 @@
              NSDictionary *ziPointJoinInfo = [NSJSONSerialization JSONObjectWithData:data
                                                                              options:0
                                                                                error:NULL];
+             NSArray *messages=[zipService createZipointMessages:ziPointJoinInfo];
              
-             NSArray *messages=[ziPointJoinInfo objectForKey:@"zMessages"];
+             //NSArray *messages=[ziPointJoinInfo objectForKey:@"zMessages"];
              
-             for (NSDictionary *message in messages) {
-                 
-                 //NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-                 //id json = [NSJSONSerialization JSONObjectWithData:message options:0 error:nil];
-                 [self receiveMessage:message putMessageAtFirst:(BOOL *)TRUE];
+             for (ZiPointMessage *message in messages) {
+                 [self receiveMessage:message putMessageAtFirst:true];
                  
              }
              [self finishReceivingMessageAnimatedNoScroll];
-             
-             //[JSQSystemSoundPlayer jsq_playMessageReceivedSound];
-             //[self finishReceivingMessageAnimated:YES];
-             
-             //[self populateTable:data];
-             //[self receiveMessage:message];
-             
-             //[self connect:nil messageId:nil];
          }
      }];
-    
-    
-    
-    
-    
-    
-    //[self.demoData.messages addObject:message];
-    
     
     NSLog(@"Load earlier messages!");
 }
@@ -1072,11 +739,22 @@
 }
 
 -(void)didJustConnect{
-    NSLog(@"didJustConnect");
+    self.navigationItem.titleView=nil;
+    self.navigationItem.title=zipService.zeePoint.name;
+    [self.inputToolbar.contentView.textView setEditable:true];
+    if (self.inputToolbar.sendButtonOnRight) {
+        self.inputToolbar.contentView.rightBarButtonItem.enabled=true;
+    }
 }
 
--(void)connecting{
-    NSLog(@"connecting....");
+-(void)connecting:(UIView *)loadingView{
+    
+    self.navigationItem.title=nil;
+    self.navigationItem.titleView =loadingView;
+    [self.inputToolbar.contentView.textView setEditable:false];
+    if (self.inputToolbar.sendButtonOnRight) {
+        self.inputToolbar.contentView.rightBarButtonItem.enabled=false;
+    }
 }
 
 @end

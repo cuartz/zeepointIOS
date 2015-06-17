@@ -21,7 +21,6 @@
     @property  NSNumber *distance;
     @property  BOOL *hiddenn;
     @property BOOL *favorite;
-    //@property (readonly) NSDate *creationDate;
 
 +(NSString *)getUsersLabelText: (NSNumber *)numberOfUsers
                   friendsParam:(NSNumber *)numberOfFriends
@@ -45,11 +44,4 @@
 
 +(NSArray *) getSortDescriptors;
 
-//getGroupTitleLabelColor //obtiene el color del titulo dependiendo de la distancia a la que esta el grupo
-
-//getDistanceLabeColor //
-
-//isGroupTitleBold->doGroupHaveFriends
-
-//getUsersLabel->doGroupHaveUsers ->doGroupHaveFriends->doGroupHaveListeners
 @end

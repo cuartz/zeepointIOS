@@ -6,9 +6,6 @@
          contextName = "-[ZeePointViewController sendMessage:messageId:messageType:]:ZeePointViewController.m">
       </ContextState>
       <ContextState
-         contextName = "__37-[ZeePointViewController viewDidLoad]_block_invoke:ZeePointViewController.m">
-      </ContextState>
-      <ContextState
          contextName = "-[ZeePointViewController receiveMessage:]:ZeePointViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -52,6 +49,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[JSQMessagesViewController collectionView:layout:sizeForItemAtIndexPath:]:JSQMessagesViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[ZeePointViewController collectionView:header:didTapLoadEarlierMessagesButton:]:ZeePointViewController.m">
+      </ContextState>
+      <ContextState
          contextName = "__63-[LoginViewController loginButton:didCompleteWithResult:error:]_block_invoke:LoginViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -73,6 +76,11 @@
       </ContextState>
       <ContextState
          contextName = "-[ZeePointViewController uploaderSuccess:context:]:ZeePointViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.demoData.messages">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[ZeePointGroup isEqual:]:ZeePointGroup.m">
@@ -92,10 +100,10 @@
                value = "[zeePointGroup zpointId]">
             </PersistentString>
             <PersistentString
-               value = "[zeePointGroup name]">
+               value = "[self name]">
             </PersistentString>
             <PersistentString
-               value = "[self name]">
+               value = "[zeePointGroup name]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -103,10 +111,10 @@
          contextName = "-[JSQMessagesViewController scrollToBottomAnimated:]:JSQMessagesViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "[self.collectionView.collectionViewLayout collectionViewContentSize]">
+               value = "self.collectionView.collectionViewLayout">
             </PersistentString>
             <PersistentString
-               value = "self.collectionView.collectionViewLayout">
+               value = "[self.collectionView.collectionViewLayout collectionViewContentSize]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -127,30 +135,33 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[ZiPointWSService createZipointUsers:]:ZiPointWSService.m">
+      </ContextState>
+      <ContextState
          contextName = "-[ZeePointViewController receiveMessage:putMessageAtFirst:]:ZeePointViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "[message objectForKey:@&quot;messageId&quot;]">
+               value = "([[self.demoData.messages objectAtIndex:[((NSNumber *)[message objectForKey:@&quot;id&quot;]) intValue]] received]==FALSE)">
             </PersistentString>
             <PersistentString
-               value = "newOldestMessage!=nil">
+               value = "[self.demoData.messages objectAtIndex:[((NSNumber *)[message objectForKey:@&quot;id&quot;]) intValue]]">
             </PersistentString>
             <PersistentString
-               value = "[self.demoData.images objectForKey:receivedMessage]]">
+               value = "[[message objectForKey:@&quot;userId&quot;] description]">
             </PersistentString>
             <PersistentString
-               value = "[PHOTO_MESSAGE integerValue]">
+               value = "zipService">
             </PersistentString>
             <PersistentString
-               value = "message">
+               value = "self.toolbarItems">
             </PersistentString>
             <PersistentString
-               value = "newOldestMessage!=NULL">
-            </PersistentString>
-            <PersistentString
-               value = "self.demoData.images">
+               value = "[self.demoData.messages count] &gt; [((NSNumber *)[message objectForKey:@&quot;id&quot;]) intValue]">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[ZeePointViewController imageLoaded:messageKey:isImageForMessage:]:ZeePointViewController.m">
       </ContextState>
       <ContextState
          contextName = "-[JSQPhotoMediaItem mediaView]:JSQPhotoMediaItem.m">
@@ -201,13 +212,13 @@
          contextName = "-[ZeePointViewController collectionView:cellForItemAtIndexPath:]:ZeePointViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "[msg.senderId isEqualToString:self.senderId]">
-            </PersistentString>
-            <PersistentString
                value = "msg.received">
             </PersistentString>
             <PersistentString
                value = "msg.received==NULL">
+            </PersistentString>
+            <PersistentString
+               value = "[msg.senderId isEqualToString:self.senderId]">
             </PersistentString>
             <PersistentString
                value = "([msg.senderId isEqualToString:self.senderId] &amp;&amp; (msg.received==NULL || !msg.received))">
@@ -261,6 +272,11 @@
       </ContextState>
       <ContextState
          contextName = "-[ZeePointViewController viewDidLoad]:ZeePointViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.senderId">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[SRWebSocket open]:SRWebSocket.m">

@@ -13,8 +13,6 @@
 #import "Constants.h"
 
 @interface CreateZeePointViewController () <CLLocationManagerDelegate>
-//@property ZeePointGroup *zeePoint;
-//@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UITextField *zeePointNameTextField;
 @property CLGeocoder *geocoder;
 @property double lat;
@@ -26,15 +24,8 @@
 @end
 
 @implementation CreateZeePointViewController
-/*{
-    CLLocationManager *manager;
-    CLGeocoder *geocoder;
-    CLPlacemark *placemark;
-}*/
 
 NSString *tempZpointName;
-
-//@synthesize delegate, zeePointNameString, zeePointName;
 
 - (IBAction)fetchGreeting;
 {
@@ -44,9 +35,6 @@ NSString *tempZpointName;
     [self.view addSubview: activityIndicator];
     
     [activityIndicator startAnimating];
-    
-    //[activityIndicator removeFromSuperview];
-    
 
 }
 
@@ -57,11 +45,7 @@ NSString *tempZpointName;
     
     locationManager = [[CLLocationManager alloc] init];
 
-    
- //   [self fetchGreeting];
-    
     locationManager.delegate = self;
-    //locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
         if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
@@ -72,18 +56,8 @@ NSString *tempZpointName;
     [locationManager startUpdatingLocation];
 }
 - (IBAction)saveButton:(id)sender {
-/*    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"Getting your location, please wait..." delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
-    [alert addSubview:activityIndicator];
-    activityIndicator.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
-    [self.view addSubview: activityIndicator];
- 
-    [activityIndicator startAnimating];
-    [alert show];*/
+    
     [self createZpoint];
-    
-    
-    
     
 }
 
@@ -95,7 +69,6 @@ NSString *tempZpointName;
 - (IBAction)locationButton:(id)sender {
     
     locationManager.delegate = self;
-    //locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
         if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
@@ -111,22 +84,6 @@ NSString *tempZpointName;
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    //if (sender != self.saveButton) return;
-    
-    
-
-    //[activityIndicator  startAnimating];
-    
-//    while (activityIndicator.areAnimationsEnabled) {
-//        <#statements#>
-//    }
-    
-    //[activityIndicator removeFromSuperview];
-    
-    //if (self.zeePointNameTextField.text.length > 0) {
-    //    self.zeePointGroupItem = [[ZeePointGroup alloc] init];
-    //    self.zeePointGroupItem.name=self.zeePointNameTextField.text;
-    //}
 
 }
 
@@ -158,9 +115,7 @@ NSString *tempZpointName;
              NSDictionary *greeting = [NSJSONSerialization JSONObjectWithData:data
                                                                       options:0
                                                                         error:NULL];
-             //self.greetingId.text = [[greeting objectForKey:@"id"] stringValue];
-             //self.greetingContent.text = [greeting objectForKey:@"content"];
-             //NSLog(@"Error: %@", [greeting objectForKey:@"location"]);
+
              if (![tempZpointName isEqual:[greeting objectForKey:@"name"]]){
                  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ZiPoint already here"
                                                                  message:[NSString stringWithFormat:@"%@ ZiPoint was created before",[greeting objectForKey:@"name"]]
@@ -219,34 +174,4 @@ NSString *tempZpointName;
     //Your code goes here
 }
 
-/*
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-    NSLog(@"Error: %@", error);
-    NSLog(@"Failed to get location! :(");
-}
-
--(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
-    
-    NSLog(@"Location: ∞@", newLocation);
-    CLLocation *currentLocation = newLocation;
-    
-    if (currentLocation!=nil){
-        NSLog(@"%.8f",currentLocation.coordinate.latitude);
-        NSLog(@"%.8f",currentLocation.coordinate.longitude);
-    }
-    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-        if (error== nil && [placemarks count] > 0){
-            placemark = [placemarks lastObject];
-            NSLog(@"%@ %@\n%@ %@\n%@\n%@",
-                  placemark.subThoroughfare, placemark.thoroughfare,
-                  placemark.postalCode, placemark.locality,
-                  placemark.administrativeArea,
-                  placemark.country);
-        }else{
-            NSLog(@"%@", error.debugDescription);
-        }
-    }];
-    
-}
- */
 @end

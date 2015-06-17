@@ -756,10 +756,10 @@ const int FrontViewPositionNone = 0xff;
     ZeePointViewController *zeePointViewController = _frontViewController.childViewControllers[0];//stack[0];
     if ( zeePointViewController )
     {
-        ZiPointWSService *zipService = [ZiPointWSService sharedManager];
+/*        ZiPointWSService *zipService = [ZiPointWSService sharedManager];
         zipService.zeePoint=self.zeePointJoined;
         zipService.lat=self.lat;
-        zipService.lon=self.lon;
+        zipService.lon=self.lon;*/
         
         [self.navigationController setNavigationBarHidden: YES animated:NO];
         //zeePointViewController.navigationController=[self.navigationController  ;
@@ -767,7 +767,7 @@ const int FrontViewPositionNone = 0xff;
     ZiPointUsersViewController *ziPointUsersViewController = _rightViewController.childViewControllers[0];
     if ( ziPointUsersViewController )
     {
-        ziPointUsersViewController.zeePointJoined=self.zeePointJoined;
+        //ziPointUsersViewController.zeePointJoined=self.zeePointJoined;
     }
     
 }
@@ -799,7 +799,7 @@ const int FrontViewPositionNone = 0xff;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    
     [super viewWillDisappear:animated];
 }
 

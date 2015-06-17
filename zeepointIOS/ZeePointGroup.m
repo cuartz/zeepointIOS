@@ -53,7 +53,6 @@
         return [UIColor colorWithRed:14.0/255.0 green:194.0/255.0 blue:5.0/255.0 alpha:.9];
     }else {
         return [UIColor colorWithRed:1 green:0.4 blue:0.106 alpha:1];
-        //return [UIColor blueColor];
     }
 }
 

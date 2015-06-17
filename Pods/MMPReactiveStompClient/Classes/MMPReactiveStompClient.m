@@ -255,6 +255,32 @@
         }];
 }
 
+-(void)unSubscribe{
+    @synchronized(_subscriptions) {
+        for (MMPStompSubscription *subscription in [_subscriptions allValues]){
+        
+        if (subscription) {
+            subscription.subscribers--;
+            if (subscription.subscribers <= 0) {
+                //MMPRxSC_LOG(@"Trying to unsubscribe from STOMP destination: %@", destination)
+                if ([self socketStateValid]) {
+                    //MMPRxSC_LOG(@"Unsubscribing STOMP destination: %@", destination)
+                    [subscription unsubscribe];
+                }
+                //[_subscriptions removeObjectForKey:destination];
+            } else {
+               // MMPRxSC_LOG(@"%lu still subscribed to STOMP destination: %@", (unsigned long)subscription.subscribers, destination)
+            }
+        } else {
+            // shouldn't happen
+        }
+        }
+        self.subscriptions = [NSMutableDictionary dictionary];
+    }
+    
+
+}
+
 - (void)connectWithHeaders:(NSDictionary *)headers {
     [self sendFrameWithCommand:kCommandConnect
                        headers:headers

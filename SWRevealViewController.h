@@ -314,9 +314,7 @@ typedef NS_ENUM(NSInteger, SWRevealToggleAnimationType)
 // Delegate
 @property (nonatomic,weak) id<SWRevealViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sideBarButton;
-@property ZeePointGroup *zeePointJoined;
-@property double lat;
-@property double lon;
+
 @property (weak, nonatomic) IBOutlet UINavigationItem *RoomNavBar;
 
 @end

@@ -430,11 +430,11 @@
             </objects>
             <point key="canvasLocation" x="1881" y="-290"/>
         </scene>
-        <!--My Account-->
+        <!--Navigation Controller-->
         <scene sceneID="Cp5-oj-ECJ">
             <objects>
                 <navigationController id="0ej-f9-and" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Account" image="home_filled-32.png" id="wZB-gp-Vcy"/>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="wZB-gp-Vcy"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qmd-w8-P1I">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -760,7 +760,6 @@
     </scenes>
     <resources>
         <image name="chat_filled-25.png" width="25" height="25"/>
-        <image name="home_filled-32.png" width="32" height="32"/>
         <image name="mini_icon_gray.png" width="274" height="290"/>
         <image name="zipoint_map.png" width="2246" height="1113"/>
     </resources>

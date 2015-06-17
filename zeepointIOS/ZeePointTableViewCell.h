@@ -9,11 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ZeePointTableViewCell : UITableViewCell
-/*@property (strong, nonatomic) IBOutlet UIImageView *zeePointImage;
-@property (strong, nonatomic) IBOutlet UILabel *zeePointUsersLabel;
-@property (strong, nonatomic) IBOutlet UILabel *zeePointDistanceLabel;
-@property (strong, nonatomic) IBOutlet UILabel *zeePointNameLabel;
-*/
 @property (strong, nonatomic) IBOutlet UILabel *zeePointUsersLabel;
 @property (strong, nonatomic) IBOutlet UILabel *zeePointDistanceLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *zeePointImage;

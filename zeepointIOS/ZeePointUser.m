@@ -42,9 +42,9 @@
 +(NSArray *) getSortDescriptors{
     return [NSArray arrayWithObjects:
             
-            [NSSortDescriptor sortDescriptorWithKey:@"friend" ascending:NO selector:@selector(compare:)],
+            //[NSSortDescriptor sortDescriptorWithKey:@"friend" ascending:NO selector:@selector(compare:)],
             
-            [NSSortDescriptor sortDescriptorWithKey:@"ownder" ascending:YES selector:@selector(compare:)],
+            //[NSSortDescriptor sortDescriptorWithKey:@"owner" ascending:YES selector:@selector(compare:)],
             
             [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(compare:)],
             

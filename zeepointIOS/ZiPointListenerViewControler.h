@@ -12,8 +12,7 @@
 
 #import "DemoModelData.h"
 #import "NSUserDefaults+DemoSettings.h"
-#import <WebsocketStompKit/WebsocketStompKit.h>
-#import "ZiPJSQMessagesViewController.h"
+#import "JSQMessagesViewController.h"
 
 
 @class ZiPointListenerViewController;
@@ -24,21 +23,10 @@
 
 @end
 
-@interface ZiPointListenerViewController : JSQMessagesViewController <UIActionSheetDelegate>
-
-//@property (nonatomic, strong) IBOutlet UILabel *zeePointNameLabel;
-@property ZeePointGroup *zeePoint;
-@property double lat;
-@property double lon;
+@interface ZiPointListenerViewController : JSQMessagesViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (weak, nonatomic) id<JSQDemoViewControllerDelegate> delegateModal;
 
 @property (strong, nonatomic) DemoModelData *demoData;
-
-@property (nonatomic, strong) STOMPClient *client;
-
-//- (void)receiveMessagePressed:(UIBarButtonItem *)sender;
-
-- (void)closePressed:(UIBarButtonItem *)sender;
 
 @end

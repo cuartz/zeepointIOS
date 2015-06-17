@@ -11,6 +11,4 @@
 
 @interface ZiPointUsersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchDisplayDelegate>
 
-@property ZeePointGroup *zeePointJoined;
-
 @end

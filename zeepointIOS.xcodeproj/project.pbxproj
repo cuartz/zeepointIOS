@@ -12,7 +12,6 @@
 		0B0C95321ADB230E00C76E9F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B0C939C1AD9B4B300C76E9F /* FBSDKLoginKit.framework */; };
 		0B0D372C1B1ED1650019697C /* ZiPointUserTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0D372B1B1ED1650019697C /* ZiPointUserTableCell.m */; };
 		0B0D37301B1F08320019697C /* LeftToRightSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0D372F1B1F08320019697C /* LeftToRightSegue.m */; };
-		0B0D37331B2065B00019697C /* ZipOintService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0D37321B2065B00019697C /* ZipOintService.m */; };
 		0B0D37401B20E1C20019697C /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B0D37341B20E1C20019697C /* Icon-Small.png */; };
 		0B0D37411B20E1C20019697C /* Icon-Small@2x-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B0D37351B20E1C20019697C /* Icon-Small@2x-1.png */; };
 		0B0D37421B20E1C20019697C /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B0D37361B20E1C20019697C /* Icon-Small@3x.png */; };
@@ -289,6 +288,10 @@
 		0B601E991B2BE9BD001E87EA /* messages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B601E9B1B2BE9BD001E87EA /* messages.plist */; };
 		0B601EAA1B2BFDE4001E87EA /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B601EA91B2BFDE4001E87EA /* LoadingView.m */; };
 		0B601EAC1B2CE8C0001E87EA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B601EAB1B2CE8C0001E87EA /* Info.plist */; };
+		0B601EAF1B2CF093001E87EA /* ZipLocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B601EAE1B2CF093001E87EA /* ZipLocationService.m */; };
+		0B601EB31B2D9ECE001E87EA /* ZiPointMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B601EB21B2D9ECE001E87EA /* ZiPointMessage.m */; };
+		0B601EB91B2EDF60001E87EA /* FXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B601EB61B2EDF60001E87EA /* FXImageView.m */; };
+		0B601EBA1B2EDF60001E87EA /* UIImage+FX.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B601EB81B2EDF60001E87EA /* UIImage+FX.m */; };
 		0B822E991B1C3D1F00A34FEF /* ZiPointListenerViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B822E981B1C3D1F00A34FEF /* ZiPointListenerViewControler.m */; };
 		0B822E9C1B1ECB5300A34FEF /* ZiPointUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B822E9B1B1ECB5300A34FEF /* ZiPointUsersViewController.m */; };
 		0B9CA0541B1279CC00DD65FF /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9CA0531B1279CC00DD65FF /* SWRevealViewController.m */; };
@@ -343,8 +346,6 @@
 		0B0D372B1B1ED1650019697C /* ZiPointUserTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZiPointUserTableCell.m; sourceTree = "<group>"; };
 		0B0D372E1B1F08320019697C /* LeftToRightSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftToRightSegue.h; sourceTree = "<group>"; };
 		0B0D372F1B1F08320019697C /* LeftToRightSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftToRightSegue.m; sourceTree = "<group>"; };
-		0B0D37311B2065B00019697C /* ZipOintService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipOintService.h; sourceTree = "<group>"; };
-		0B0D37321B2065B00019697C /* ZipOintService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipOintService.m; sourceTree = "<group>"; };
 		0B0D37341B20E1C20019697C /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "Images.xcassets/AppIcon.appiconset/Icon-Small.png"; sourceTree = "<group>"; };
 		0B0D37351B20E1C20019697C /* Icon-Small@2x-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x-1.png"; path = "Images.xcassets/AppIcon.appiconset/Icon-Small@2x-1.png"; sourceTree = "<group>"; };
 		0B0D37361B20E1C20019697C /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@3x.png"; path = "Images.xcassets/AppIcon.appiconset/Icon-Small@3x.png"; sourceTree = "<group>"; };
@@ -637,7 +638,15 @@
 		0B601EA81B2BFDE4001E87EA /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		0B601EA91B2BFDE4001E87EA /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		0B601EAB1B2CE8C0001E87EA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
-		0B822E961B1C2D6B00A34FEF /* ZiPJSQMessagesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZiPJSQMessagesViewController.h; sourceTree = "<group>"; };
+		0B601EAD1B2CF093001E87EA /* ZipLocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipLocationService.h; sourceTree = "<group>"; };
+		0B601EAE1B2CF093001E87EA /* ZipLocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipLocationService.m; sourceTree = "<group>"; };
+		0B601EB01B2D4A33001E87EA /* ZiPJSQMessagesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZiPJSQMessagesViewController.h; sourceTree = "<group>"; };
+		0B601EB11B2D9ECE001E87EA /* ZiPointMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZiPointMessage.h; sourceTree = "<group>"; };
+		0B601EB21B2D9ECE001E87EA /* ZiPointMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZiPointMessage.m; sourceTree = "<group>"; };
+		0B601EB51B2EDF60001E87EA /* FXImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXImageView.h; sourceTree = "<group>"; };
+		0B601EB61B2EDF60001E87EA /* FXImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXImageView.m; sourceTree = "<group>"; };
+		0B601EB71B2EDF60001E87EA /* UIImage+FX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FX.h"; sourceTree = "<group>"; };
+		0B601EB81B2EDF60001E87EA /* UIImage+FX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FX.m"; sourceTree = "<group>"; };
 		0B822E971B1C3D1F00A34FEF /* ZiPointListenerViewControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZiPointListenerViewControler.h; sourceTree = "<group>"; };
 		0B822E981B1C3D1F00A34FEF /* ZiPointListenerViewControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZiPointListenerViewControler.m; sourceTree = "<group>"; };
 		0B822E9A1B1ECB5300A34FEF /* ZiPointUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZiPointUsersViewController.h; sourceTree = "<group>"; };
@@ -748,7 +757,7 @@
 		0B157A5F1B1BE7EC00B7E3A7 /* modified */ = {
 			isa = PBXGroup;
 			children = (
-				0B822E961B1C2D6B00A34FEF /* ZiPJSQMessagesViewController.h */,
+				0B601EB01B2D4A33001E87EA /* ZiPJSQMessagesViewController.h */,
 				0B157A671B1C1C6A00B7E3A7 /* ZiPJSQMessagesViewController.m */,
 			);
 			name = modified;
@@ -775,9 +784,22 @@
 			name = custom;
 			sourceTree = "<group>";
 		};
+		0B601EB41B2EDF60001E87EA /* FXImageView */ = {
+			isa = PBXGroup;
+			children = (
+				0B601EB51B2EDF60001E87EA /* FXImageView.h */,
+				0B601EB61B2EDF60001E87EA /* FXImageView.m */,
+				0B601EB71B2EDF60001E87EA /* UIImage+FX.h */,
+				0B601EB81B2EDF60001E87EA /* UIImage+FX.m */,
+			);
+			name = FXImageView;
+			path = zeepointIOS/FXImageView;
+			sourceTree = "<group>";
+		};
 		0BC9875E1AD0A13E000BE278 = {
 			isa = PBXGroup;
 			children = (
+				0B601EB41B2EDF60001E87EA /* FXImageView */,
 				0B601E9B1B2BE9BD001E87EA /* messages.plist */,
 				0B601E581B23F96D001E87EA /* Cloudinary */,
 				0BE264B31ADC8EC400F3B619 /* SWRevealViewController */,
@@ -877,10 +899,10 @@
 		0BC987941AD0A45B000BE278 /* services */ = {
 			isa = PBXGroup;
 			children = (
-				0B0D37311B2065B00019697C /* ZipOintService.h */,
-				0B0D37321B2065B00019697C /* ZipOintService.m */,
 				0B601E901B2829D8001E87EA /* ZiPointWSService.h */,
 				0B601E931B2BC55C001E87EA /* ZiPointWSService.m */,
+				0B601EAD1B2CF093001E87EA /* ZipLocationService.h */,
+				0B601EAE1B2CF093001E87EA /* ZipLocationService.m */,
 			);
 			name = services;
 			sourceTree = "<group>";
@@ -894,6 +916,8 @@
 				0BC9879A1AD0A555000BE278 /* ZeePointGroup.m */,
 				0B157A591B1A931100B7E3A7 /* ZeePointUser.h */,
 				0B157A5A1B1A931100B7E3A7 /* ZeePointUser.m */,
+				0B601EB11B2D9ECE001E87EA /* ZiPointMessage.h */,
+				0B601EB21B2D9ECE001E87EA /* ZiPointMessage.m */,
 			);
 			name = entities;
 			sourceTree = "<group>";
@@ -1627,9 +1651,9 @@
 				0BE264B91ADF09CD00F3B619 /* Constants.m in Sources */,
 				0BC987731AD0A13E000BE278 /* zeepointIOS.xcdatamodeld in Sources */,
 				0B9CA0541B1279CC00DD65FF /* SWRevealViewController.m in Sources */,
-				0B0D37331B2065B00019697C /* ZipOintService.m in Sources */,
 				0B157A681B1C1C6A00B7E3A7 /* ZiPJSQMessagesViewController.m in Sources */,
 				0BE2648D1ADB7A1600F3B619 /* DemoModelData.m in Sources */,
+				0B601EB91B2EDF60001E87EA /* FXImageView.m in Sources */,
 				0B601E941B2BC55C001E87EA /* ZiPointWSService.m in Sources */,
 				0B37ED811AD11795006A961F /* CreateZeePointViewController.m in Sources */,
 				0B0D372C1B1ED1650019697C /* ZiPointUserTableCell.m in Sources */,
@@ -1639,8 +1663,11 @@
 				0BC9879B1AD0A556000BE278 /* ZeePointGroup.m in Sources */,
 				0B157A5B1B1A931100B7E3A7 /* ZeePointUser.m in Sources */,
 				0B0C923D1AD9A63700C76E9F /* LoginViewController.m in Sources */,
+				0B601EB31B2D9ECE001E87EA /* ZiPointMessage.m in Sources */,
+				0B601EBA1B2EDF60001E87EA /* UIImage+FX.m in Sources */,
 				0BC9876D1AD0A13E000BE278 /* main.m in Sources */,
 				0BC9879E1AD0B487000BE278 /* ZeePointViewController.m in Sources */,
+				0B601EAF1B2CF093001E87EA /* ZipLocationService.m in Sources */,
 				0B822E991B1C3D1F00A34FEF /* ZiPointListenerViewControler.m in Sources */,
 				0B601EAA1B2BFDE4001E87EA /* LoadingView.m in Sources */,
 				0BC987981AD0A4C5000BE278 /* ZeePointsViewController.m in Sources */,
