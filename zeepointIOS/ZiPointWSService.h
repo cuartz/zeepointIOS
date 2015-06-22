@@ -25,9 +25,14 @@
 
 -(void)didJustConnect;
 
+-(void)receiveMessage:(ZiPointMessage *)message putMessageAtFirst:(bool)atFirst;
+
+-(void)finishReceivingMessageCustom:(BOOL)animated;
+
 @end
 
-@interface ZiPointWSService : NSObject {
+@interface ZiPointWSService : NSObject
+/*{
     ZeePointGroup *zeePoint;
     NSMutableSet *zeePointUsers;
     double lat;
@@ -35,7 +40,7 @@
     NSMutableDictionary *avatars;
     NSMutableDictionary *images;
     
-}
+}*/
 @property (nonatomic, strong) ZeePointGroup *zeePoint;
 @property (nonatomic, strong) NSMutableSet *zeePointUsers;
 @property (nonatomic) double lat;
@@ -43,6 +48,12 @@
 @property (nonatomic, assign) id  delegate;
 @property (strong, nonatomic) NSMutableDictionary *avatars;
 @property (strong, nonatomic) NSMutableDictionary *images;
+
+@property (strong, nonatomic) NSMutableArray *messages;
+
+@property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImageData;
+
+@property (strong, nonatomic) JSQMessagesBubbleImage *incomingBubbleImageData;
 
 // define public functions
 
@@ -74,6 +85,10 @@
 
 -(NSString *) getUserName;
 
+-(void)setGender:(NSString *)gender;
+
+-(NSString *) getGender;
+
 -(ZeePointGroup *)createZipointGroup:(NSDictionary *)dict;
 
 -(NSMutableSet *)createZipointGroups:(NSDictionary *)dict;
@@ -85,6 +100,10 @@
 -(ZiPointMessage *)createZipointMessage:(NSDictionary *)dict;
 
 -(NSMutableArray *)createZipointMessages:(NSDictionary *)dict;
+
+- (void)saveUserInfo:(NSString *) fbUserId :(NSString *)deviceToken;
+
+- (void)joinZiPoint;
 
 //- (id)unsubscribe;
 

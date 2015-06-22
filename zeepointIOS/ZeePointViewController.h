@@ -27,6 +27,6 @@
 
 @property (weak, nonatomic) id<JSQDemoViewControllerDelegate> delegateModal;
 
-@property (strong, nonatomic) DemoModelData *demoData;
+//@property (strong, nonatomic) DemoModelData *demoData;
 
 @end

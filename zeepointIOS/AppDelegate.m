@@ -10,6 +10,8 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginButton.h>
 #import "NSUserDefaults+DemoSettings.h"
+#import "AGPushNoteView.h"
+#import "ZiPointWSService.h"
 
 @interface AppDelegate ()
 
@@ -43,23 +45,33 @@
     }
     
     application.applicationIconBadgeNumber=0;
+    
     return YES;
 }
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken
 {
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setObject:newDeviceToken forKey:@"DeviceToken"];
+    
+    ZiPointWSService *zipService = [ZiPointWSService sharedManager];
+    [zipService setDeviceToken:[newDeviceToken description]];
+    if (zipService.getUserId){
+    //NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [zipService saveUserInfo:zipService.getFbUserId :zipService.getDeviceToken];
+    }
+    //[prefs setObject:newDeviceToken forKey:@"DeviceToken"];
 }
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notifications Disabled"
+    /*UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notifications Disabled"
                                                     message:@"ZiPoints was not able to activate notifications"
                                                    delegate:nil
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles: nil];
-    [alert show];
+    [alert show];*/
 }
--(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    NSString *message = [[[userInfo valueForKey:@"aps"] valueForKey:@"alert"] valueForKey:@"body"];
+    [AGPushNoteView showWithNotificationMessage:message];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

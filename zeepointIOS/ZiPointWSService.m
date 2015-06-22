@@ -28,6 +28,7 @@
 @property (nonatomic, strong) NSString *fbUserId;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *gender;
 @property (nonatomic, strong) UIView *loadingView;
 
 
@@ -93,6 +94,12 @@
         avatars=[[NSMutableDictionary alloc] init];
         images=[[NSMutableDictionary alloc] init];
         
+        
+        JSQMessagesBubbleImageFactory *bubbleFactory = [[JSQMessagesBubbleImageFactory alloc] init];
+        
+        self.outgoingBubbleImageData = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
+        self.incomingBubbleImageData = [bubbleFactory incomingMessagesBubbleImageWithColor:[UIColor colorWithRed:1 green:0.4 blue:0.106 alpha:1]];
+        
         [self connect];
 
 
@@ -113,7 +120,7 @@
              }
              // First time connected to WebSocket, receiving SRWebSocket object
 
-             [delegate didJustConnect];
+             
              NSLog(@"web socket connected");
          } else if ([x isKindOfClass:[NSString class]]) {
              
@@ -134,17 +141,21 @@
 
 -(void)subscribeZip:(NSString *) newChannel{
     channel=newChannel;
-    if (self.connected){
-    [[client stompMessagesFromDestination:[NSString stringWithFormat:@"/topic/channels/%@",channel]]
-     subscribeNext:^(MMPStompMessage *message) {
-         NSString *jsonString=[message body];
-         NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-         NSDictionary *messageData=[NSJSONSerialization JSONObjectWithData:data
+    if (!self.connected){
+        [self connect];
+    }else{
+        
+        [[client stompMessagesFromDestination:[NSString stringWithFormat:@"/topic/channels/%@",channel]]
+         subscribeNext:^(MMPStompMessage *message) {
+             NSString *jsonString=[message body];
+             NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+             NSDictionary *messageData=[NSJSONSerialization JSONObjectWithData:data
                                                                    options:0
                                                                      error:NULL];
-         [delegate receiveWSMessage:[self createZipointMessage:messageData]];
+             [delegate receiveWSMessage:[self createZipointMessage:messageData]];
          
-     }];
+         }];
+        [delegate didJustConnect];
     }
 }
 
@@ -221,6 +232,16 @@
     return _userName;
 }
 
+-(void)setGender:(NSString *)gender{
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setObject:gender forKey:@"gender"];
+    _gender=gender;
+}
+
+-(NSString *) getGender{
+    return _gender;
+}
+
 -(ZeePointGroup *)createZipointGroup:(NSDictionary *)dict{
     ZeePointGroup *item = [[ZeePointGroup alloc] init];
     item.zpointId=[dict objectForKey:@"id"];
@@ -231,8 +252,12 @@
     //item.friends = [zpoint objectForKey:@"name"];
     item.listeners = [dict objectForKey:@"listeners"];
     item.referenceId = [dict objectForKey:@"referenceId"];
+    item.ownerId = [dict objectForKey:@"ownerId"];
     
     item.joined=[[dict objectForKey:@"joined"] boolValue];
+    if (item.joined){
+        self.zeePoint=item;
+    }
     
     return item;
 }
@@ -263,13 +288,13 @@
 }
 
 -(NSMutableArray *)createZipointMessages:(NSDictionary *)dict{
-    NSMutableArray *messages=[[NSMutableArray alloc] init];
+    NSMutableArray *messagesArray=[[NSMutableArray alloc] init];
     NSArray *messagesDict=[dict objectForKey:@"zMessages"];
     
     for (NSDictionary *message in messagesDict) {
-        [messages addObject:[self createZipointMessage:message]];
+        [messagesArray addObject:[self createZipointMessage:message]];
     }
-    return messages;
+    return messagesArray;
 }
 
 -(NSMutableSet *)createZipointUsers:(NSDictionary *)dict{
@@ -320,6 +345,81 @@
         }
     });
     return imageData;
+}
+
+
+
+- (void)saveUserInfo:(NSString *) fbUserId :(NSString *)deviceToken{
+    
+    NSString *zpointFinalURL=[NSString stringWithFormat:LOGIN_USER_SERVICE,WS_ENVIROMENT,fbUserId, deviceToken];
+    NSURL *url = [NSURL URLWithString:[zpointFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+    NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:serviceRequest
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response,
+                                               NSData *data, NSError *connectionError)
+     {
+         if (data.length > 0 && connectionError == nil &&
+             [[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL] objectForKey:@"name"]!=nil)
+         {
+             NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data
+                                                                      options:0
+                                                                        error:NULL];
+             
+             [self setUserId:[[response objectForKey:@"id"] description]];
+             //NSString *host=[greeting objectForKey:@"host"];
+             [self setFbUserId:fbUserId];
+             
+             //UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+             //UIViewController *uiViewController = [storyboard instantiateViewControllerWithIdentifier:@"mainMenuView"];
+             
+             //[self presentViewController:uiViewController animated:YES completion:nil];
+         }
+         else{
+             /* UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error Code 002","Error code")
+              message:@"Problem Occurred, go to www.zipoints.com and report it so we start fixing it!"
+              delegate:nil
+              cancelButtonTitle:@"OK"
+              otherButtonTitles: nil];
+              [alert show];*/
+         }
+     }];
+}
+
+- (void)joinZiPoint{
+    self.messages = [NSMutableArray new];
+NSString *zpointFinalURL=[NSString stringWithFormat:JOIN_ZPOINT_SERVICE,WS_ENVIROMENT,self.zeePoint.zpointId,self.getUserId,self.lat,self.lon];
+NSURL *url = [NSURL URLWithString:[zpointFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+NSURLRequest *requestJoin = [NSURLRequest requestWithURL:url];
+[NSURLConnection sendAsynchronousRequest:requestJoin
+                                   queue:[NSOperationQueue mainQueue]
+                       completionHandler:^(NSURLResponse *response,
+                                           NSData *data, NSError *connectionError)
+ {
+     if (data.length > 0 && connectionError == nil)
+     {
+         
+         NSDictionary *ziPointJoinInfo = [NSJSONSerialization JSONObjectWithData:data
+                                                                         options:0
+                                                                           error:NULL];
+         
+         NSMutableArray *messagesArray=[self createZipointMessages:ziPointJoinInfo];//[ziPointJoinInfo objectForKey:@"zMessages"];
+         
+         for (ZiPointMessage *message in messagesArray) {
+             
+             [delegate receiveMessage:message putMessageAtFirst:false];
+         }
+         
+         [delegate finishReceivingMessageCustom:YES];
+         
+         [self subscribeZip:self.zeePoint.referenceId];
+         
+         self.zeePointUsers=[self createZipointUsers:ziPointJoinInfo];
+         
+         //[delegate didJustConnect];
+     }
+ }];
+
 }
 
 @end

@@ -48,8 +48,8 @@
     }
 }
 
-+(UIColor *)getTitleLabelColor: (NSNumber *)distance{
-    if ([distance intValue]<99){
++(UIColor *)getTitleLabelColor: (NSNumber *)distance senderId:(NSString*) myId ownerId:(NSString*) ownerId{
+    if ([distance intValue]<99 || [myId isEqualToString:ownerId]){
         return [UIColor colorWithRed:14.0/255.0 green:194.0/255.0 blue:5.0/255.0 alpha:.9];
     }else {
         return [UIColor colorWithRed:1 green:0.4 blue:0.106 alpha:1];

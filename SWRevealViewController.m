@@ -30,6 +30,7 @@
 #import "ZeePointViewController.h"
 #import "ZiPointUsersViewController.h"
 #import "ZiPointWSService.h"
+#import "Constants.h"
 
 
 #pragma mark - StatusBar Helper Function
@@ -609,7 +610,6 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 const int FrontViewPositionNone = 0xff;
-
 
 #pragma mark - Init
 

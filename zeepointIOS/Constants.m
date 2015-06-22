@@ -18,9 +18,11 @@ NSString *const WS = @"ws://%@/chat/websocket";
 
 NSString *const CREATE_ZPOINT_SERVICE = @"%@/mobilews/zeepointgroups/addzpoint?lat=%.8f&lon=%.8f&name=%@&fb_id=%@&country=%@&state=%@&city=%@";
 NSString *const GET_ZPOINTS_SERVICE = @"%@/mobilews/zeepointgroups/getzpoints?lat=%.8f&lon=%.8f&user_id=%@&from_row=%d";
+NSString *const GET_FAV_ZPOINTS_SERVICE = @"%@/mobilews/zeepointgroups/getfavoritezpoints?lat=%.8f&lon=%.8f&user_id=%@";
 NSString *const LOGIN_USER_SERVICE =@"%@/mobilews/users/userlogin?fb_id=%@&device_id=%@";
 
 NSString *const JOIN_ZPOINT_SERVICE =@"%@/mobilews/zeepointgroups/join?id=%@&user_id=%@&lat=%.8f&lon=%.8f";
+NSString *const EXIT_ZPOINT_SERVICE =@"%@/mobilews/zeepointgroups/exit?id=%@&user_id=%@";
 
 NSString *const SAVE_USER_INFO =@"%@/mobilews/users/saveuser?name=%@&fb_id=%@&gender=%@&email=%@";
 NSString *const FB_USER_PIC =@"http://graph.facebook.com/%@/picture?type=square";

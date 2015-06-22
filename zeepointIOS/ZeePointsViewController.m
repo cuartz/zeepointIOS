@@ -56,6 +56,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [locationManager startUpdatingLocation];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [self.tableView reloadData];
 }
 
 
@@ -129,8 +130,17 @@
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
                                                              options:0
                                                                error:NULL];
+    NSMutableSet *zips=[_zipService createZipointGroups:dict];
+    for(ZeePointGroup *currentZip in zips){
+        ZeePointGroup *updatedZip=[self.zeePoints member:currentZip];
+        if (updatedZip){
+            updatedZip.distance=currentZip.distance;
+        }else{
+            [self.zeePoints addObject:currentZip];
+        }
+    }
 
-    self.zeePoints=[_zipService createZipointGroups:dict];//[greeting objectForKey:@"zeePointsOut"];
+    //[self.zeePoints adaddObjects:[_zipService createZipointGroups:dict]];//[greeting objectForKey:@"zeePointsOut"];
  
     self.sortedZeePoints=[self.zeePoints sortedArrayUsingDescriptors:[ZeePointGroup getSortDescriptors]];
     
@@ -172,9 +182,9 @@
 
     zeePointCell.zeePointDistanceLabel.text = [ZeePointGroup getDistanceLabelText:zeePoint.distance];
     zeePointCell.zeePointDistanceLabel.textColor=[ZeePointGroup getDistanceLabelColor:zeePoint.distance];
-    zeePointCell.zeePointNameLabel.textColor=[ZeePointGroup getTitleLabelColor:zeePoint.distance];
+    zeePointCell.zeePointNameLabel.textColor=[ZeePointGroup getTitleLabelColor:zeePoint.distance senderId:_zipService.getUserId ownerId:zeePoint.ownerId];
     
-    if (zeePoint.joined) {
+    if ([zeePoint.referenceId isEqualToString:_zipService.zeePoint.referenceId]){//zeePoint.joined ) {
         zeePointCell.zeePointNameLabel.textColor= [ZeePointGroup getJoinTitleLabelColor];
     }
     
@@ -182,17 +192,18 @@
 }
 - (void)tableView:(UITableView *)atableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZeePointGroup *zeePoint =[[ZeePointGroup alloc] init];
+    //ZeePointGroup *zeePoint =[[ZeePointGroup alloc] init];
     if (self.tableView == self.searchDisplayController.searchResultsTableView) {
-        zeePoint=[self.filteredZeePoints objectAtIndex:indexPath.row];
+        _zipService.zeePoint=[self.filteredZeePoints objectAtIndex:indexPath.row];
     }else{
-        zeePoint=[self.sortedZeePoints objectAtIndex:indexPath.row];
+        _zipService.zeePoint=[self.sortedZeePoints objectAtIndex:indexPath.row];
     }
-    if ([zeePoint.distance intValue]>100){
-        [self performSegueWithIdentifier:@"showListenerRoom" sender:self];
-    }else{
-        [self performSegueWithIdentifier:@"showRoom" sender:self];
-    }
+    //if ([zeePoint.distance intValue]>100 && !([zeePoint.ownerId isEqualToString:_zipService.getUserId])){
+    //    [self performSegueWithIdentifier:@"showListenerRoom" sender:self];
+    //}else{
+    //    [self performSegueWithIdentifier:@"showRoom" sender:self];
+    //}
+    self.tabBarController.selectedIndex = 2;
 }
 
 #pragma Search Methods
@@ -248,7 +259,7 @@
     [locationManager stopUpdatingLocation];
 }
 
-
+/*
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showRoom"] || [segue.identifier isEqualToString:@"showListenerRoom"]) {
 
@@ -262,6 +273,6 @@
             _zipService.zeePoint.joined=NO;
         }
     }
-}
+}*/
 
 @end

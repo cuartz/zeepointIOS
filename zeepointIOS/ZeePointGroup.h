@@ -13,6 +13,7 @@
     @property NSNumber *zpointId;
     @property NSString *name;
     @property NSString *referenceId;
+    @property NSString *ownerId;
     @property BOOL joined;
     @property  NSNumber *users;
     @property  NSNumber *friends;
@@ -28,7 +29,7 @@
 
 +(NSString *)getDistanceLabelText: (NSNumber *)distance;
 
-+(UIColor *)getTitleLabelColor: (NSNumber *)distance;
++(UIColor *)getTitleLabelColor: (NSNumber *)distance senderId:(NSString*)senderId ownerId:(NSString*)ownerId;
 
 +(UIFont *)getTitleFontStyle:(NSNumber *)friends;
 
