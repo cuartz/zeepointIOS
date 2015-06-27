@@ -35,6 +35,6 @@ NSString *const PHOTO_MESSAGE = @"1";
 
 NSString *const TEXT_MESSAGE = @"0";
 
-NSString *const STOMP_DESTINATION = @"/app/chat";
+NSString *const STOMP_DESTINATION = @"/app/chat/%@";
 
 @end

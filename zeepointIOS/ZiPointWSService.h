@@ -17,17 +17,19 @@
 
 // define protocol functions that can be used in any class using this delegate
 
--(void)receiveWSMessage:(ZiPointMessage *)message;
+//-(void)receiveWSMessage:(ZiPointMessage *)message;
 
 -(void)connecting:(UIView *)loadingView;
 
--(void)imageLoaded:(NSData *)imageData messageKey:(NSString *)key isImageForMessage:(bool) isMessage;
+//-(void)imageLoaded:(NSData *)imageData messageKey:(NSString *)key isImageForMessage:(bool) isMessage;
 
 -(void)didJustConnect;
 
--(void)receiveMessage:(ZiPointMessage *)message putMessageAtFirst:(bool)atFirst;
+//-(void)receiveMessage:(ZiPointMessage *)message putMessageAtFirst:(bool)atFirst;
 
 -(void)finishReceivingMessageCustom:(BOOL)animated;
+
+-(void)finishReceivingMessageAnimatedNoScroll;
 
 @end
 
@@ -41,7 +43,9 @@
     NSMutableDictionary *images;
     
 }*/
-@property (nonatomic, strong) ZeePointGroup *zeePoint;
+//@property (nonatomic, strong) ZeePointGroup *zeePoint;
+@property (strong, nonatomic) NSMutableSet *locationZiPoints;
+@property (strong, nonatomic) NSMutableSet *myZiPoints;
 @property (nonatomic, strong) NSMutableSet *zeePointUsers;
 @property (nonatomic) double lat;
 @property (nonatomic) double lon;
@@ -59,9 +63,19 @@
 
 + (id)sharedManager;
 
-- (void)sendMessage:(NSString *)body;
+-(void)setZiPoint:(ZeePointGroup *)ziPoint;
 
-- (void)subscribeZip:(NSString *) newChannel;
+-(ZeePointGroup *) getZiPoint;
+
+//- (void)sendMessage:(NSString *)body;
+
+- (void)sendMessage:(NSString *)message
+          messageId:(NSNumber *)myMsgId
+        messageType:(NSString *)messageType;
+
+- (void)getPreviousMessages;
+
+//- (void)subscribeZip;
 
 -(NSData *)loadImageAsync:(NSURL *)imageURL imageKey:(NSString *)key isImageForAmessage:(bool)isMessage secondImageKey:(NSString *)secKey;
 

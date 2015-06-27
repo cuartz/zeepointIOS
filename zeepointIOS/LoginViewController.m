@@ -32,6 +32,7 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
   /*
     NSString *userId=_zipService.getUserId;
     NSString *fbUserId=_zipService.getFbUserId;

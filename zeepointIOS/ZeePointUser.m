@@ -44,9 +44,9 @@
             
             //[NSSortDescriptor sortDescriptorWithKey:@"friend" ascending:NO selector:@selector(compare:)],
             
-            //[NSSortDescriptor sortDescriptorWithKey:@"owner" ascending:YES selector:@selector(compare:)],
+            [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES selector:@selector(compare:)],
             
-            [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(compare:)],
+            [NSSortDescriptor sortDescriptorWithKey:@"userName" ascending:YES selector:@selector(compare:)],
             
             //[NSSortDescriptor sortDescriptorWithKey:@"friends" ascending:NO selector:@selector(compare:)],
             

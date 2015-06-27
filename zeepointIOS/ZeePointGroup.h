@@ -27,7 +27,7 @@
                   friendsParam:(NSNumber *)numberOfFriends
                 listenersParam:(NSNumber *)numberOfListeners;
 
-+(NSString *)getDistanceLabelText: (NSNumber *)distance;
++(NSString *)getDistanceLabelText: (NSNumber *)distance alwaysDisplayDistance:(BOOL) displayDistance;
 
 +(UIColor *)getTitleLabelColor: (NSNumber *)distance senderId:(NSString*)senderId ownerId:(NSString*)ownerId;
 

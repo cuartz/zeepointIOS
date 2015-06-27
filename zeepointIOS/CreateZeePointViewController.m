@@ -11,6 +11,7 @@
 #import "ZeePointsViewController.h"
 #import "ZeePointGroup.h"
 #import "Constants.h"
+#import "ZiPointWSService.h"
 
 @interface CreateZeePointViewController () <CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *zeePointNameTextField;
@@ -61,6 +62,11 @@ NSString *tempZpointName;
     
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [locationManager stopUpdatingLocation];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -96,7 +102,7 @@ NSString *tempZpointName;
                                               otherButtonTitles: nil];
         [alert show];
     }else{
-    [locationManager stopUpdatingLocation];
+    
     if(self.zeePointNameTextField.text.length>0){
         tempZpointName=self.zeePointNameTextField.text;
     }
@@ -112,25 +118,28 @@ NSString *tempZpointName;
      {
          if (data.length > 0 && connectionError == nil)
          {
-             NSDictionary *greeting = [NSJSONSerialization JSONObjectWithData:data
+             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
                                                                       options:0
                                                                         error:NULL];
-
-             if (![tempZpointName isEqual:[greeting objectForKey:@"name"]]){
+             NSNumber *errorCode=[dict objectForKey:@"errorCode"];
+             if ([[errorCode description] isEqualToString:@"1"]){
                  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ZiPoint already here"
-                                                                 message:[NSString stringWithFormat:@"%@ ZiPoint was created before",[greeting objectForKey:@"name"]]
+                                                                 message:[dict objectForKey:@"errorCode"]
                                                                 delegate:nil
                                                        cancelButtonTitle:@"OK"
                                                        otherButtonTitles: nil];
                  [alert show];
              }else{
-                 self.zeePointGroupItem = [[ZeePointGroup alloc] init];
-                 self.zeePointGroupItem.name=[greeting objectForKey:@"name"];
+                 //self.zeePointGroupItem = [[ZeePointGroup alloc] init];
+                 //self.zeePointGroupItem.name=[greeting objectForKey:@"name"];
+                 
+                 
+                 [[ZiPointWSService sharedManager] createZipointGroup:dict];
              }
              [self performSegueWithIdentifier:@"unwindToList" sender:nil];
          }else{
              UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Code 005"
-                                                             message:@"Problem Occurred, go to www.zipoints.com and report it so we start fixing it!"
+                                                             message:@"Problem Occurred, verify connection"
                                                             delegate:nil
                                                    cancelButtonTitle:@"OK"
                                                    otherButtonTitles: nil];

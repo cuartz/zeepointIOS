@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointsViewController.m"
-            timestampString = "456666274.485293"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "-didPressSendButton:withMessageText:senderId:senderDisplayName:date:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "355"
-            endingLineNumber = "355"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "-actionSheet:didDismissWithButtonIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "475"
-            endingLineNumber = "475"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "-collectionView:messageDataForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "487"
-            endingLineNumber = "487"
+            startingLineNumber = "348"
+            endingLineNumber = "348"
             landmarkName = "-collectionView:messageBubbleImageDataForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "518"
-            endingLineNumber = "518"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
             landmarkName = "-collectionView:avatarImageDataForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "543"
-            endingLineNumber = "543"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
             landmarkName = "-collectionView:attributedTextForCellTopLabelAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "553"
-            endingLineNumber = "553"
+            startingLineNumber = "414"
+            endingLineNumber = "414"
             landmarkName = "-collectionView:attributedTextForMessageBubbleTopLabelAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,28 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "592"
-            endingLineNumber = "592"
+            startingLineNumber = "453"
+            endingLineNumber = "453"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
-            landmarkName = "-receiveMessage:putMessageAtFirst:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -218,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456618823.294344"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "-loginButton:didCompleteWithResult:error:"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456620391.133406"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "-loginButtonDidLogOut:"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456620391.133406"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173">
+            startingLineNumber = "174"
+            endingLineNumber = "174">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -264,11 +248,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456618823.294344"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "-loginButton:didCompleteWithResult:error:"
             landmarkType = "5">
          </BreakpointContent>
@@ -280,23 +264,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456618823.294344"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "-loginButton:didCompleteWithResult:error:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456618823.294344"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "90"
@@ -312,11 +280,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456620391.133406"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "-loginButton:didCompleteWithResult:error:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/LoginViewController.m"
+            timestampString = "457089443.007584"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "-loginButtonDidLogOut:"
             landmarkType = "5">
          </BreakpointContent>
@@ -328,11 +312,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456618823.294344"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "-loginButton:didCompleteWithResult:error:"
             landmarkType = "5">
          </BreakpointContent>
@@ -344,11 +328,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456618823.294344"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "-loginButton:didCompleteWithResult:error:"
             landmarkType = "5">
          </BreakpointContent>
@@ -360,11 +344,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456618823.294344"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "-loginButton:didCompleteWithResult:error:"
             landmarkType = "5">
          </BreakpointContent>
@@ -376,11 +360,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456618823.294344"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "-didReceiveMemoryWarning"
             landmarkType = "5">
          </BreakpointContent>
@@ -392,27 +376,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/CreateZeePointViewController.m"
-            timestampString = "456018311.5501"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "-createZpoint"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/CreateZeePointViewController.m"
-            timestampString = "456018311.5501"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -424,11 +392,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointsViewController.m"
-            timestampString = "456666274.485293"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -440,7 +408,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointsViewController.m"
-            timestampString = "456666274.485293"
+            timestampString = "457089443.007584"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "-scrollViewDidEndDragging:willDecelerate:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/ZeePointsViewController.m"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
@@ -456,27 +440,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointsViewController.m"
-            timestampString = "456666274.485293"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "-scrollViewDidEndDragging:willDecelerate:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointsViewController.m"
-            timestampString = "456666274.485293"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "-locationManager:didFailWithError:"
             landmarkType = "5">
          </BreakpointContent>
@@ -488,11 +456,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointsViewController.m"
-            timestampString = "456666274.485293"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "-locationManager:didFailWithError:"
             landmarkType = "5">
          </BreakpointContent>
@@ -568,11 +536,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "-closePressed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -584,11 +552,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointsViewController.m"
-            timestampString = "456666274.485293"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "@implementation ZeePointsViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -600,11 +568,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointsViewController.m"
-            timestampString = "456666274.485293"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "@implementation ZeePointsViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -616,11 +584,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/CreateZeePointViewController.m"
-            timestampString = "456018311.5501"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "-createZpoint"
             landmarkType = "5">
          </BreakpointContent>
@@ -632,11 +600,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointsViewController.m"
-            timestampString = "456666274.485293"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "-getMoreData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -648,11 +616,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointsViewController.m"
-            timestampString = "456666274.485293"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "-populateTable:"
             landmarkType = "5">
          </BreakpointContent>
@@ -664,11 +632,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointsViewController.m"
-            timestampString = "456666274.485293"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "-getMoreData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -680,11 +648,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SWRevealViewController.m"
-            timestampString = "456666461.20074"
+            timestampString = "457138596.811832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "817"
-            endingLineNumber = "817"
+            startingLineNumber = "781"
+            endingLineNumber = "781"
             landmarkName = "-setFrontViewController:"
             landmarkType = "5">
          </BreakpointContent>
@@ -696,11 +664,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SWRevealViewController.m"
-            timestampString = "456666461.20074"
+            timestampString = "457138596.811832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "823"
-            endingLineNumber = "823"
+            startingLineNumber = "787"
+            endingLineNumber = "787"
             landmarkName = "-setFrontViewController:animated:"
             landmarkType = "5">
          </BreakpointContent>
@@ -708,15 +676,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SWRevealViewController.m"
-            timestampString = "456666461.20074"
+            timestampString = "457138596.811832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "835"
-            endingLineNumber = "835"
+            startingLineNumber = "799"
+            endingLineNumber = "799"
             landmarkName = "-pushFrontViewController:animated:"
             landmarkType = "5">
          </BreakpointContent>
@@ -728,11 +696,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SWRevealViewController.m"
-            timestampString = "456666461.20074"
+            timestampString = "457138596.811832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "847"
-            endingLineNumber = "847"
+            startingLineNumber = "811"
+            endingLineNumber = "811"
             landmarkName = "-setRearViewController:"
             landmarkType = "5">
          </BreakpointContent>
@@ -744,11 +712,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SWRevealViewController.m"
-            timestampString = "456666461.20074"
+            timestampString = "457138596.811832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "853"
-            endingLineNumber = "853"
+            startingLineNumber = "817"
+            endingLineNumber = "817"
             landmarkName = "-setRearViewController:animated:"
             landmarkType = "5">
          </BreakpointContent>
@@ -760,11 +728,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SWRevealViewController.m"
-            timestampString = "456666461.20074"
+            timestampString = "457138596.811832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "865"
-            endingLineNumber = "865"
+            startingLineNumber = "829"
+            endingLineNumber = "829"
             landmarkName = "-setRightViewController:"
             landmarkType = "5">
          </BreakpointContent>
@@ -776,11 +744,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SWRevealViewController.m"
-            timestampString = "456666461.20074"
+            timestampString = "457138596.811832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "871"
-            endingLineNumber = "871"
+            startingLineNumber = "835"
+            endingLineNumber = "835"
             landmarkName = "-setRightViewController:animated:"
             landmarkType = "5">
          </BreakpointContent>
@@ -792,11 +760,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SWRevealViewController.m"
-            timestampString = "456666461.20074"
+            timestampString = "457138596.811832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "883"
-            endingLineNumber = "883"
+            startingLineNumber = "847"
+            endingLineNumber = "847"
             landmarkName = "-revealToggleAnimated:"
             landmarkType = "5">
          </BreakpointContent>
@@ -808,11 +776,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SWRevealViewController.m"
-            timestampString = "456666461.20074"
+            timestampString = "457138596.811832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "893"
-            endingLineNumber = "893"
+            startingLineNumber = "857"
+            endingLineNumber = "857"
             landmarkName = "-rightRevealToggleAnimated:"
             landmarkType = "5">
          </BreakpointContent>
@@ -820,15 +788,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SWRevealViewController.m"
-            timestampString = "456666461.20074"
+            timestampString = "457138596.811832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "778"
-            endingLineNumber = "778"
+            startingLineNumber = "747"
+            endingLineNumber = "747"
             landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -840,11 +808,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SWRevealViewController.m"
-            timestampString = "456666461.20074"
+            timestampString = "457088924.231579"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "741"
-            endingLineNumber = "741"
+            startingLineNumber = "736"
+            endingLineNumber = "736"
             landmarkName = "-loadView"
             landmarkType = "5">
          </BreakpointContent>
@@ -856,11 +824,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456018311.5501"
+            timestampString = "456891092.902973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -871,28 +839,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SWRevealViewController.m"
-            timestampString = "456666461.20074"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "760"
-            endingLineNumber = "760"
-            landmarkName = "-loadView"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "zeepointIOS/CreateZeePointViewController.m"
-            timestampString = "456018311.5501"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -904,11 +856,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/CreateZeePointViewController.m"
-            timestampString = "456018311.5501"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-createZpoint"
             landmarkType = "5">
          </BreakpointContent>
@@ -927,54 +879,6 @@
             endingLineNumber = "144"
             landmarkName = "-isEqual:"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "-sendMessage:messageId:messageType:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ZeePointViewController sendMessage:]"
-                  moduleName = "zeepointIOS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/cuartz/Desktop/zeepointIOS/zeepointIOS/ZeePointViewController.m"
-                  timestampString = "454742644.813702"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "161"
-                  endingLineNumber = "161"
-                  offsetFromSymbolStart = "25">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__38-[ZeePointViewController sendMessage:]_block_invoke"
-                  moduleName = "zeepointIOS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/cuartz/Desktop/zeepointIOS/zeepointIOS/ZeePointViewController.m"
-                  timestampString = "454742644.81381"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "162"
-                  endingLineNumber = "162"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1006,22 +910,6 @@
             startingLineNumber = "362"
             endingLineNumber = "362"
             landmarkName = "-scrollToBottomAnimated:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
-            landmarkName = "-receiveMessage:putMessageAtFirst:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1112,28 +1000,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456620284.316472"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "-loginButton:didCompleteWithResult:error:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "-receiveMessage:putMessageAtFirst:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1160,59 +1032,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
-            landmarkName = "-receiveMessage:putMessageAtFirst:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
-            landmarkName = "-receiveMessage:putMessageAtFirst:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
-            landmarkName = "-receiveMessage:putMessageAtFirst:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "701"
-            endingLineNumber = "701"
+            startingLineNumber = "564"
+            endingLineNumber = "564"
             landmarkName = "-collectionView:header:didTapLoadEarlierMessagesButton:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1224,11 +1048,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "690"
-            endingLineNumber = "690"
+            startingLineNumber = "553"
+            endingLineNumber = "553"
             landmarkName = "-collectionView:header:didTapLoadEarlierMessagesButton:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1240,11 +1064,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "698"
-            endingLineNumber = "698"
+            startingLineNumber = "561"
+            endingLineNumber = "561"
             landmarkName = "-collectionView:header:didTapLoadEarlierMessagesButton:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1256,11 +1080,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "715"
-            endingLineNumber = "715"
+            startingLineNumber = "578"
+            endingLineNumber = "578"
             landmarkName = "-collectionView:header:didTapLoadEarlierMessagesButton:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1272,11 +1096,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "712"
-            endingLineNumber = "712"
+            startingLineNumber = "575"
+            endingLineNumber = "575"
             landmarkName = "-collectionView:header:didTapLoadEarlierMessagesButton:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1382,27 +1206,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
-            landmarkName = "-receiveMessage:putMessageAtFirst:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "625"
-            endingLineNumber = "625"
+            startingLineNumber = "486"
+            endingLineNumber = "486"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1414,11 +1222,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "613"
-            endingLineNumber = "613"
+            startingLineNumber = "474"
+            endingLineNumber = "474"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1430,11 +1238,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "611"
-            endingLineNumber = "611"
+            startingLineNumber = "472"
+            endingLineNumber = "472"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1446,11 +1254,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointsViewController.m"
-            timestampString = "456666274.485293"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
             landmarkName = "@implementation ZeePointsViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1461,44 +1269,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "-receiveMessage:putMessageAtFirst:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SWRevealViewController.m"
-            timestampString = "456666461.20074"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "756"
-            endingLineNumber = "756"
-            landmarkName = "-loadView"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointUsersViewController.m"
-            timestampString = "456021497.678567"
+            timestampString = "457088040.263695"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -1510,11 +1286,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointUsersViewController.m"
-            timestampString = "456021497.678567"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1526,11 +1302,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointUsersViewController.m"
-            timestampString = "456021497.678567"
+            timestampString = "457088040.263695"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "-viewDidDisappear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1542,11 +1318,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointUsersViewController.m"
-            timestampString = "456021497.678567"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1558,11 +1334,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointUsersViewController.m"
-            timestampString = "456021497.678567"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1574,11 +1350,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointUsersViewController.m"
-            timestampString = "456021497.678567"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1590,11 +1366,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointUsersViewController.m"
-            timestampString = "456021497.678567"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1606,11 +1382,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456018311.5501"
+            timestampString = "456891092.902973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -1622,11 +1398,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "362"
-            endingLineNumber = "362"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "-actionSheet:didDismissWithButtonIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1638,11 +1414,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "-actionSheet:didDismissWithButtonIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1686,11 +1462,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "-actionSheet:didDismissWithButtonIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1990,11 +1766,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "314"
-            endingLineNumber = "314"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "-didPressSendButton:withMessageText:senderId:senderDisplayName:date:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2006,93 +1782,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456620391.133406"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "@implementation LoginViewController"
             landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "-sendMessage:messageId:messageType:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "-receiveMessage:putMessageAtFirst:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
-            landmarkName = "-receiveMessage:putMessageAtFirst:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
-            landmarkName = "-receiveMessage:putMessageAtFirst:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
-            landmarkName = "-receiveMessage:putMessageAtFirst:"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2134,11 +1830,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "391"
-            endingLineNumber = "391"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "-addPhotoMediaMessage"
             landmarkType = "5">
          </BreakpointContent>
@@ -2150,11 +1846,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "402"
-            endingLineNumber = "402"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2166,11 +1862,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "455"
-            endingLineNumber = "455"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
             landmarkName = "-uploaderSuccess:context:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2182,44 +1878,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "446"
-            endingLineNumber = "446"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
             landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
-            landmarkName = "-receiveMessage:putMessageAtFirst:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
-            landmarkName = "-receiveMessage:putMessageAtFirst:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2390,11 +2054,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456619990.122243"
+            timestampString = "456896360.257462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "lon"
             landmarkType = "19">
             <Locations>
@@ -2470,11 +2134,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456619990.122243"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "-init"
             landmarkType = "5">
          </BreakpointContent>
@@ -2486,11 +2150,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456619990.122243"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "-init"
             landmarkType = "5">
          </BreakpointContent>
@@ -2598,11 +2262,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "-connect"
             landmarkType = "5">
          </BreakpointContent>
@@ -2614,11 +2278,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "-connect"
             landmarkType = "5">
          </BreakpointContent>
@@ -2646,11 +2310,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "-sendMessage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2662,11 +2326,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "325"
-            endingLineNumber = "325"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "-didPressSendButton:withMessageText:senderId:senderDisplayName:date:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2678,11 +2342,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456018311.5501"
+            timestampString = "456891092.902973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -2694,11 +2358,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "415"
+            endingLineNumber = "415"
             landmarkName = "-setUserId:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2710,11 +2374,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "755"
-            endingLineNumber = "755"
+            startingLineNumber = "623"
+            endingLineNumber = "623"
             landmarkName = "-connecting:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2726,11 +2390,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "743"
-            endingLineNumber = "743"
+            startingLineNumber = "606"
+            endingLineNumber = "606"
             landmarkName = "-didJustConnect"
             landmarkType = "5">
          </BreakpointContent>
@@ -2758,11 +2422,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456018311.5501"
+            timestampString = "456891092.902973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -2774,11 +2438,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "716"
-            endingLineNumber = "716"
+            startingLineNumber = "579"
+            endingLineNumber = "579"
             landmarkName = "-collectionView:header:didTapLoadEarlierMessagesButton:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2790,28 +2454,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "691"
-            endingLineNumber = "691"
+            startingLineNumber = "554"
+            endingLineNumber = "554"
             landmarkName = "-collectionView:header:didTapLoadEarlierMessagesButton:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "-receiveWSMessage:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2822,11 +2470,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
+            startingLineNumber = "538"
+            endingLineNumber = "538"
             landmarkName = "-createZipointUsers:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2838,11 +2486,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointUsersViewController.m"
-            timestampString = "456021921.413506"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2854,11 +2502,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointUsersViewController.m"
-            timestampString = "456024132.729397"
+            timestampString = "457088040.263695"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -2933,60 +2581,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "-receiveMessage:putMessageAtFirst:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
-            landmarkName = "-imageMessageReceived:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "273"
-            endingLineNumber = "273"
-            landmarkName = "-imageLoaded:messageKey:isImageForMessage:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "596"
+            endingLineNumber = "596"
             landmarkName = "-loadImageAsync:imageKey:isImageForAmessage:secondImageKey:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2998,11 +2598,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
+            startingLineNumber = "584"
+            endingLineNumber = "584"
             landmarkName = "-loadImageAsync:imageKey:isImageForAmessage:secondImageKey:"
             landmarkType = "5">
             <Locations>
@@ -3061,11 +2661,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "592"
+            endingLineNumber = "592"
             landmarkName = "-loadImageAsync:imageKey:isImageForAmessage:secondImageKey:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3077,11 +2677,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "330"
-            endingLineNumber = "330"
+            startingLineNumber = "585"
+            endingLineNumber = "585"
             landmarkName = "-loadImageAsync:imageKey:isImageForAmessage:secondImageKey:"
             landmarkType = "5">
             <Locations>
@@ -3125,11 +2725,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
+            startingLineNumber = "586"
+            endingLineNumber = "586"
             landmarkName = "-loadImageAsync:imageKey:isImageForAmessage:secondImageKey:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3141,11 +2741,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
+            startingLineNumber = "587"
+            endingLineNumber = "587"
             landmarkName = "-loadImageAsync:imageKey:isImageForAmessage:secondImageKey:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3153,15 +2753,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667722.716182"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3173,11 +2773,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667722.716182"
+            timestampString = "456902242.57288"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3189,11 +2789,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667722.716182"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3204,28 +2804,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
-            landmarkName = "-imageMessageReceived:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
+            startingLineNumber = "588"
+            endingLineNumber = "588"
             landmarkName = "-loadImageAsync:imageKey:isImageForAmessage:secondImageKey:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3237,11 +2821,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "-reConnect"
             landmarkType = "5">
          </BreakpointContent>
@@ -3285,7 +2869,7 @@
                   moduleName = "zeepointIOS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/cuartz/Desktop/zeepointIOS/Pods/SocketRocket/SocketRocket/SRWebSocket.m"
-                  timestampString = "456667492.9169"
+                  timestampString = "457140277.37773"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "577"
@@ -3300,7 +2884,7 @@
                   moduleName = "zeepointIOS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/cuartz/Desktop/zeepointIOS/Pods/SocketRocket/SocketRocket/SRWebSocket.m"
-                  timestampString = "456667492.917006"
+                  timestampString = "457140277.377816"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "577"
@@ -3413,7 +2997,7 @@
                   moduleName = "zeepointIOS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/cuartz/Desktop/zeepointIOS/Pods/SocketRocket/SocketRocket/SRWebSocket.m"
-                  timestampString = "456667492.917912"
+                  timestampString = "457140277.378889"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "757"
@@ -3428,7 +3012,7 @@
                   moduleName = "zeepointIOS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/cuartz/Desktop/zeepointIOS/Pods/SocketRocket/SocketRocket/SRWebSocket.m"
-                  timestampString = "456667492.918013"
+                  timestampString = "457140277.378982"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "757"
@@ -3492,22 +3076,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "-subscribeZip:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "zeepointIOS/AppDelegate.m"
             timestampString = "456618823.294344"
             startingColumnNumber = "9223372036854775807"
@@ -3541,11 +3109,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456618800.065507"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "-loginButton:didCompleteWithResult:error:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3557,11 +3125,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456620391.133406"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "-loginButton:didCompleteWithResult:error:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3573,11 +3141,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456620284.316472"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "-loginButton:didCompleteWithResult:error:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3589,11 +3157,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456620284.316472"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "-loginButton:didCompleteWithResult:error:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3605,11 +3173,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456620030.390666"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3637,11 +3205,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointsViewController.m"
-            timestampString = "456666274.485293"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3653,11 +3221,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/LoginViewController.m"
-            timestampString = "456620749.693493"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "-loginButton:didCompleteWithResult:error:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3669,11 +3237,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "369"
-            endingLineNumber = "369"
+            startingLineNumber = "624"
+            endingLineNumber = "624"
             landmarkName = "-saveUserInfo::"
             landmarkType = "5">
          </BreakpointContent>
@@ -3685,11 +3253,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
+            startingLineNumber = "611"
+            endingLineNumber = "611"
             landmarkName = "-saveUserInfo::"
             landmarkType = "5">
          </BreakpointContent>
@@ -3697,7 +3265,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/AppDelegate.m"
@@ -3717,11 +3285,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointsViewController.m"
-            timestampString = "456666274.485293"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "-getMoreData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3729,32 +3297,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointsViewController.m"
-            timestampString = "456666274.485293"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "-scrollViewDidEndDragging:willDecelerate:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "-subscribeZip:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3841,15 +3393,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "414"
+            endingLineNumber = "414"
             landmarkName = "-setUserId:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3861,27 +3413,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "746"
-            endingLineNumber = "746"
-            landmarkName = "-didJustConnect"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "771"
-            endingLineNumber = "771"
+            startingLineNumber = "639"
+            endingLineNumber = "639"
             landmarkName = "-ableToParticipate"
             landmarkType = "5">
          </BreakpointContent>
@@ -3893,11 +3429,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "761"
-            endingLineNumber = "761"
+            startingLineNumber = "629"
+            endingLineNumber = "629"
             landmarkName = "-notAbleToParticipate"
             landmarkType = "5">
          </BreakpointContent>
@@ -3909,11 +3445,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "776"
-            endingLineNumber = "776"
+            startingLineNumber = "644"
+            endingLineNumber = "644"
             landmarkName = "-ableToParticipate"
             landmarkType = "5">
          </BreakpointContent>
@@ -3925,11 +3461,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZiPointWSService.m"
-            timestampString = "456660140.565018"
+            timestampString = "457068941.224274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "391"
-            endingLineNumber = "391"
+            startingLineNumber = "647"
+            endingLineNumber = "647"
             landmarkName = "-joinZiPoint"
             landmarkType = "5">
          </BreakpointContent>
@@ -3941,11 +3477,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointsViewController.m"
-            timestampString = "456666274.485293"
+            timestampString = "457089443.007584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3957,11 +3493,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667029.762273"
+            timestampString = "456902242.57288"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3973,11 +3509,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456661141.369318"
+            timestampString = "456891092.902973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -3989,11 +3525,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "780"
-            endingLineNumber = "780"
+            startingLineNumber = "648"
+            endingLineNumber = "648"
             landmarkName = "-exitRoom:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4001,15 +3537,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/ZeePointViewController.m"
-            timestampString = "456667603.422547"
+            timestampString = "457088675.317118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "788"
-            endingLineNumber = "788"
+            startingLineNumber = "656"
+            endingLineNumber = "656"
             landmarkName = "-exitRoom:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4021,11 +3557,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/FavZiPointsViewController.m"
-            timestampString = "456667492.549266"
+            timestampString = "457069691.950385"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4037,12 +3573,348 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zeepointIOS/FavZiPointsViewController.m"
-            timestampString = "456667492.549266"
+            timestampString = "457069691.950385"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "-populateTable:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/FavZiPointsViewController.m"
+            timestampString = "457069691.950385"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/FavZiPointsViewController.m"
+            timestampString = "457069691.950385"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "-populateTable:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/FavZiPointsViewController.m"
+            timestampString = "456891590.00309"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "-populateTable:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/FavZiPointsViewController.m"
+            timestampString = "456899401.267042"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "-getData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/FavZiPointsViewController.m"
+            timestampString = "456899412.20944"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "-getData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/ZiPointWSService.m"
+            timestampString = "457068941.224274"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
+            landmarkName = "-receiveWSMessage:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/ZiPointUsersViewController.m"
+            timestampString = "457089443.007584"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/ZiPointUsersViewController.m"
+            timestampString = "457089443.007584"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/CreateZeePointViewController.m"
+            timestampString = "457089443.007584"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "-createZpoint"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/ZiPointWSService.m"
+            timestampString = "457068823.276673"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "479"
+            endingLineNumber = "479"
+            landmarkName = "-createZipointGroup:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/ZeePointsViewController.m"
+            timestampString = "457089443.007584"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "-locationManager:didUpdateLocations:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/ZeePointsViewController.m"
+            timestampString = "457089443.007584"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "-getMoreData:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/ZeePointsViewController.m"
+            timestampString = "457089443.007584"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
+            landmarkName = "-startUpdatingCurrentLocation"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/ZeePointsViewController.m"
+            timestampString = "457089443.007584"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
+            landmarkName = "-startUpdatingCurrentLocation"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/ZiPointUsersViewController.m"
+            timestampString = "457088040.263695"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "-viewDidDisappear:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/ZiPointUsersViewController.m"
+            timestampString = "457139950.50508"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
+            landmarkName = "-prepareForSegue:sender:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/ZeePointViewController.m"
+            timestampString = "457088287.544059"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SWRevealViewController.m"
+            timestampString = "457138528.971418"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "703"
+            endingLineNumber = "703"
+            landmarkName = "-loadView"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SWRevealViewController.m"
+            timestampString = "457138584.409268"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "741"
+            endingLineNumber = "741"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/ZiPointUserViewController.m"
+            timestampString = "457138724.305885"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "-viewDidDisappear:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "zeepointIOS/ZiPointUsersViewController.m"
+            timestampString = "457140277.301348"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

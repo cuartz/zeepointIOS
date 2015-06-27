@@ -13,5 +13,5 @@
 @interface CreateZeePointViewController : UIViewController <CLLocationManagerDelegate> {
     CLLocationManager *locationManager;
 }
-@property ZeePointGroup *zeePointGroupItem;
+//@property ZeePointGroup *zeePointGroupItem;
 @end

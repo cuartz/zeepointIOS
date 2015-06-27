@@ -7,6 +7,7 @@
 //
 
 #import "ZiPointUsersViewController.h"
+#import "ZiPointUserViewController.h"
 #import "ZeePointUser.h"
 #import "ZeePointGroup.h"
 #import "ZiPointUserTableCell.h"
@@ -35,12 +36,15 @@
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    NSLog(@"disapear");
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    NSLog(@"entro a will apear");
+    [super viewWillAppear:animated];
+    //NSLog(@"entro a will apear");
     
-    NSString *zpointFinalURL=[NSString stringWithFormat:GET_USERS_SERVICE,WS_ENVIROMENT,_zipService.zeePoint.zpointId];
+    NSString *zpointFinalURL=[NSString stringWithFormat:GET_USERS_SERVICE,WS_ENVIROMENT,_zipService.getZiPoint.zpointId];
     NSURL *url = [NSURL URLWithString:zpointFinalURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request
@@ -55,12 +59,12 @@
              
              
          }else{
-             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Code 014"
+             /*UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Code 014"
                                                              message:@"Problem Occurred, go to www.zipoints.com and report it so we start fixing it!"
                                                             delegate:nil
                                                    cancelButtonTitle:@"OK"
                                                    otherButtonTitles: nil];
-             [alert show];
+             [alert show];*/
          }
      }];
     
@@ -129,22 +133,37 @@
     }
     
     ziPointUserCell.userNameLabel.text = zeePointUser.userName;
-    
+    //ziPointUserCell.userImageView.layer.cornerRadius=23;
+    //ziPointUserCell.userImageView.layer.borderWidth=2.0;
+    //ziPointUserCell.userImageView.layer.masksToBounds = YES;
+    ziPointUserCell.userImageView.image=[UIImage imageWithData:[_zipService.images objectForKey:[zeePointUser.userId description]]];//zeePointUser.userImage.avatarImage;//[_zipService.images objectForKey:zeePointUser.u];
+    ziPointUserCell.titleLabel.text=zeePointUser.title;
+
     return ziPointUserCell;
 }
 - (void)tableView:(UITableView *)atableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
+    ZiPointUserViewController *stubController = [[ZiPointUserViewController alloc] init];
+    stubController.view.backgroundColor = [UIColor whiteColor];
+    [self.revealViewController.navigationController pushViewController:stubController animated:YES];
+    
+    
+
+    
+    /*
     ZeePointUser *zeePointUser =[[ZeePointUser alloc] init];
     if (self.tableView == self.searchDisplayController.searchResultsTableView) {
         zeePointUser=[self.filteredZiPointUsers objectAtIndex:indexPath.row];
     }else{
         zeePointUser=[self.sortedZiPointUsers objectAtIndex:indexPath.row];
-    }
-    if (zeePointUser.history){
+    }*/
+    /*if (zeePointUser.history){
         [self performSegueWithIdentifier:@"showListenerPrivateRoom" sender:self];
     }else{
         [self performSegueWithIdentifier:@"showPrivateRoom" sender:self];
-    }
+    }*/
 }
 
 #pragma Search Methods
@@ -167,18 +186,50 @@
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    ZeePointUser *zeePointUser =[[ZeePointUser alloc] init];
+    if (self.tableView == self.searchDisplayController.searchResultsTableView) {
+        zeePointUser=[self.filteredZiPointUsers objectAtIndex:indexPath.row];
+    }else{
+        zeePointUser=[self.sortedZiPointUsers objectAtIndex:indexPath.row];
+    }
+    UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
+    
+    //ZiPointUserViewController *mapViewController = [[ZiPointUserViewController alloc] init];
+   // UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mapViewController];
+    
+    //[self.revealViewController pushFrontViewController:navigationController animated:YES];
+    
+    
+    destViewController.title = zeePointUser.userName;// capitalizedString];
+    //[destViewController setNavigationBarHidden: NO animated:NO];
+    
+    
+    
+    //self.revealViewController;
+    // Set the photo if it navigates to the PhotoView
+  /*  if ([segue.identifier isEqualToString:@"showPhoto"]) {
+        UINavigationController *navController = segue.destinationViewController;
+        PhotoViewController *photoController = [navController childViewControllers].firstObject;
+        NSString *photoFilename = [NSString stringWithFormat:@"%@_photo", [menuItems objectAtIndex:indexPath.row]];
+        photoController.photoFilename = photoFilename;
+    }*/
+}
+
+    
+    /*
     if ([segue.identifier isEqualToString:@"showPrivateRoom"] || [segue.identifier isEqualToString:@"showListenerPrivateRoom"]) {
         //SWRevealViewController *controller=segue.destinationViewController;
         if (self.searchDisplayController.active) {
-            _zipService.zeePoint=[self.filteredZiPointUsers objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+            [_zipService setZiPoint:[self.filteredZiPointUsers objectAtIndex:[self.tableView indexPathForSelectedRow].row]];
         }else{
-            _zipService.zeePoint=[self.sortedZiPointUsers objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+            [_zipService setZiPoint:[self.sortedZiPointUsers objectAtIndex:[self.tableView indexPathForSelectedRow].row]];
         }
         
         if (_zipService.zeePoint!=nil){
             _zipService.zeePoint.joined=NO;
         }
     }
-}
+}*/
 
 @end

@@ -18,7 +18,7 @@
 
 @interface ZeePointsViewController ()
 
-@property (strong, nonatomic) NSMutableSet *zeePoints;
+
 @property (strong, nonatomic) NSArray *sortedZeePoints;
 @property (strong, nonatomic) NSArray *filteredZeePoints;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
@@ -41,7 +41,7 @@
         }
     }
     
-    self.zeePoints=[[NSMutableSet alloc] init];
+    //self.zeePoints=[[NSMutableSet alloc] init];
     
     self.filteredZeePoints=[[NSArray alloc] init];
     
@@ -50,13 +50,15 @@
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
     [locationManager stopUpdatingLocation];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [locationManager startUpdatingLocation];
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
-    [self.tableView reloadData];
+    //[self.navigationController setNavigationBarHidden:NO animated:animated];
+    //[self.tableView reloadData];
 }
 
 
@@ -67,9 +69,9 @@
         _zipService.lat=currentLocation.coordinate.latitude;
         _zipService.lon=currentLocation.coordinate.longitude;
     }
-    [self.zeePoints removeAllObjects];
+    //[self.zeePoints removeAllObjects];
     [self getMoreData:0];
-    [locationManager stopUpdatingLocation];
+    //[locationManager stopUpdatingLocation];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)aScrollView
@@ -84,7 +86,8 @@
     
     float reload_distance = 50;
     if(y > h - reload_distance) {
-        [self getMoreData:[self.zeePoints count]+1];
+        [locationManager startUpdatingLocation];
+        [self getMoreData:[_zipService.locationZiPoints count]+1];
     }
 }
 
@@ -132,17 +135,19 @@
                                                                error:NULL];
     NSMutableSet *zips=[_zipService createZipointGroups:dict];
     for(ZeePointGroup *currentZip in zips){
-        ZeePointGroup *updatedZip=[self.zeePoints member:currentZip];
-        if (updatedZip){
-            updatedZip.distance=currentZip.distance;
-        }else{
-            [self.zeePoints addObject:currentZip];
+       // ZeePointGroup *updatedZip=[_zipService.locationZiPoints member:currentZip];
+        if ([_zipService.locationZiPoints member:currentZip]){
+         //   updatedZip.distance=currentZip.distance;
+            [_zipService.locationZiPoints removeObject:currentZip];
         }
+            //else{
+            [_zipService.locationZiPoints addObject:currentZip];
+        //}
     }
 
     //[self.zeePoints adaddObjects:[_zipService createZipointGroups:dict]];//[greeting objectForKey:@"zeePointsOut"];
  
-    self.sortedZeePoints=[self.zeePoints sortedArrayUsingDescriptors:[ZeePointGroup getSortDescriptors]];
+    self.sortedZeePoints=[_zipService.locationZiPoints sortedArrayUsingDescriptors:[ZeePointGroup getSortDescriptors]];
     
     [self.tableView reloadData];
 }
@@ -180,11 +185,11 @@
     zeePointCell.zeePointUsersLabel.text =
     [ZeePointGroup getUsersLabelText:zeePoint.users friendsParam:zeePoint.friends listenersParam:zeePoint.listeners];
 
-    zeePointCell.zeePointDistanceLabel.text = [ZeePointGroup getDistanceLabelText:zeePoint.distance];
+    zeePointCell.zeePointDistanceLabel.text = [ZeePointGroup getDistanceLabelText:zeePoint.distance alwaysDisplayDistance:false];
     zeePointCell.zeePointDistanceLabel.textColor=[ZeePointGroup getDistanceLabelColor:zeePoint.distance];
     zeePointCell.zeePointNameLabel.textColor=[ZeePointGroup getTitleLabelColor:zeePoint.distance senderId:_zipService.getUserId ownerId:zeePoint.ownerId];
     
-    if ([zeePoint.referenceId isEqualToString:_zipService.zeePoint.referenceId]){//zeePoint.joined ) {
+    if ([zeePoint.referenceId isEqualToString:_zipService.getZiPoint.referenceId]){//zeePoint.joined ) {
         zeePointCell.zeePointNameLabel.textColor= [ZeePointGroup getJoinTitleLabelColor];
     }
     
@@ -194,9 +199,9 @@
 {
     //ZeePointGroup *zeePoint =[[ZeePointGroup alloc] init];
     if (self.tableView == self.searchDisplayController.searchResultsTableView) {
-        _zipService.zeePoint=[self.filteredZeePoints objectAtIndex:indexPath.row];
+        [_zipService setZiPoint:[self.filteredZeePoints objectAtIndex:indexPath.row]];
     }else{
-        _zipService.zeePoint=[self.sortedZeePoints objectAtIndex:indexPath.row];
+        [_zipService setZiPoint:[self.sortedZeePoints objectAtIndex:indexPath.row]];
     }
     //if ([zeePoint.distance intValue]>100 && !([zeePoint.ownerId isEqualToString:_zipService.getUserId])){
     //    [self performSegueWithIdentifier:@"showListenerRoom" sender:self];

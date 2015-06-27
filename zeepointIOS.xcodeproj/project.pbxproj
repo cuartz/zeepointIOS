@@ -287,7 +287,6 @@
 		0B601E941B2BC55C001E87EA /* ZiPointWSService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B601E931B2BC55C001E87EA /* ZiPointWSService.m */; };
 		0B601E991B2BE9BD001E87EA /* messages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B601E9B1B2BE9BD001E87EA /* messages.plist */; };
 		0B601EAA1B2BFDE4001E87EA /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B601EA91B2BFDE4001E87EA /* LoadingView.m */; };
-		0B601EAC1B2CE8C0001E87EA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B601EAB1B2CE8C0001E87EA /* Info.plist */; };
 		0B601EAF1B2CF093001E87EA /* ZipLocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B601EAE1B2CF093001E87EA /* ZipLocationService.m */; };
 		0B601EB31B2D9ECE001E87EA /* ZiPointMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B601EB21B2D9ECE001E87EA /* ZiPointMessage.m */; };
 		0B601EB91B2EDF60001E87EA /* FXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B601EB61B2EDF60001E87EA /* FXImageView.m */; };
@@ -1292,7 +1291,7 @@
 		0BC9875F1AD0A13E000BE278 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = zeepoint;
 				TargetAttributes = {
 					0BC987661AD0A13E000BE278 = {
@@ -1379,7 +1378,6 @@
 				0B0D38061B20E4740019697C /* design_filled-50.png in Resources */,
 				0B0D38161B20E4740019697C /* flag_filled-50.png in Resources */,
 				0B0D37491B20E1C20019697C /* Icon-40@2x-1.png in Resources */,
-				0B601EAC1B2CE8C0001E87EA /* Info.plist in Resources */,
 				0B0D38EE1B20E4AC0019697C /* download_from_cloud-32.png in Resources */,
 				0B0D38241B20E4740019697C /* home_filled-50.png in Resources */,
 				0B0D376C1B20E3100019697C /* location_filled-25.png in Resources */,

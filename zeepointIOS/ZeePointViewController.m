@@ -19,9 +19,7 @@
 
 @interface ZeePointViewController () <CLUploaderDelegate, ZiPointWSServiceDelegate>
 
-
-@property int oldestMessage;
-@property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
+//@property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sideBarButton;
 @property CLCloudinary *cloudinary;
 @property ZiPointWSService *zipService;
@@ -45,7 +43,7 @@
      *  You MUST set your senderId and display name
      */
     self.senderId = [zipService getUserId];
-    self.senderDisplayName = [zipService getUserId];
+    self.senderDisplayName = [zipService getUserName];
     
     
     /**
@@ -78,7 +76,7 @@
 
     //self.zeePointUsers=[[NSMutableSet alloc] init];
     
-
+    //zipService.messages = [NSMutableArray new];
     
 }
 
@@ -86,15 +84,16 @@
 {
     
     [super viewWillAppear:animated];
-    [self notAbleToParticipate];
-    zipService.messages = [NSMutableArray new];
-    [self finishReceivingMessage];
+    
+    //[self notAbleToParticipate];
+    
+    
     self.navigationItem.title=nil;
     
-    if (zipService.zeePoint){
+    if (zipService.getZiPoint){
     
     
-    self.navigationItem.title=zipService.zeePoint.name;
+    self.navigationItem.title=zipService.getZiPoint.name;
     
     /*if (self.delegateModal) {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
@@ -105,13 +104,27 @@
     
 
     //finishReceivingMessageAnimatedNoScroll
-    [zipService joinZiPoint];
+    //[zipService joinZiPoint];
     }
+    
+    //[self.navigationController setNavigationBarHidden: YES animated:NO];
+    //ZeePointViewController *zeePointViewController = _frontViewController.childViewControllers[0];//stack[0];
+    //if ( zeePointViewController )
+    //{
+        /*        ZiPointWSService *zipService = [ZiPointWSService sharedManager];
+         zipService.zeePoint=self.zeePointJoined;
+         zipService.lat=self.lat;
+         zipService.lon=self.lon;*/
+        
+        [self.revealViewController.navigationController setNavigationBarHidden: YES animated:NO];
+        //zeePointViewController.navigationController=[self.navigationController  ;
+    //}
 
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    
     [super viewDidAppear:animated];
     //self.title = zipService.zeePoint.name;
     /**
@@ -120,15 +133,16 @@
      *  Note: this feature is mostly stable, but still experimental
      */
     self.collectionView.collectionViewLayout.springinessEnabled = [NSUserDefaults springinessSetting];
-    if (!zipService.zeePoint){
+    if (!zipService.getZiPoint){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No ZiPoint selected","No ZiPoint selected")
-                                                        message:@"Join a ZiPoint by clicking on it from the search button"
+                                                        message:@"Join a ZiPoint by clicking on it from the search tab"
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles: nil];
         [alert show];
         self.tabBarController.selectedIndex = 0;
     }
+    //[self finishReceivingMessage];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -136,164 +150,11 @@
 }
 
 
-
-- (void)sendMessage:(NSString *)message
-          messageId:(NSNumber *)myMsgId
-          messageType:(NSString *)messageType{
-    // build a static NSDateFormatter to display the current date in ISO-8601
-    /*static NSDateFormatter *dateFormatter = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = @"yyyy-MM-d'T'HH:mm:ssZZZZZ";
-    });*/
-    
-    // send the message to the truck's topic
-    // build a dictionary containing all the information to send
-
-    NSDictionary *dict = @{
-                           @"message": message,
-                           @"id": myMsgId,
-                           @"channel":zipService.zeePoint.referenceId,
-                           @"userId":zipService.getUserId,
-                           @"fbId":zipService.getFbUserId,
-                           @"userName":zipService.getUserName,
-                           @"messageType":messageType
-                           };
-    // create a JSON string from this dictionary
-    NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
-    NSString *body =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    [zipService sendMessage:body];
-
-}
-
-- (void)receiveWSMessage:(ZiPointMessage *)message
-{
-    [self receiveMessage:message putMessageAtFirst:false];
-    [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
-    [self finishReceivingMessageAnimated:YES];
-}
-
 - (void)finishReceivingMessageCustom:(BOOL)animated{
     [self finishReceivingMessageAnimated:animated];
     [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
 }
 
-- (void)receiveMessage:(ZiPointMessage *)message putMessageAtFirst:(bool)atFirst{
-    
-    if ([zipService.getUserId isEqualToString:message.userId]  && (message.messageId==nil || message.messageId==(id)[NSNull null])){
-       // YOUR MESSAGE HAS BEEN RECEIVED
- 
-        if ([zipService.messages count] > [(message.tempId) intValue] &&
-           [[[zipService.messages objectAtIndex:[((NSNumber *)message.tempId) intValue]] text] isEqualToString:message.message] &&
-            [[zipService.messages objectAtIndex:[((NSNumber *)message.tempId) intValue]] received]==false){
-            [[zipService.messages objectAtIndex:[((NSNumber *)message.tempId) intValue]] setReceived:true];
-            
-        }else{
-            for (JSQMessage *msg in zipService.messages){
-                if ([msg isMediaMessage] && ![msg received]){
-
-                } else if ([[msg text] isEqualToString:message.message] && ![msg received]){
-                    [msg setReceived:true];
-                    break;
-                }
-            }
-        }
-        
-    }else{
-        //other user message or own message that was just sent
-        if (message.messageId!=nil && message.messageId!=(id)[NSNull null] && (self.oldestMessage==0 || self.oldestMessage>[message.messageId intValue])){
-            self.oldestMessage=[message.messageId intValue];
-        }
-        if ([zipService.images objectForKey:[message.userId description]]==nil){
-            NSString *picFinalURL=[NSString stringWithFormat:FB_USER_PIC,message.fbId];
-            NSURL *imageURL = [NSURL URLWithString:[picFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
-            [zipService loadImageAsync:imageURL imageKey:[message.userId description] isImageForAmessage:false secondImageKey:nil];
-            
-        }
-    
-        JSQMessage *newMessage;
-        if ([[message.messageType description] isEqualToString:PHOTO_MESSAGE]){
-            JSQPhotoMediaItem *photoItem;
-            //if ([zipService.images objectForKey:message.message]==nil){
-                if ([message.userId isEqual:self.senderId]){
-                    photoItem = [[JSQPhotoMediaItem alloc] initWithMaskAsOutgoing:YES];
-                }else{
-                    photoItem = [[JSQPhotoMediaItem alloc] initWithMaskAsOutgoing:NO];
-                }
-                newMessage=  [[JSQMessage alloc] initWithSenderId:message.userId
-                                                senderDisplayName:message.userName
-                                                             date:[NSDate dateWithTimeIntervalSince1970:[(NSNumber *)message.time longValue] /1000.0]
-                                                            media:photoItem];
-                newMessage.text=message.message;
-                if (atFirst){
-                    [zipService.messages insertObject:newMessage atIndex:0];
-                }else{
-                    [zipService.messages addObject:newMessage];
-                }
-                [self imageMessageReceived:message];
-
-        }else{
-            newMessage=  [[JSQMessage alloc] initWithSenderId:message.userId
-                                     senderDisplayName:message.userName
-                                        date:[NSDate dateWithTimeIntervalSince1970:[(NSNumber *)message.time longValue] /1000.0]
-                                            text:message.message];
-            newMessage.received=true;
-            if (atFirst){
-                [zipService.messages insertObject:newMessage atIndex:0];
-            }else{
-                [zipService.messages addObject:newMessage];
-            }
-        }
-    }
-}
-
--(void)imageMessageReceived:(ZiPointMessage*) message{
-    
-    if ([zipService.images objectForKey:message.message]==nil){
-        NSString *picFinalURL=message.message;
-        NSURL *imageURL = [NSURL URLWithString:[picFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
-        
-        [zipService loadImageAsync:imageURL imageKey:message.message isImageForAmessage:true secondImageKey:nil];
-        
-    }else{
-        for (JSQMessage *msg in zipService.messages){
-            if ([msg isMediaMessage] && [zipService.images objectForKey:[msg text]] && !msg.received){
-                JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageWithData:[zipService.images objectForKey:[msg text]]]];
-                [msg setMedia:photoItem];
-                msg.received=true;
-            }
-        }
-        [self finishReceivingMessageAnimatedNoScroll];
-    }
-}
-
--(void)imageLoaded:(NSData *)imageData messageKey:(NSString *)key isImageForMessage:(bool)isMessage{
-    if (isMessage){
-        for (JSQMessage *msg in zipService.messages){
-            if ([msg isMediaMessage] && [zipService.images objectForKey:key] && [[msg text] isEqualToString:key] && !msg.received){
-
-                JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageWithData:imageData]];
-                if ([msg.senderId isEqual:self.senderId]){
-                    [photoItem setAppliesMediaViewMaskAsOutgoing:YES];
-                }else{
-                    [photoItem setAppliesMediaViewMaskAsOutgoing:NO];
-                }
-                
-                [msg setMedia:photoItem];
-                msg.received=true;
-                [self finishReceivingMessageAnimatedNoScroll];
-            }
-        }
-    }else{
-        //is avatar
-        [zipService.avatars setObject:[JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageWithData:imageData]
-                                                                                 diameter:kJSQMessagesCollectionViewAvatarSizeDefault] forKey:key];
-        [self finishReceivingMessageAnimatedNoScroll];
-    }
-    
-}
 
 - (void)closePressed:(UIBarButtonItem *)sender
 {
@@ -312,7 +173,7 @@
                       date:(NSDate *)date
 {
     NSNumber *myMsgid = @((NSUInteger)zipService.messages.count);
-    [self sendMessage:text messageId:myMsgid messageType:TEXT_MESSAGE];
+    [zipService sendMessage:text messageId:myMsgid messageType:TEXT_MESSAGE];
     /**
      *  Sending a message. Your implementation of this method should do *at least* the following:
      *
@@ -379,9 +240,9 @@
             break;*/
     }
     
-    [JSQSystemSoundPlayer jsq_playMessageSentSound];
+    //[JSQSystemSoundPlayer jsq_playMessageSentSound];
     
-    [self finishSendingMessageAnimated:YES];
+    //[self finishSendingMessageAnimated:YES];
 }
 
 - (void)addPhotoMediaMessage
@@ -455,7 +316,7 @@
     NSString* urlMessage = [result valueForKey:@"url"];
     
     NSNumber *myMsgid = @((NSUInteger)zipService.messages.count);
-    [self sendMessage:urlMessage messageId:myMsgid messageType:PHOTO_MESSAGE];
+    [zipService sendMessage:urlMessage messageId:myMsgid messageType:PHOTO_MESSAGE];
     NSURL *imageURL = [NSURL URLWithString:[urlMessage stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     [zipService loadImageAsync:imageURL imageKey:urlMessage isImageForAmessage:true secondImageKey:fileName];
 }
@@ -687,6 +548,8 @@
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView
                 header:(JSQMessagesLoadEarlierHeaderView *)headerView didTapLoadEarlierMessagesButton:(UIButton *)sender
 {
+    [zipService getPreviousMessages];
+    /*
     NSString *zpointFinalURL=[NSString stringWithFormat:GET_PREVIOUS_MSGS,WS_ENVIROMENT,zipService.zeePoint.zpointId,[zipService getUserId],self.oldestMessage];
     NSURL *url = [NSURL URLWithString:[zpointFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -711,9 +574,9 @@
              }
              [self finishReceivingMessageAnimatedNoScroll];
          }
-     }];
+     }];*/
     
-    NSLog(@"Load earlier messages!");
+    //NSLog(@"Load earlier messages!");
 }
 
 - (void)finishReceivingMessageAnimatedNoScroll{
@@ -726,24 +589,29 @@
 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapAvatarImageView:(UIImageView *)avatarImageView atIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Tapped avatar!");
+    //NSLog(@"Tapped avatar!");
 }
 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapMessageBubbleAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Tapped message bubble!");
+    //NSLog(@"Tapped message bubble!");
 }
 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapCellAtIndexPath:(NSIndexPath *)indexPath touchLocation:(CGPoint)touchLocation
 {
-    NSLog(@"Tapped cell at %@!", NSStringFromCGPoint(touchLocation));
+    //NSLog(@"Tapped cell at %@!", NSStringFromCGPoint(touchLocation));
 }
 
 -(void)didJustConnect{
     self.navigationItem.titleView=nil;
-    self.navigationItem.title=zipService.zeePoint.name;
-    
-    if ([zipService.zeePoint.distance intValue]<=100 || ([zipService.zeePoint.ownerId isEqualToString:zipService.getUserId])){
+    self.navigationItem.title=zipService.getZiPoint.name;
+    [self checkEditable];
+
+    [self finishReceivingMessage];
+}
+
+-(void)checkEditable{
+    if ([zipService.getZiPoint.distance intValue]<=100 || ([zipService.getZiPoint.ownerId isEqualToString:zipService.getUserId])){
         [self ableToParticipate];
     }else{
         [self notAbleToParticipate];
@@ -777,7 +645,7 @@
 }
 
 - (IBAction)exitRoom:(id)sender {
-    NSString *zpointFinalURL=[NSString stringWithFormat:EXIT_ZPOINT_SERVICE,WS_ENVIROMENT,zipService.zeePoint.zpointId,zipService.getUserId];
+    NSString *zpointFinalURL=[NSString stringWithFormat:EXIT_ZPOINT_SERVICE,WS_ENVIROMENT,zipService.getZiPoint.zpointId,zipService.getUserId];
     NSURL *url = [NSURL URLWithString:[zpointFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     NSURLRequest *requestJoin = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:requestJoin
@@ -788,11 +656,11 @@
          if (data.length > 0 && connectionError == nil)
          {
              self.tabBarController.selectedIndex = 0;
-             zipService.zeePoint=nil;
+             
              
          }
      }];
-    
+    [zipService setZiPoint:nil];
     
 }
 

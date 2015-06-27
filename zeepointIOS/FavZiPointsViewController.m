@@ -18,7 +18,7 @@
 
 @interface FavZiPointsViewController ()
 
-@property (strong, nonatomic) NSMutableSet *zeePoints;
+//@property (strong, nonatomic) NSMutableSet *zeePoints;
 @property (strong, nonatomic) NSArray *sortedZeePoints;
 @property (strong, nonatomic) NSArray *filteredZeePoints;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
@@ -134,20 +134,11 @@
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
                                                          options:0
                                                            error:NULL];
-    self.zeePoints=[[NSMutableSet alloc] init];
-    NSMutableSet *zips=[_zipService createZipointGroups:dict];
-    for(ZeePointGroup *currentZip in zips){
-        ZeePointGroup *updatedZip=[self.zeePoints member:currentZip];
-        if (updatedZip){
-            updatedZip.distance=currentZip.distance;
-        }else{
-            [self.zeePoints addObject:currentZip];
-        }
-    }
+    [_zipService createZipointGroups:dict];
     
     //[self.zeePoints adaddObjects:[_zipService createZipointGroups:dict]];//[greeting objectForKey:@"zeePointsOut"];
     
-    self.sortedZeePoints=[self.zeePoints sortedArrayUsingDescriptors:[ZeePointGroup getSortDescriptors]];
+    self.sortedZeePoints=[_zipService.myZiPoints sortedArrayUsingDescriptors:[ZeePointGroup getSortDescriptors]];
     [self.tableView reloadData];
     
 }
@@ -185,11 +176,11 @@
     zeePointCell.zeePointUsersLabel.text =
     [ZeePointGroup getUsersLabelText:zeePoint.users friendsParam:zeePoint.friends listenersParam:zeePoint.listeners];
     
-    zeePointCell.zeePointDistanceLabel.text = [ZeePointGroup getDistanceLabelText:zeePoint.distance];
+    zeePointCell.zeePointDistanceLabel.text = [ZeePointGroup getDistanceLabelText:zeePoint.distance alwaysDisplayDistance:true];
     zeePointCell.zeePointDistanceLabel.textColor=[ZeePointGroup getDistanceLabelColor:zeePoint.distance];
     zeePointCell.zeePointNameLabel.textColor=[ZeePointGroup getTitleLabelColor:zeePoint.distance senderId:_zipService.getUserId ownerId:zeePoint.ownerId];
     
-    if ([zeePoint.referenceId isEqualToString:_zipService.zeePoint.referenceId]){//zeePoint.joined ) {
+    if ([zeePoint.referenceId isEqualToString:_zipService.getZiPoint.referenceId]){//zeePoint.joined ) {
         zeePointCell.zeePointNameLabel.textColor= [ZeePointGroup getJoinTitleLabelColor];
     }
     
@@ -199,9 +190,9 @@
 {
     //ZeePointGroup *zeePoint =[[ZeePointGroup alloc] init];
     if (self.tableView == self.searchDisplayController.searchResultsTableView) {
-        _zipService.zeePoint=[self.filteredZeePoints objectAtIndex:indexPath.row];
+        [_zipService setZiPoint:[self.filteredZeePoints objectAtIndex:indexPath.row]];
     }else{
-        _zipService.zeePoint=[self.sortedZeePoints objectAtIndex:indexPath.row];
+        [_zipService setZiPoint:[self.sortedZeePoints objectAtIndex:indexPath.row]];
     }
     //if ([zeePoint.distance intValue]>100 && !([zeePoint.ownerId isEqualToString:_zipService.getUserId])){
     //    [self performSegueWithIdentifier:@"showListenerRoom" sender:self];

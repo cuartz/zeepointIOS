@@ -33,7 +33,7 @@
     return [NSString stringWithFormat: @"%@%@%@", labelUsersValue, labelFriendsValue, labelListenersValue];
 }
 
-+(NSString *)getDistanceLabelText: (NSNumber *)distance{
++(NSString *)getDistanceLabelText: (NSNumber *)distance alwaysDisplayDistance:(BOOL) displayDistance{
     NSString *unit=@" Mts";
     NSNumber *distanceValue=distance;
     if ([distance intValue]>999)
@@ -41,7 +41,7 @@
         unit=@" Km";
         distanceValue=[NSNumber numberWithInt:[distance intValue]/1000];
     }
-    if ([distance intValue]>99){
+    if ([distance intValue]>99 || displayDistance){
         return [NSString stringWithFormat: @"%@%@%@", @"At ", [distanceValue stringValue], unit];
     }else{
         return @"";

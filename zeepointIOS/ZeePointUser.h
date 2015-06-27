@@ -17,6 +17,7 @@
 @property NSString *gender;
 @property NSString *history;
 @property NSString *age;
+@property NSString *title;
 @property JSQMessagesAvatarImage *userImage;
 
 +(NSArray *) getSortDescriptors;
