@@ -27,7 +27,7 @@
 
 //-(void)receiveMessage:(ZiPointMessage *)message putMessageAtFirst:(bool)atFirst;
 
--(void)finishReceivingMessageCustom:(BOOL)animated;
+//-(void)finishReceivingMessageCustom:(BOOL)animated;
 
 -(void)finishReceivingMessageAnimatedNoScroll;
 
@@ -52,7 +52,8 @@
 @property (nonatomic, assign) id  delegate;
 @property (strong, nonatomic) NSMutableDictionary *avatars;
 @property (strong, nonatomic) NSMutableDictionary *images;
-
+@property BOOL connected;
+@property (nonatomic, strong) UIView *loadingView;
 @property (strong, nonatomic) NSMutableArray *messages;
 
 @property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImageData;

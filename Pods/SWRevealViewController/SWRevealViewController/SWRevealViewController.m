@@ -96,7 +96,6 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 
         [self addSubview:_frontView];
     }
-    
     return self;
 }
 
@@ -152,20 +151,6 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
     CGFloat xLocation = [self frontLocationForPosition:_c.frontViewPosition];
     [self _layoutRearViewsForLocation:xLocation];
     [self _prepareForNewPosition:newPosition];
-}
-
-
-- (void)unloadRearView
-{
-    [_rearView removeFromSuperview];
-    _rearView = nil;
-}
-
-
-- (void)unloadRightView
-{
-    [_rightView removeFromSuperview];
-    _rightView = nil;
 }
 
 
@@ -408,16 +393,9 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
     return NO;  // not supported
 }
 
-
 - (BOOL)transitionWasCancelled
 {
     return NO; // not supported
-}
-
-
-- (CGAffineTransform)targetTransform
-{
-    return CGAffineTransformIdentity;
 }
 
 
@@ -569,13 +547,13 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
     if ( _dragging || self.state == UIGestureRecognizerStateFailed)
         return;
     
-    const CGFloat kDirectionPanThreshold = 5;
+    const int kDirectionPanThreshold = 5;
     
     UITouch *touch = [touches anyObject];
     CGPoint nowPoint = [touch locationInView:self.view];
     
-    if (ABS(nowPoint.x - _beginPoint.x) > kDirectionPanThreshold) _dragging = YES;
-    else if (ABS(nowPoint.y - _beginPoint.y) > kDirectionPanThreshold) self.state = UIGestureRecognizerStateFailed;
+    if (abs(nowPoint.x - _beginPoint.x) > kDirectionPanThreshold) _dragging = YES;
+    else if (abs(nowPoint.y - _beginPoint.y) > kDirectionPanThreshold) self.state = UIGestureRecognizerStateFailed;
 }
 
 @end
@@ -606,6 +584,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 const int FrontViewPositionNone = 0xff;
+
 
 #pragma mark - Init
 
@@ -734,11 +713,6 @@ const int FrontViewPositionNone = 0xff;
     
     // now set the desired initial position
     [self _setFrontViewPosition:initialPosition withDuration:0.0];
-    
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
 }
 
 
@@ -764,8 +738,8 @@ const int FrontViewPositionNone = 0xff;
     // and resume it back to the previous state, it is possible to override this behaviour by
     // intercepting it on the panGestureBegan and panGestureEnded delegates
     _userInteractionStore = _contentView.userInteractionEnabled;
-    
 }
+
 
 - (NSUInteger)supportedInterfaceOrientations
 {
@@ -1298,7 +1272,7 @@ const int FrontViewPositionNone = 0xff;
     NSTimeInterval duration = _toggleAnimationDuration;
 
     // Velocity driven change:
-    if (ABS(velocity) > _quickFlickVelocity)
+    if (fabsf(velocity) > _quickFlickVelocity)
     {
         // we may need to set the drag position and to adjust the animation duration
         CGFloat journey = xLocation;
@@ -1316,7 +1290,7 @@ const int FrontViewPositionNone = 0xff;
             }
         }
         
-        duration = ABS(journey/velocity);
+        duration = fabsf(journey/velocity);
     }
     
     // Position driven change:
@@ -1373,7 +1347,7 @@ const int FrontViewPositionNone = 0xff;
     
     NSTimeInterval duration = animated?_toggleAnimationDuration:0.0;
     NSTimeInterval firstDuration = duration;
-    NSInteger initialPosDif = ABS( _frontViewPosition - preReplacementPosition );
+    int initialPosDif = abs( _frontViewPosition - preReplacementPosition );
     if ( initialPosDif == 1 ) firstDuration *= 0.8;
     else if ( initialPosDif == 0 ) firstDuration = 0;
     
@@ -1410,8 +1384,9 @@ const int FrontViewPositionNone = 0xff;
     void (^animations)() = ^()
     {
         // Calling this in the animation block causes the status bar to appear/dissapear in sync with our own animation
-        [self setNeedsStatusBarAppearanceUpdate];
-        
+        if ( [self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
+            [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate) withObject:nil];
+    
         // We call the layoutSubviews method on the contentView view and send a delegate, which will
         // occur inside of an animation block if any animated transition is being performed
         [_contentView layoutSubviews];
@@ -1566,17 +1541,7 @@ const int FrontViewPositionNone = 0xff;
     
     _rearViewPosition = newPosition;
     
-    void (^deploymentCompletion)() =
-        [self _deploymentForViewController:_rearViewController inView:_contentView.rearView appear:appear disappear:disappear];
-    
-    void (^completion)() = ^()
-    {
-        deploymentCompletion();
-        if ( disappear )
-            [_contentView unloadRearView];
-    };
-    
-    return completion;
+    return [self _deploymentForViewController:_rearViewController inView:_contentView.rearView appear:appear disappear:disappear];
 }
 
 // Deploy/Undeploy of the right view controller following the containment principles. Returns a block
@@ -1594,17 +1559,7 @@ const int FrontViewPositionNone = 0xff;
     
     _rightViewPosition = newPosition;
     
-    void (^deploymentCompletion)() =
-        [self _deploymentForViewController:_rightViewController inView:_contentView.rightView appear:appear disappear:disappear];
-    
-    void (^completion)() = ^()
-    {
-        deploymentCompletion();
-        if ( disappear )
-            [_contentView unloadRightView];
-    };
-
-    return completion;
+    return [self _deploymentForViewController:_rightViewController inView:_contentView.rightView appear:appear disappear:disappear];
 }
 
 
@@ -1631,9 +1586,9 @@ const int FrontViewPositionNone = 0xff;
     controllerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     controllerView.frame = frame;
     
-    if ( [controllerView isKindOfClass:[UIScrollView class]] )
+    if ( [controller respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)] && [controllerView isKindOfClass:[UIScrollView class]] )
     {
-        BOOL adjust = controller.automaticallyAdjustsScrollViewInsets;
+        BOOL adjust = (BOOL)[controller performSelector:@selector(automaticallyAdjustsScrollViewInsets) withObject:nil];
         
         if ( adjust )
         {

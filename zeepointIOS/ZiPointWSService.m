@@ -18,7 +18,7 @@
 
 //@property (nonatomic, strong) NSString *channel;
 
-@property BOOL connected;
+
 
 @property int oldestMessage;
 
@@ -31,7 +31,7 @@
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *gender;
-@property (nonatomic, strong) UIView *loadingView;
+
 @property (nonatomic, strong) ZeePointGroup *zeePoint;
 
 
@@ -171,6 +171,7 @@
 }
 
 -(void)subscribeZip{
+    
     [self unSubscribeZip];
     
     if (!self.connected){
@@ -190,7 +191,7 @@
 */
 -(void)unSubscribeZip{
     self.oldestMessage=0;
-    self.messages = [NSMutableArray new];
+    
     [delegate finishReceivingMessage];
     if (self.connected){
         [client unSubscribe];
@@ -279,7 +280,7 @@ NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
 }
 
 - (void)receiveMessage:(ZiPointMessage *)message putMessageAtFirst:(bool)atFirst{
-    
+    if ([self.zeePoint.referenceId isEqualToString:message.channel]){
     if ([self.getUserId isEqualToString:message.userId]  && (message.messageId==nil || message.messageId==(id)[NSNull null])){
         // YOUR MESSAGE HAS BEEN RECEIVED
         
@@ -345,6 +346,7 @@ NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
                 [self.messages addObject:newMessage];
             }
         }
+    }
     }
 }
 
@@ -474,7 +476,11 @@ NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
     
     item.joined=[[dict objectForKey:@"joined"] boolValue];
     if (item.joined){
-        [self setZiPoint:item];
+        if (![self getZiPoint]){
+            [self setZiPoint:item];
+        }else if (![item isEqual:[self getZiPoint]]){
+            item.joined=false;
+        }
     }
     if ([self.getUserId isEqualToString:item.ownerId]){
     if ([self.myZiPoints member:item]){
@@ -516,6 +522,7 @@ NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
     item.fbId=[dict objectForKey:@"fbId"];
     item.messageType=[dict objectForKey:@"messageType"];
     item.time=[dict objectForKey:@"time"];
+    item.channel=[dict objectForKey:@"channel"];
     
 
 
@@ -642,6 +649,7 @@ NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
 }
 
 - (void)joinZiPoint{
+    [delegate connecting:loadingView];
     //[self unSubscribeZip];
     //self.messages = [NSMutableArray new];
 NSString *zpointFinalURL=[NSString stringWithFormat:JOIN_ZPOINT_SERVICE,WS_ENVIROMENT,self.zeePoint.zpointId,self.getUserId,self.lat,self.lon];
@@ -654,7 +662,7 @@ NSURLRequest *requestJoin = [NSURLRequest requestWithURL:url];
  {
      if (data.length > 0 && connectionError == nil)
      {
-         
+         self.messages = [NSMutableArray new];
          NSDictionary *ziPointJoinInfo = [NSJSONSerialization JSONObjectWithData:data
                                                                          options:0
                                                                            error:NULL];
@@ -666,7 +674,7 @@ NSURLRequest *requestJoin = [NSURLRequest requestWithURL:url];
              [self receiveMessage:message putMessageAtFirst:false];
          }
          
-         [delegate finishReceivingMessageCustom:YES];
+         //[delegate finishReceivingMessageCustom:YES];
          
          //[self subscribeZip];
          

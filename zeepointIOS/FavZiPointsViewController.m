@@ -161,7 +161,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)atableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *simpleTableIdentifier = @"ZeePointCell";
+    static NSString *simpleTableIdentifier = @"MyZeePointCell";
     
     ZeePointTableViewCell *zeePointCell = [self.tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     

@@ -137,15 +137,15 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    //[self.navigationController popViewControllerAnimated:NO];
     [self.navigationController popToRootViewControllerAnimated:NO];
+    [self.revealViewController.navigationController popToRootViewControllerAnimated:NO];
 }
 
-
+/*
 - (void)finishReceivingMessageCustom:(BOOL)animated{
     [self finishReceivingMessageAnimated:animated];
     [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
-}
+}*/
 
 /*
 - (void)closePressed:(UIBarButtonItem *)sender

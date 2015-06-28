@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-SWRevealViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SocketRocket.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,42 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>076E4947D941A826807EF175</key>
+		<key>038C9916E275C27055F08135</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>368F4C81277262228E07A999</key>
+		<key>5F6E89CCDDD37FD3E4E88FE9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>403281C087C07C9E31A3C7CA</key>
+		<key>6CC5354A0F91C18CF5422CF8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>569BB09E8C4FB0FF1FBA144A</key>
+		<key>A2C36943ABCEA0E6DA941848</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5BC2EBD1263203CE799C6084</key>
+		<key>A6868FB86BEE4E84D8836FF1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6CC070D16986262107FDD3A0</key>
+		<key>AE2F1D9F05F1EAC071AB0055</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8EA0014DFA4DAB9C9E5281A3</key>
+		<key>C1CB5CAF3E0866F095CD1B59</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D9D0373E71F125E0139D17D7</key>
+		<key>DC115EC2591F58787BCB6801</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E705C72D117C74C71B06F53F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

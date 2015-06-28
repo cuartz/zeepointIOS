@@ -116,7 +116,7 @@
          zipService.lat=self.lat;
          zipService.lon=self.lon;*/
         
-        [self.revealViewController.navigationController setNavigationBarHidden: YES animated:NO];
+        //[self.revealViewController.navigationController setNavigationBarHidden: YES animated:NO];
         //zeePointViewController.navigationController=[self.navigationController  ;
     //}
 
@@ -142,18 +142,22 @@
         [alert show];
         self.tabBarController.selectedIndex = 0;
     }
+    //else if (!zipService.connected){
+    //    [self connecting:zipService.loadingView];
+    //}
     //[self finishReceivingMessage];
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
 }
 
-
+/*
 - (void)finishReceivingMessageCustom:(BOOL)animated{
     [self finishReceivingMessageAnimated:animated];
     [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
-}
+}*/
 
 
 - (void)closePressed:(UIBarButtonItem *)sender
@@ -589,6 +593,11 @@
 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapAvatarImageView:(UIImageView *)avatarImageView atIndexPath:(NSIndexPath *)indexPath
 {
+    //if ([zeePoint.distance intValue]>100 && !([zeePoint.ownerId isEqualToString:_zipService.getUserId])){
+    //    [self performSegueWithIdentifier:@"showListenerRoom" sender:self];
+    //}else{
+        [self performSegueWithIdentifier:@"privateRoomSegue" sender:self];
+    //}
     //NSLog(@"Tapped avatar!");
 }
 
@@ -655,11 +664,12 @@
      {
          if (data.length > 0 && connectionError == nil)
          {
-             self.tabBarController.selectedIndex = 0;
+             
              
              
          }
      }];
+    self.tabBarController.selectedIndex = 0;
     [zipService setZiPoint:nil];
     
 }

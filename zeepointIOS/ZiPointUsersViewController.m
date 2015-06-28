@@ -32,6 +32,9 @@
     self.filteredZiPointUsers=[[NSArray alloc] init];
     _zipService = [ZiPointWSService sharedManager];
     self.sortedZiPointUsers=[_zipService.zeePointUsers sortedArrayUsingDescriptors:[ZeePointUser getSortDescriptors]];
+    //UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
+    
+    //self.tableView.tableHeaderView = headerView;
     
 }
 
