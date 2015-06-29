@@ -11,6 +11,7 @@
 #import <FBSDKLoginKit/FBSDKLoginButton.h>
 #import "NSUserDefaults+DemoSettings.h"
 #import "AGPushNoteView.h"
+#import "ZiPointDataService.h"
 #import "ZiPointWSService.h"
 
 @interface AppDelegate ()
@@ -51,11 +52,12 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken
 {
     
-    ZiPointWSService *zipService = [ZiPointWSService sharedManager];
-    [zipService setDeviceToken:[newDeviceToken description]];
-    if (zipService.getUserId){
+    ZiPointDataService *zipDataService = [ZiPointDataService sharedManager];
+    ZiPointWSService *zipWSService = [ZiPointWSService sharedManager];
+    [zipDataService setDeviceToken:[newDeviceToken description]];
+    if (zipDataService.getUserId){
     //NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-        [zipService saveUserInfo:zipService.getFbUserId :zipService.getDeviceToken];
+        [zipWSService saveUserInfo:zipDataService.getFbUserId :zipDataService.getDeviceToken];
     }
     //[prefs setObject:newDeviceToken forKey:@"DeviceToken"];
 }

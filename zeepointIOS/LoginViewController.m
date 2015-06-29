@@ -13,10 +13,12 @@
 #import "ZeePointsViewController.h"
 #import "Constants.h"
 #import "ZiPointWSService.h"
+#import "ZiPointDataService.h"
 
 @interface LoginViewController ()
 
     @property ZiPointWSService *zipService;
+    @property ZiPointDataService *zipDataService;
 
 @end
 
@@ -29,6 +31,7 @@
     FBSDKLoginButton *loginButton = (FBSDKLoginButton *)[self.view viewWithTag:1];
     loginButton.readPermissions=@[@"public_profile", @"email"];
     _zipService = [ZiPointWSService sharedManager];
+    _zipDataService = [ZiPointDataService sharedManager];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -47,9 +50,9 @@
     
     //ZiPointWSService *zipService = [ZiPointWSService sharedManager];
     
-    NSString *userId=_zipService.getUserId;
-    NSString *fbUserId=_zipService.getFbUserId;
-    NSString *email=_zipService.getEmail;
+    NSString *userId=_zipDataService.getUserId;
+    NSString *fbUserId=_zipDataService.getFbUserId;
+    NSString *email=_zipDataService.getEmail;
     
     if ([FBSDKAccessToken currentAccessToken] || (userId!=nil && fbUserId!=nil && email!=nil )){
         
@@ -107,13 +110,13 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                                                                                    options:0
                                                                                      error:NULL];
                           
-                          [_zipService setUserName:[response objectForKey:@"name"]];
-                          [_zipService setUserId:[[response objectForKey:@"id"] description]];
-                          [_zipService setEmail:[response objectForKey:@"email"]];
-                          [_zipService setGender:[response objectForKey:@"gender"]];
-                          [_zipService setFbUserId:fbUserId];
+                          [_zipDataService setUserName:[response objectForKey:@"name"]];
+                          [_zipDataService setUserId:[[response objectForKey:@"id"] description]];
+                          [_zipDataService setEmail:[response objectForKey:@"email"]];
+                          [_zipDataService setGender:[response objectForKey:@"gender"]];
+                          [_zipDataService setFbUserId:fbUserId];
                           
-                          [_zipService saveUserInfo:_zipService.getFbUserId :_zipService.getDeviceToken];
+                          [_zipService saveUserInfo:_zipDataService.getFbUserId :_zipDataService.getDeviceToken];
                           
                           
                           

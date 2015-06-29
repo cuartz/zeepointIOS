@@ -13,8 +13,8 @@
 #import "CreateZeePointViewController.h"
 #import "Constants.h"
 #import "SWRevealViewController.h"
-#import "LoadingView.h"
 #import "ZiPointWSService.h"
+#import "ZiPointDataService.h"
 
 @interface ZeePointsViewController ()
 
@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSArray *filteredZeePoints;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property ZiPointWSService *zipService;
+@property ZiPointDataService *zipDataService;
 @end
 
 @implementation ZeePointsViewController
@@ -47,6 +48,8 @@
     
     _zipService = [ZiPointWSService sharedManager];
     
+    _zipDataService = [ZiPointDataService sharedManager];
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -66,8 +69,8 @@
     
     CLLocation *currentLocation = [locations lastObject];
     if (currentLocation!=nil){
-        _zipService.lat=currentLocation.coordinate.latitude;
-        _zipService.lon=currentLocation.coordinate.longitude;
+        _zipDataService.lat=currentLocation.coordinate.latitude;
+        _zipDataService.lon=currentLocation.coordinate.longitude;
     }
     //[self.zeePoints removeAllObjects];
     [self getMoreData:0];
@@ -87,7 +90,7 @@
     float reload_distance = 50;
     if(y > h - reload_distance) {
         [locationManager startUpdatingLocation];
-        [self getMoreData:[_zipService.locationZiPoints count]+1];
+        [self getMoreData:[_zipDataService.locationZiPoints count]+1];
     }
 }
 
@@ -103,7 +106,7 @@
 
 -(void)getMoreData:(NSUInteger)toRow{
 
-    NSString *zpointFinalURL=[NSString stringWithFormat:GET_ZPOINTS_SERVICE,WS_ENVIROMENT,_zipService.lat,_zipService.lon,_zipService.getUserId,toRow];
+    NSString *zpointFinalURL=[NSString stringWithFormat:GET_ZPOINTS_SERVICE,WS_ENVIROMENT,_zipDataService.lat,_zipDataService.lon,_zipDataService.getUserId,toRow];
     NSURL *url = [NSURL URLWithString:zpointFinalURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request
@@ -136,18 +139,18 @@
     NSMutableSet *zips=[_zipService createZipointGroups:dict];
     for(ZeePointGroup *currentZip in zips){
        // ZeePointGroup *updatedZip=[_zipService.locationZiPoints member:currentZip];
-        if ([_zipService.locationZiPoints member:currentZip]){
+        if ([_zipDataService.locationZiPoints member:currentZip]){
          //   updatedZip.distance=currentZip.distance;
-            [_zipService.locationZiPoints removeObject:currentZip];
+            [_zipDataService.locationZiPoints removeObject:currentZip];
         }
             //else{
-            [_zipService.locationZiPoints addObject:currentZip];
+            [_zipDataService.locationZiPoints addObject:currentZip];
         //}
     }
 
     //[self.zeePoints adaddObjects:[_zipService createZipointGroups:dict]];//[greeting objectForKey:@"zeePointsOut"];
  
-    self.sortedZeePoints=[_zipService.locationZiPoints sortedArrayUsingDescriptors:[ZeePointGroup getSortDescriptors]];
+    self.sortedZeePoints=[_zipDataService.locationZiPoints sortedArrayUsingDescriptors:[ZeePointGroup getSortDescriptors]];
     
     [self.tableView reloadData];
 }
@@ -187,7 +190,7 @@
 
     zeePointCell.zeePointDistanceLabel.text = [ZeePointGroup getDistanceLabelText:zeePoint.distance alwaysDisplayDistance:false];
     zeePointCell.zeePointDistanceLabel.textColor=[ZeePointGroup getDistanceLabelColor:zeePoint.distance];
-    zeePointCell.zeePointNameLabel.textColor=[ZeePointGroup getTitleLabelColor:zeePoint.distance senderId:_zipService.getUserId ownerId:zeePoint.ownerId];
+    zeePointCell.zeePointNameLabel.textColor=[ZeePointGroup getTitleLabelColor:zeePoint.distance senderId:_zipDataService.getUserId ownerId:zeePoint.ownerId];
     
     if (_zipService.getZiPoint && [zeePoint.referenceId isEqualToString:_zipService.getZiPoint.referenceId]){//zeePoint.joined ) {
         zeePointCell.zeePointNameLabel.textColor= [ZeePointGroup getJoinTitleLabelColor];

@@ -6,13 +6,15 @@
 //  Copyright (c) 2015 zeepoint. All rights reserved.
 //
 #import "ZiPointWSService.h"
+#import "ZiPointDataService.h"
 #import "MMPReactiveStompClient.h"
 #import <SocketRocket/SRWebSocket.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "Constants.h"
 #import "LoadingView.h"
+#import "LoadImageService.h"
 
-@interface ZiPointWSService ()
+@interface ZiPointWSService ()<LoadImageServiceDelegatessage>
 
 @property (nonatomic, strong) MMPReactiveStompClient *client;
 
@@ -24,15 +26,15 @@
 
 @property (nonatomic, strong) NSMutableURLRequest *request;
 
-@property (nonatomic, strong) NSString *deviceToken;
-@property (nonatomic, strong) NSString *userName;
-@property (nonatomic, strong) NSString *userId;
-@property (nonatomic, strong) NSString *fbUserId;
-@property (nonatomic, strong) NSString *email;
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *gender;
+
 
 @property (nonatomic, strong) ZeePointGroup *zeePoint;
+
+@property (nonatomic, strong) ZeePointUser *zeePointUser;
+
+@property (nonatomic, strong) ZiPointDataService *dataService;
+
+@property (nonatomic, strong) LoadImageService *imageService;
 
 
 //-(void)subscribeZip;
@@ -41,13 +43,14 @@
 
 @implementation ZiPointWSService
 
-//@synthesize channel;
+@synthesize delegate;
 
 @synthesize request;
 
-@synthesize delegate;
-
 @synthesize client;
+//@synthesize channel;
+/*
+
 
 @synthesize lat;
 
@@ -66,7 +69,7 @@
 @synthesize  avatars;
 
 @synthesize  images;
-
+*/
 #pragma mark Singleton Methods
 
 + (id)sharedManager {
@@ -87,54 +90,18 @@
                                   @"origin": WS_ENVIROMENT
                                   };
         [request setAllHTTPHeaderFields:headers];
-        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-        _userId=[prefs objectForKey:@"userId"];
-        _fbUserId=[prefs objectForKey:@"fbUserId"];
-        _email=[prefs objectForKey:@"email"];
-        _deviceToken=[prefs objectForKey:@"DeviceToken"];
-        _userName=[prefs objectForKey:@"name"];
-        loadingView = [[LoadingView alloc] init];
         
         client = [[MMPReactiveStompClient alloc] initWithOutSocket];
         
-        zeePointUsers=[[NSMutableSet alloc] init];
-        avatars=[[NSMutableDictionary alloc] init];
-        images=[[NSMutableDictionary alloc] init];
-        
-        locationZiPoints=[[NSMutableSet alloc] init];
-        
-        myZiPoints=[[NSMutableSet alloc] init];
-        
-        
-        JSQMessagesBubbleImageFactory *bubbleFactory = [[JSQMessagesBubbleImageFactory alloc] init];
-        
-        self.outgoingBubbleImageData = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
-        self.incomingBubbleImageData = [bubbleFactory incomingMessagesBubbleImageWithColor:[UIColor colorWithRed:1 green:0.4 blue:0.106 alpha:1]];
-        
         [self connect];
-
+        
+        self.dataService=[ZiPointDataService sharedManager];
+        
+        self.imageService=[LoadImageService init];
+        self.imageService.delegate=self;
 
     }
     return self;
-}
-
--(void)setZiPoint:(ZeePointGroup *)ziPoint{
-    if (ziPoint && ![ziPoint isEqual:self.zeePoint]){
-        self.zeePoint=ziPoint;
-        if (self.zeePoint){
-            [self subscribeZip];
-            //[self joinZiPoint];
-        }
-    }else{
-        if (!ziPoint){
-            [self unSubscribeZip];
-        }
-        self.zeePoint=ziPoint;
-    }
-}
-
--(ZeePointGroup *) getZiPoint{
-    return self.zeePoint;
 }
 
 -(void)connect {
@@ -170,6 +137,25 @@
     
 }
 
+
+-(void)setZiPoint:(ZeePointGroup *)ziPoint{
+    if (ziPoint && ![ziPoint isEqual:self.zeePoint]){
+        self.zeePoint=ziPoint;
+        if (self.zeePoint){
+            [self subscribeZip];
+        }
+    }else{
+        if (!ziPoint){
+            [self unSubscribeZip];
+        }
+        self.zeePoint=ziPoint;
+    }
+}
+
+-(ZeePointGroup *) getZiPoint{
+    return self.zeePoint;
+}
+
 -(void)subscribeZip{
     
     [self unSubscribeZip];
@@ -192,7 +178,7 @@
 -(void)unSubscribeZip{
     self.oldestMessage=0;
     
-    [delegate finishReceivingMessage];
+    //[delegate finishReceivingMessageAnimatedNoScroll];
     if (self.connected){
         [client unSubscribe];
     }
@@ -201,7 +187,7 @@
 
 -(void)reConnect{
     self.connected=FALSE;
-    [delegate connecting:loadingView];
+    [delegate connecting:_dataService.loadingView];
     //[self subscribe:channel];
     [self performSelector:@selector(subscribeZip) withObject:nil afterDelay:2];
 }
@@ -221,13 +207,19 @@
     // send the message to the truck's topic
     // build a dictionary containing all the information to send
     
+    
+    
+    //IMPORTANTE, CHECAR SI SE PUEDE QUITAR
+    //NSURL *imageURL = [NSURL URLWithString:[urlMessage stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+    //[imageService loadImageAsync:imageURL imageKey:urlMessage isImageForAmessage:true secondImageKey:fileName];
+    
     NSDictionary *dict = @{
                            @"message": message,
                            @"id": myMsgId,
                            @"channel":self.zeePoint.referenceId,
-                           @"userId":self.getUserId,
-                           @"fbId":self.getFbUserId,
-                           @"userName":self.getUserName,
+                           @"userId":[_dataService getUserId],
+                           @"fbId":[_dataService getFbUserId],
+                           @"userName":[_dataService getUserName],
                            @"messageType":messageType
                            };
     // create a JSON string from this dictionary
@@ -245,7 +237,7 @@
 
 
 - (void)getPreviousMessages{
-NSString *zpointFinalURL=[NSString stringWithFormat:GET_PREVIOUS_MSGS,WS_ENVIROMENT,self.zeePoint.zpointId,[self getUserId],self.oldestMessage];
+NSString *zpointFinalURL=[NSString stringWithFormat:GET_PREVIOUS_MSGS,WS_ENVIROMENT,self.zeePoint.zpointId,[_dataService getUserId],self.oldestMessage];
 NSURL *url = [NSURL URLWithString:[zpointFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
 NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
 [NSURLConnection sendAsynchronousRequest:serviceRequest
@@ -259,11 +251,11 @@ NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
          NSDictionary *ziPointJoinInfo = [NSJSONSerialization JSONObjectWithData:data
                                                                          options:0
                                                                            error:NULL];
-         NSArray *messages=[self createZipointMessages:ziPointJoinInfo];
+         NSArray *previousMessages=[self createZipointMessages:ziPointJoinInfo];
          
          //NSArray *messages=[ziPointJoinInfo objectForKey:@"zMessages"];
          
-         for (ZiPointMessage *message in messages) {
+         for (ZiPointMessage *message in previousMessages) {
              [self receiveMessage:message putMessageAtFirst:true];
              
          }
@@ -281,16 +273,16 @@ NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
 
 - (void)receiveMessage:(ZiPointMessage *)message putMessageAtFirst:(bool)atFirst{
     if ([self.zeePoint.referenceId isEqualToString:message.channel]){
-    if ([self.getUserId isEqualToString:message.userId]  && (message.messageId==nil || message.messageId==(id)[NSNull null])){
+    if ([[_dataService getUserId] isEqualToString:message.userId]  && (message.messageId==nil || message.messageId==(id)[NSNull null])){
         // YOUR MESSAGE HAS BEEN RECEIVED
         
-        if ([self.messages count] > [(message.tempId) intValue] &&
-            [[[self.messages objectAtIndex:[((NSNumber *)message.tempId) intValue]] text] isEqualToString:message.message] &&
-            [[self.messages objectAtIndex:[((NSNumber *)message.tempId) intValue]] received]==false){
-            [[self.messages objectAtIndex:[((NSNumber *)message.tempId) intValue]] setReceived:true];
+        if ([_dataService.messages count] > [(message.tempId) intValue] &&
+            [[[_dataService.messages objectAtIndex:[((NSNumber *)message.tempId) intValue]] text] isEqualToString:message.message] &&
+            [[_dataService.messages objectAtIndex:[((NSNumber *)message.tempId) intValue]] received]==false){
+            [[_dataService.messages objectAtIndex:[((NSNumber *)message.tempId) intValue]] setReceived:true];
             
         }else{
-            for (JSQMessage *msg in self.messages){
+            for (JSQMessage *msg in _dataService.messages){
                 if ([msg isMediaMessage] && ![msg received]){
                     
                 } else if ([[msg text] isEqualToString:message.message] && ![msg received]){
@@ -305,7 +297,7 @@ NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
         if (message.messageId!=nil && message.messageId!=(id)[NSNull null] && (self.oldestMessage==0 || self.oldestMessage>[message.messageId intValue])){
             self.oldestMessage=[message.messageId intValue];
         }
-        [self loadUserImage:message.userId faceBookId:message.fbId];
+        [self.imageService loadUserImage:message.userId faceBookId:message.fbId];
         /*if ([self.images objectForKey:[message.userId description]]==nil){
             NSString *picFinalURL=[NSString stringWithFormat:FB_USER_PIC,message.fbId];
             NSURL *imageURL = [NSURL URLWithString:[picFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
@@ -317,7 +309,7 @@ NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
         if ([[message.messageType description] isEqualToString:PHOTO_MESSAGE]){
             JSQPhotoMediaItem *photoItem;
             //if ([zipService.images objectForKey:message.message]==nil){
-            if ([message.userId isEqual:self.getUserId]){
+            if ([message.userId isEqual:_dataService.getUserId]){
                 photoItem = [[JSQPhotoMediaItem alloc] initWithMaskAsOutgoing:YES];
             }else{
                 photoItem = [[JSQPhotoMediaItem alloc] initWithMaskAsOutgoing:NO];
@@ -328,11 +320,11 @@ NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
                                                         media:photoItem];
             newMessage.text=message.message;
             if (atFirst){
-                [self.messages insertObject:newMessage atIndex:0];
+                [_dataService.messages insertObject:newMessage atIndex:0];
             }else{
-                [self.messages addObject:newMessage];
+                [_dataService.messages addObject:newMessage];
             }
-            [self imageMessageReceived:message];
+            [self.imageService imageMessageReceived:message];
             
         }else{
             newMessage=  [[JSQMessage alloc] initWithSenderId:message.userId
@@ -341,125 +333,13 @@ NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
                                                          text:message.message];
             newMessage.received=true;
             if (atFirst){
-                [self.messages insertObject:newMessage atIndex:0];
+                [_dataService.messages insertObject:newMessage atIndex:0];
             }else{
-                [self.messages addObject:newMessage];
+                [_dataService.messages addObject:newMessage];
             }
         }
     }
     }
-}
-
--(void)imageMessageReceived:(ZiPointMessage*) message{
-    
-    if ([self.images objectForKey:message.message]==nil){
-        NSString *picFinalURL=message.message;
-        NSURL *imageURL = [NSURL URLWithString:[picFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
-        
-        [self loadImageAsync:imageURL imageKey:message.message isImageForAmessage:true secondImageKey:nil];
-        
-    }else{
-        for (JSQMessage *msg in self.messages){
-            if ([msg isMediaMessage] && [self.images objectForKey:[msg text]] && !msg.received){
-                JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageWithData:[self.images objectForKey:[msg text]]]];
-                [msg setMedia:photoItem];
-                msg.received=true;
-            }
-        }
-        [delegate finishReceivingMessageAnimatedNoScroll];
-    }
-}
-
--(void)imageLoaded:(NSData *)imageData messageKey:(NSString *)key isImageForMessage:(bool)isMessage{
-    if (isMessage){
-        for (JSQMessage *msg in self.messages){
-            if ([msg isMediaMessage] && [self.images objectForKey:key] && [[msg text] isEqualToString:key] && !msg.received){
-                
-                JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageWithData:imageData]];
-                if ([msg.senderId isEqual:self.getUserId]){
-                    [photoItem setAppliesMediaViewMaskAsOutgoing:YES];
-                }else{
-                    [photoItem setAppliesMediaViewMaskAsOutgoing:NO];
-                }
-                
-                [msg setMedia:photoItem];
-                msg.received=true;
-                [delegate finishReceivingMessageAnimatedNoScroll];
-            }
-        }
-    }else{
-        //is avatar
-        [self.avatars setObject:[JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageWithData:imageData]
-                                                                                 diameter:kJSQMessagesCollectionViewAvatarSizeDefault] forKey:key];
-        [delegate finishReceivingMessageAnimatedNoScroll];
-    }
-    
-}
-
-
-
-- (void)dealloc {
-    // Should never be called, but just here for clarity really.
-}
-
--(void)setDeviceToken:(NSString *) deviceToken{
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setObject:deviceToken forKey:@"DeviceToken"];
-    _deviceToken=deviceToken;
-}
-
--(NSString *) getDeviceToken{
-    return _deviceToken;
-}
-
--(void)setUserId:(NSString *) userId{
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setObject:userId forKey:@"userId"];
-    _userId=userId;
-}
-
--(NSString *) getUserId{
-    return _userId;
-}
-
--(void)setFbUserId:(NSString *)fbUserId{
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setObject:fbUserId forKey:@"fbUserId"];
-    _fbUserId=fbUserId;
-}
-
--(NSString *) getFbUserId{
-    return _fbUserId;
-}
-
--(void)setEmail:(NSString *)email{
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setObject:email forKey:@"email"];
-    _email=email;
-}
-
--(NSString *) getEmail{
-    return _email;
-}
-
--(void)setUserName:(NSString *)name{
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setObject:name forKey:@"name"];
-    _userName=name;
-}
-
--(NSString *) getUserName{
-    return _userName;
-}
-
--(void)setGender:(NSString *)gender{
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setObject:gender forKey:@"gender"];
-    _gender=gender;
-}
-
--(NSString *) getGender{
-    return _gender;
 }
 
 -(ZeePointGroup *)createZipointGroup:(NSDictionary *)dict{
@@ -482,13 +362,13 @@ NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
             item.joined=false;
         }
     }
-    if ([self.getUserId isEqualToString:item.ownerId]){
-    if ([self.myZiPoints member:item]){
+    if ([_dataService.getUserId isEqualToString:item.ownerId]){
+    if ([_dataService.myZiPoints member:item]){
         //   updatedZip.distance=currentZip.distance;
-        [self.myZiPoints removeObject:item];
+        [_dataService.myZiPoints removeObject:item];
     }
     //else{
-    [self.myZiPoints addObject:item];
+    [_dataService.myZiPoints addObject:item];
     }
 //}
 
@@ -567,49 +447,16 @@ NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
     item.userName = [dict objectForKey:@"name"];
     //item8.hiddenn=@YES;
     
-    if ([self.getZiPoint.ownerId isEqualToString:[item.userId description]]){
+    if (self.getZiPoint && [self.getZiPoint.ownerId isEqualToString:[item.userId description]]){
         item.title=@"Owner";
     }else{
         item.title=@"User";
     }
-    [self loadUserImage:item.userId faceBookId:item.fbId];
+    [self.imageService loadUserImage:item.userId faceBookId:item.fbId];
 
     
     return item;
 }
-
--(void)loadUserImage:(NSString *) currentUserId faceBookId:(NSString *) currentFbId{
-    if ([self.images objectForKey:[currentUserId description]]==nil){
-        NSString *picFinalURL=[NSString stringWithFormat:FB_USER_PIC,currentFbId];
-        NSURL *imageURL = [NSURL URLWithString:[picFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
-        [self loadImageAsync:imageURL imageKey:[currentUserId description] isImageForAmessage:false secondImageKey:nil];
-        
-    }
-}
-
--(NSData *)loadImageAsync:(NSURL *)imageURL imageKey:(NSString *)key isImageForAmessage:(bool) isMessage secondImageKey:(NSString *)secKey{
-    __block NSData *imageData;
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        @synchronized(key){
-        if (![images objectForKey:key]){
-                imageData = [NSData dataWithContentsOfURL:imageURL];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (imageData){
-                        [images setObject:imageData forKey:key];
-                        if (secKey){
-                            [images setObject:imageData forKey:secKey];
-                            [self imageLoaded:imageData messageKey:secKey isImageForMessage:isMessage];
-                        }
-                        [self imageLoaded:imageData messageKey:key isImageForMessage:isMessage];
-                    }
-                });
-            }
-        }
-    });
-    return imageData;
-}
-
-
 
 - (void)saveUserInfo:(NSString *) fbUserId :(NSString *)deviceToken{
     
@@ -628,9 +475,9 @@ NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
                                                                       options:0
                                                                         error:NULL];
              
-             [self setUserId:[[response objectForKey:@"id"] description]];
+             [_dataService setUserId:[[response objectForKey:@"id"] description]];
              //NSString *host=[greeting objectForKey:@"host"];
-             [self setFbUserId:fbUserId];
+             [_dataService setFbUserId:fbUserId];
              
              //UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
              //UIViewController *uiViewController = [storyboard instantiateViewControllerWithIdentifier:@"mainMenuView"];
@@ -649,10 +496,10 @@ NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
 }
 
 - (void)joinZiPoint{
-    [delegate connecting:loadingView];
+    [delegate connecting:_dataService.loadingView];
     //[self unSubscribeZip];
     //self.messages = [NSMutableArray new];
-NSString *zpointFinalURL=[NSString stringWithFormat:JOIN_ZPOINT_SERVICE,WS_ENVIROMENT,self.zeePoint.zpointId,self.getUserId,self.lat,self.lon];
+NSString *zpointFinalURL=[NSString stringWithFormat:JOIN_ZPOINT_SERVICE,WS_ENVIROMENT,self.zeePoint.zpointId,_dataService.getUserId,_dataService.lat,_dataService.lon];
 NSURL *url = [NSURL URLWithString:[zpointFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
 NSURLRequest *requestJoin = [NSURLRequest requestWithURL:url];
 [NSURLConnection sendAsynchronousRequest:requestJoin
@@ -662,7 +509,7 @@ NSURLRequest *requestJoin = [NSURLRequest requestWithURL:url];
  {
      if (data.length > 0 && connectionError == nil)
      {
-         self.messages = [NSMutableArray new];
+         [_dataService.messages removeAllObjects];//= [NSMutableArray new];
          NSDictionary *ziPointJoinInfo = [NSJSONSerialization JSONObjectWithData:data
                                                                          options:0
                                                                            error:NULL];
@@ -678,7 +525,7 @@ NSURLRequest *requestJoin = [NSURLRequest requestWithURL:url];
          
          //[self subscribeZip];
          
-         self.zeePointUsers=[self createZipointUsers:ziPointJoinInfo];
+         _dataService.zeePointUsers=[self createZipointUsers:ziPointJoinInfo];
          
          [delegate didJustConnect];
          

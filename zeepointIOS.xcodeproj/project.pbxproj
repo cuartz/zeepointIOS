@@ -278,6 +278,10 @@
 		0B0D39441B23A6ED0019697C /* ZiPointUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0D39431B23A6ED0019697C /* ZiPointUserViewController.m */; };
 		0B157A5B1B1A931100B7E3A7 /* ZeePointUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B157A5A1B1A931100B7E3A7 /* ZeePointUser.m */; };
 		0B157A681B1C1C6A00B7E3A7 /* ZiPJSQMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B157A671B1C1C6A00B7E3A7 /* ZiPJSQMessagesViewController.m */; };
+		0B36CE461B40AAEF00B23CBB /* UserNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B36CE451B40AAEF00B23CBB /* UserNavigationController.m */; };
+		0B36CE491B40AE6400B23CBB /* ZiPointDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B36CE481B40AE6400B23CBB /* ZiPointDataService.m */; };
+		0B36CE4C1B40F0DB00B23CBB /* PrivateWSService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B36CE4B1B40F0DB00B23CBB /* PrivateWSService.m */; };
+		0B36CE4F1B40F6DC00B23CBB /* LoadImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B36CE4E1B40F6DC00B23CBB /* LoadImageService.m */; };
 		0B37ED7A1AD10FB6006A961F /* bubble-left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37ED771AD10FB6006A961F /* bubble-left@2x.png */; };
 		0B37ED7B1AD10FB6006A961F /* bubble-right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37ED781AD10FB6006A961F /* bubble-right@2x.png */; };
 		0B37ED7C1AD10FB6006A961F /* PhotoButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37ED791AD10FB6006A961F /* PhotoButton@2x.png */; };
@@ -614,6 +618,14 @@
 		0B157A591B1A931100B7E3A7 /* ZeePointUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZeePointUser.h; sourceTree = "<group>"; };
 		0B157A5A1B1A931100B7E3A7 /* ZeePointUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZeePointUser.m; sourceTree = "<group>"; };
 		0B157A671B1C1C6A00B7E3A7 /* ZiPJSQMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZiPJSQMessagesViewController.m; sourceTree = "<group>"; };
+		0B36CE441B40AAEF00B23CBB /* UserNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserNavigationController.h; sourceTree = "<group>"; };
+		0B36CE451B40AAEF00B23CBB /* UserNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNavigationController.m; sourceTree = "<group>"; };
+		0B36CE471B40AE6400B23CBB /* ZiPointDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZiPointDataService.h; sourceTree = "<group>"; };
+		0B36CE481B40AE6400B23CBB /* ZiPointDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZiPointDataService.m; sourceTree = "<group>"; };
+		0B36CE4A1B40F0DB00B23CBB /* PrivateWSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateWSService.h; sourceTree = "<group>"; };
+		0B36CE4B1B40F0DB00B23CBB /* PrivateWSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateWSService.m; sourceTree = "<group>"; };
+		0B36CE4D1B40F6DC00B23CBB /* LoadImageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadImageService.h; sourceTree = "<group>"; };
+		0B36CE4E1B40F6DC00B23CBB /* LoadImageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadImageService.m; sourceTree = "<group>"; };
 		0B37ED771AD10FB6006A961F /* bubble-left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble-left@2x.png"; sourceTree = "<group>"; };
 		0B37ED781AD10FB6006A961F /* bubble-right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble-right@2x.png"; sourceTree = "<group>"; };
 		0B37ED791AD10FB6006A961F /* PhotoButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PhotoButton@2x.png"; sourceTree = "<group>"; };
@@ -884,6 +896,8 @@
 				0BF200231B381BF30071E51A /* FavZiPointsViewController.m */,
 				0BF2002B1B3F753C0071E51A /* ZiPointTabBarController.h */,
 				0BF2002C1B3F753C0071E51A /* ZiPointTabBarController.m */,
+				0B36CE441B40AAEF00B23CBB /* UserNavigationController.h */,
+				0B36CE451B40AAEF00B23CBB /* UserNavigationController.m */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -895,6 +909,12 @@
 				0B601E931B2BC55C001E87EA /* ZiPointWSService.m */,
 				0B601EAD1B2CF093001E87EA /* ZipLocationService.h */,
 				0B601EAE1B2CF093001E87EA /* ZipLocationService.m */,
+				0B36CE471B40AE6400B23CBB /* ZiPointDataService.h */,
+				0B36CE481B40AE6400B23CBB /* ZiPointDataService.m */,
+				0B36CE4A1B40F0DB00B23CBB /* PrivateWSService.h */,
+				0B36CE4B1B40F0DB00B23CBB /* PrivateWSService.m */,
+				0B36CE4D1B40F6DC00B23CBB /* LoadImageService.h */,
+				0B36CE4E1B40F6DC00B23CBB /* LoadImageService.m */,
 			);
 			name = services;
 			sourceTree = "<group>";
@@ -1654,7 +1674,10 @@
 				0BE2647E1ADB768400F3B619 /* NSUserDefaults+DemoSettings.m in Sources */,
 				0B0D37301B1F08320019697C /* LeftToRightSegue.m in Sources */,
 				0BC9879B1AD0A556000BE278 /* ZeePointGroup.m in Sources */,
+				0B36CE461B40AAEF00B23CBB /* UserNavigationController.m in Sources */,
+				0B36CE4F1B40F6DC00B23CBB /* LoadImageService.m in Sources */,
 				0B157A5B1B1A931100B7E3A7 /* ZeePointUser.m in Sources */,
+				0B36CE4C1B40F0DB00B23CBB /* PrivateWSService.m in Sources */,
 				0BF2002A1B3F746E0071E51A /* ZipointTabBar.m in Sources */,
 				0B0C923D1AD9A63700C76E9F /* LoginViewController.m in Sources */,
 				0B601EB31B2D9ECE001E87EA /* ZiPointMessage.m in Sources */,
@@ -1664,6 +1687,7 @@
 				0B601EAA1B2BFDE4001E87EA /* LoadingView.m in Sources */,
 				0BC987981AD0A4C5000BE278 /* ZeePointsViewController.m in Sources */,
 				0BF2002D1B3F753C0071E51A /* ZiPointTabBarController.m in Sources */,
+				0B36CE491B40AE6400B23CBB /* ZiPointDataService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,8 @@
 #import "SWRevealViewController.h"
 #import "Constants.h"
 #import "ZiPointWSService.h"
+#import "ZiPointDataService.h"
+#import "UserNavigationController.h"
 
 @interface ZiPointUsersViewController ()
 
@@ -22,6 +24,8 @@
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @property ZiPointWSService *zipService;
+
+@property ZiPointDataService *zipDataService;
 @end
 
 @implementation ZiPointUsersViewController
@@ -31,10 +35,8 @@
     
     self.filteredZiPointUsers=[[NSArray alloc] init];
     _zipService = [ZiPointWSService sharedManager];
-    self.sortedZiPointUsers=[_zipService.zeePointUsers sortedArrayUsingDescriptors:[ZeePointUser getSortDescriptors]];
-    //UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
-    
-    //self.tableView.tableHeaderView = headerView;
+    _zipDataService = [ZiPointDataService sharedManager];
+    self.sortedZiPointUsers=[_zipDataService.zeePointUsers sortedArrayUsingDescriptors:[ZeePointUser getSortDescriptors]];
     
 }
 
@@ -57,7 +59,7 @@
      {
          if (data.length > 0 && connectionError == nil)
          {
-             [_zipService.zeePointUsers removeAllObjects];
+             [_zipDataService.zeePointUsers removeAllObjects];
              [self populateTable:data];
              
              
@@ -99,9 +101,9 @@
                                                              options:0
                                                                error:NULL];
     
-    _zipService.zeePointUsers=[_zipService createZipointUsers:dict];
+    _zipDataService.zeePointUsers=[_zipService createZipointUsers:dict];
     
-    self.sortedZiPointUsers=[_zipService.zeePointUsers sortedArrayUsingDescriptors:[ZeePointUser getSortDescriptors]];
+    self.sortedZiPointUsers=[_zipDataService.zeePointUsers sortedArrayUsingDescriptors:[ZeePointUser getSortDescriptors]];
     
     [self.tableView reloadData];
 }
@@ -139,7 +141,7 @@
     //ziPointUserCell.userImageView.layer.cornerRadius=23;
     //ziPointUserCell.userImageView.layer.borderWidth=2.0;
     //ziPointUserCell.userImageView.layer.masksToBounds = YES;
-    ziPointUserCell.userImageView.image=[UIImage imageWithData:[_zipService.images objectForKey:[zeePointUser.userId description]]];//zeePointUser.userImage.avatarImage;//[_zipService.images objectForKey:zeePointUser.u];
+    ziPointUserCell.userImageView.image=[UIImage imageWithData:[_zipDataService.images objectForKey:[zeePointUser.userId description]]];//zeePointUser.userImage.avatarImage;//[_zipService.images objectForKey:zeePointUser.u];
     ziPointUserCell.titleLabel.text=zeePointUser.title;
 
     return ziPointUserCell;
@@ -147,13 +149,34 @@
 - (void)tableView:(UITableView *)atableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    
+    /*
     ZiPointUserViewController *stubController = [[ZiPointUserViewController alloc] init];
     stubController.view.backgroundColor = [UIColor whiteColor];
     [self.revealViewController.navigationController pushViewController:stubController animated:YES];
+    */
+    
+    //ZiPointUserViewController *mapViewController = [[ZiPointUserViewController alloc] init];
+    //UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mapViewController];
+    
+    //UserNavigationController *navigationController = [[UserNavigationController alloc] initWithRootViewController:mapViewController];
+    
+    //[self.revealViewController pushFrontViewController:navigationController animated:YES];
     
     
+    [self.revealViewController revealToggleAnimated:YES];
+    [self.revealViewController.frontViewController.childViewControllers[0] performSegueWithIdentifier:@"privateRoomSegue" sender:self];
+    
+    //[self.parentViewController.navigationController  performSegueWithIdentifier:@"privateRoomSegue" sender:self];//popToRootViewControllerAnimated:NO];
+    //[[self.revealViewController.frontViewController.childViewControllers[0] navigationController] popToRootViewControllerAnimated:NO];//:@"privateRoomSegue" sender:self];
+    
+    
+    //[self.revealViewController revealToggleAnimated:NO];
+    //[self.revealViewController performSelector:@selector( rightRevealToggle: )];
+    //[self.revealViewController.frontViewController.childViewControllers[0] performSelector:@selector( rightRevealToggle: )];
 
+    //[self.revealViewController.childViewControllers[0].frontViewController.navigationController performSegueWithIdentifier:@"privateRoomSegue" sender:self];
+    
+    //[self.revealViewController.childViewControllers[0] childViewControllers[1]] performSegueWithIdentifier:@"privateRoomSegue" sender:self];
     
     /*
     ZeePointUser *zeePointUser =[[ZeePointUser alloc] init];

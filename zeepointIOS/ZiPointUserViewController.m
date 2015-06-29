@@ -8,13 +8,14 @@
 
 #import "ZiPointUserViewController.h"
 #import "SWRevealViewController.h"
-#import <WebsocketStompKit/WebsocketStompKit.h>
 #import "Constants.h"
 #import "JSQMessage.h"
 #import "SWRevealViewController.h"
 #import "ZeePointUser.h"
 #import "Cloudinary.h"
 #import "ZiPointWSService.h"
+#import "PrivateWSService.h"
+#import "ZiPointDataService.h"
 
 
 @interface ZiPointUserViewController () <ZiPointWSServiceDelegate>
@@ -22,28 +23,32 @@
 //@property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
 //@property (weak, nonatomic) IBOutlet UIBarButtonItem *sideBarButton;
 @property CLCloudinary *cloudinary;
-@property ZiPointWSService *zipService;
+//@property ZiPointWSService *zipService;
+@property PrivateWSService *privateService;
+@property ZiPointDataService *zipDataService;
 
 @end
 
 
 @implementation ZiPointUserViewController
-@synthesize zipService;
-
+//@synthesize zipService;
+@synthesize zipDataService;
+@synthesize privateService;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    zipService = [ZiPointWSService sharedManager];
-    zipService.delegate=self;
-    
+//    zipService = [ZiPointWSService sharedManager];
+    privateService = [PrivateWSService sharedManager];
+ //   zipService.delegate=self;
+    zipDataService = [ZiPointDataService sharedManager];
     self.cloudinary = [[CLCloudinary alloc] initWithUrl: CLOUDINARY_SERVICE];
     
     /**
      *  You MUST set your senderId and display name
      */
-    self.senderId = [zipService getUserId];
-    self.senderDisplayName = [zipService getUserName];
+    self.senderId = [zipDataService getUserId];
+    self.senderDisplayName = [zipDataService getUserName];
     
     
     /**
@@ -88,7 +93,7 @@
     //[self notAbleToParticipate];
     
     
-    //self.navigationItem.title=nil;
+    self.navigationItem.title=privateService.getZiPointUser.userName;
     
     /*if (zipService.getZiPoint){
         
@@ -137,8 +142,10 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    [self.navigationController popToRootViewControllerAnimated:NO];
-    [self.revealViewController.navigationController popToRootViewControllerAnimated:NO];
+    [self.parentViewController.navigationController popToRootViewControllerAnimated:NO];
+    //[[self.revealViewController.frontViewController.childViewControllers[0] navigationController] popToRootViewControllerAnimated:NO];//:@"privateRoomSegue" sender:self];
+    //[self.navigationController popToRootViewControllerAnimated:NO];
+    //[self.revealViewController.navigationController popToRootViewControllerAnimated:NO];
 }
 
 /*
@@ -164,8 +171,8 @@
          senderDisplayName:(NSString *)senderDisplayName
                       date:(NSDate *)date
 {
-    NSNumber *myMsgid = @((NSUInteger)zipService.messages.count);
-    [zipService sendMessage:text messageId:myMsgid messageType:TEXT_MESSAGE];
+    NSNumber *myMsgid = @((NSUInteger)[[zipDataService.privateMessages objectForKey:privateService.getZiPointUser.userId] count]);
+    [privateService sendMessage:text messageId:myMsgid messageType:TEXT_MESSAGE];
     /**
      *  Sending a message. Your implementation of this method should do *at least* the following:
      *
@@ -182,7 +189,7 @@
     
     
     
-    [zipService.messages addObject:message];
+    [[zipDataService.privateMessages objectForKey:privateService.getZiPointUser.userId] addObject:message];
     
     [self finishSendingMessageAnimated:YES];
     
@@ -296,7 +303,7 @@
                                                              media:photoItem];
         
         [photoMessage setText:[randomPublicId description]];
-        [zipService.messages addObject:photoMessage];
+        [[zipDataService.privateMessages objectForKey:privateService.getZiPointUser.userId] addObject:photoMessage];
         [self finishReceivingMessageAnimatedNoScroll];
     }
 }
@@ -307,10 +314,8 @@
     NSString* fileName = [result valueForKey:@"public_id"];
     NSString* urlMessage = [result valueForKey:@"url"];
     
-    NSNumber *myMsgid = @((NSUInteger)zipService.messages.count);
-    [zipService sendMessage:urlMessage messageId:myMsgid messageType:PHOTO_MESSAGE];
-    NSURL *imageURL = [NSURL URLWithString:[urlMessage stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
-    [zipService loadImageAsync:imageURL imageKey:urlMessage isImageForAmessage:true secondImageKey:fileName];
+    NSNumber *myMsgid = @((NSUInteger)[[zipDataService.privateMessages objectForKey:privateService.getZiPointUser.userId] count]);
+    [privateService sendMessage:urlMessage messageId:myMsgid messageType:PHOTO_MESSAGE];
 }
 
 - (void) uploaderError:(NSString *)result code:(NSInteger)code context:(id)context {
@@ -325,7 +330,7 @@
 
 - (id<JSQMessageData>)collectionView:(JSQMessagesCollectionView *)collectionView messageDataForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [zipService.messages objectAtIndex:indexPath.item];
+    return [[zipDataService.privateMessages objectForKey:privateService.getZiPointUser.userId] objectAtIndex:indexPath.item];
 }
 
 - (id<JSQMessageBubbleImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView messageBubbleImageDataForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -337,13 +342,13 @@
      *  Otherwise, return your previously created bubble image data objects.
      */
     
-    JSQMessage *message = [zipService.messages objectAtIndex:indexPath.item];
+    JSQMessage *message = [[zipDataService.privateMessages objectForKey:privateService.getZiPointUser.userId] objectAtIndex:indexPath.item];
     
     if ([message.senderId isEqualToString:self.senderId]) {
-        return zipService.outgoingBubbleImageData;
+        return zipDataService.outgoingBubbleImageData;
     }
     
-    return zipService.incomingBubbleImageData;
+    return zipDataService.incomingBubbleImageData;
 }
 
 - (id<JSQMessageAvatarImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView avatarImageDataForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -368,7 +373,7 @@
      *
      *  Override the defaults in `viewDidLoad`
      */
-    JSQMessage *message = [zipService.messages objectAtIndex:indexPath.item];
+    JSQMessage *message = [[zipDataService.privateMessages objectForKey:privateService.getZiPointUser.userId] objectAtIndex:indexPath.item];
     
     if ([message.senderId isEqualToString:self.senderId]) {
         if (![NSUserDefaults outgoingAvatarSetting]) {
@@ -382,7 +387,7 @@
     }
     
     
-    return [zipService.avatars objectForKey:message.senderId];
+    return [zipDataService.avatars objectForKey:message.senderId];
 }
 
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath
@@ -394,7 +399,7 @@
      *  Show a timestamp for every 3rd message
      */
     if (indexPath.item % 3 == 0) {
-        JSQMessage *message = [zipService.messages objectAtIndex:indexPath.item];
+        JSQMessage *message = [zipDataService.messages objectAtIndex:indexPath.item];
         return [[JSQMessagesTimestampFormatter sharedFormatter] attributedTimestampForDate:message.date];
     }
     
@@ -403,7 +408,7 @@
 
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath
 {
-    JSQMessage *message = [zipService.messages objectAtIndex:indexPath.item];
+    JSQMessage *message = [[zipDataService.privateMessages objectForKey:privateService.getZiPointUser.userId] objectAtIndex:indexPath.item];
     
     /**
      *  iOS7-style sender name labels
@@ -413,7 +418,7 @@
     }
     
     if (indexPath.item - 1 > 0) {
-        JSQMessage *previousMessage = [zipService.messages objectAtIndex:indexPath.item - 1];
+        JSQMessage *previousMessage = [[zipDataService.privateMessages objectForKey:privateService.getZiPointUser.userId] objectAtIndex:indexPath.item - 1];
         if ([[previousMessage senderId] isEqualToString:message.senderId]) {
             return nil;
         }
@@ -434,7 +439,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [zipService.messages count];
+    return [[zipDataService.privateMessages objectForKey:privateService.getZiPointUser.userId] count];
 }
 
 - (UICollectionViewCell *)collectionView:(JSQMessagesCollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -458,7 +463,7 @@
      *  Instead, override the properties you want on `self.collectionView.collectionViewLayout` from `viewDidLoad`
      */
     
-    JSQMessage *msg = [zipService.messages objectAtIndex:indexPath.item];
+    JSQMessage *msg = [[zipDataService.privateMessages objectForKey:privateService.getZiPointUser.userId] objectAtIndex:indexPath.item];
     
     if (!(BOOL*)msg.isMediaMessage) {
         
@@ -514,13 +519,13 @@
     /**
      *  iOS7-style sender name labels
      */
-    JSQMessage *currentMessage = [zipService.messages objectAtIndex:indexPath.item];
+    JSQMessage *currentMessage = [[zipDataService.privateMessages objectForKey:privateService.getZiPointUser.userId] objectAtIndex:indexPath.item];
     if ([[currentMessage senderId] isEqualToString:self.senderId]) {
         return 0.0f;
     }
     
     if (indexPath.item - 1 > 0) {
-        JSQMessage *previousMessage = [zipService.messages objectAtIndex:indexPath.item - 1];
+        JSQMessage *previousMessage = [[zipDataService.privateMessages objectForKey:privateService.getZiPointUser.userId] objectAtIndex:indexPath.item - 1];
         if ([[previousMessage senderId] isEqualToString:[currentMessage senderId]]) {
             return 0.0f;
         }
@@ -540,7 +545,7 @@
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView
                 header:(JSQMessagesLoadEarlierHeaderView *)headerView didTapLoadEarlierMessagesButton:(UIButton *)sender
 {
-    [zipService getPreviousMessages];
+    [privateService getPreviousMessages];
     /*
      NSString *zpointFinalURL=[NSString stringWithFormat:GET_PREVIOUS_MSGS,WS_ENVIROMENT,zipService.zeePoint.zpointId,[zipService getUserId],self.oldestMessage];
      NSURL *url = [NSURL URLWithString:[zpointFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
@@ -596,18 +601,18 @@
 
 -(void)didJustConnect{
     self.navigationItem.titleView=nil;
-    self.navigationItem.title=zipService.getZiPoint.name;
+    //self.navigationItem.title=zipService.getZiPoint.name;
     [self checkEditable];
     
     [self finishReceivingMessage];
 }
 
 -(void)checkEditable{
-    if ([zipService.getZiPoint.distance intValue]<=100 || ([zipService.getZiPoint.ownerId isEqualToString:zipService.getUserId])){
+    /*if ([zipService.getZiPoint.distance intValue]<=100 || ([zipService.getZiPoint.ownerId isEqualToString:zipDataService.getUserId])){
         [self ableToParticipate];
     }else{
         [self notAbleToParticipate];
-    }
+    }*/
 }
 
 -(void)connecting:(UIView *)loadingView{

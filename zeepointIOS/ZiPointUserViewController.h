@@ -23,10 +23,11 @@
 
 @end
 
-@interface ZiPointUserViewController : JSQMessagesViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate>
+@interface ZiPointUserViewController : JSQMessagesViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (weak, nonatomic) id<JSQDemoViewControllerDelegate> delegateModal;
 
 //@property (strong, nonatomic) DemoModelData *demoData;
 
 @end
+

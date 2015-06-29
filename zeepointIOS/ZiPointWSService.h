@@ -31,6 +31,8 @@
 
 -(void)finishReceivingMessageAnimatedNoScroll;
 
+//-(void)finishReceivingMessageAnimated:(BOOL)animated;
+
 @end
 
 @interface ZiPointWSService : NSObject
@@ -44,21 +46,21 @@
     
 }*/
 //@property (nonatomic, strong) ZeePointGroup *zeePoint;
-@property (strong, nonatomic) NSMutableSet *locationZiPoints;
-@property (strong, nonatomic) NSMutableSet *myZiPoints;
-@property (nonatomic, strong) NSMutableSet *zeePointUsers;
-@property (nonatomic) double lat;
-@property (nonatomic) double lon;
+//@property (strong, nonatomic) NSMutableSet *locationZiPoints;
+//@property (strong, nonatomic) NSMutableSet *myZiPoints;
+//@property (nonatomic, strong) NSMutableSet *zeePointUsers;
+//@property (nonatomic) double lat;
+//@property (nonatomic) double lon;
 @property (nonatomic, assign) id  delegate;
-@property (strong, nonatomic) NSMutableDictionary *avatars;
-@property (strong, nonatomic) NSMutableDictionary *images;
+//@property (strong, nonatomic) NSMutableDictionary *avatars;
+//@property (strong, nonatomic) NSMutableDictionary *images;
 @property BOOL connected;
-@property (nonatomic, strong) UIView *loadingView;
-@property (strong, nonatomic) NSMutableArray *messages;
+//@property (nonatomic, strong) UIView *loadingView;
+//@property (strong, nonatomic) NSMutableArray *messages;
 
-@property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImageData;
+//@property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImageData;
 
-@property (strong, nonatomic) JSQMessagesBubbleImage *incomingBubbleImageData;
+//@property (strong, nonatomic) JSQMessagesBubbleImage *incomingBubbleImageData;
 
 // define public functions
 
@@ -67,6 +69,14 @@
 -(void)setZiPoint:(ZeePointGroup *)ziPoint;
 
 -(ZeePointGroup *) getZiPoint;
+
+//-(void)setZiPoint:(ZeePointGroup *)ziPoint;
+
+//-(ZeePointGroup *) getZiPoint;
+
+//-(void)setZiPointUser:(ZeePointUser *)ziPointUser;
+
+//-(ZeePointUser *) getZiPointUser;
 
 //- (void)sendMessage:(NSString *)body;
 
@@ -78,31 +88,7 @@
 
 //- (void)subscribeZip;
 
--(NSData *)loadImageAsync:(NSURL *)imageURL imageKey:(NSString *)key isImageForAmessage:(bool)isMessage secondImageKey:(NSString *)secKey;
-
--(void)setDeviceToken:(NSString *) deviceToken;
-
--(NSString *) getDeviceToken;
-
--(void)setUserId:(NSString *) userId;
-
--(NSString *) getUserId;
-
--(void)setFbUserId:(NSString *)fbUserId;
-
--(NSString *) getFbUserId;
-
--(void)setEmail:(NSString *)email;
-
--(NSString *) getEmail;
-
--(void)setUserName:(NSString *)name;
-
--(NSString *) getUserName;
-
--(void)setGender:(NSString *)gender;
-
--(NSString *) getGender;
+//-(NSData *)loadImageAsync:(NSURL *)imageURL imageKey:(NSString *)key isImageForAmessage:(bool)isMessage secondImageKey:(NSString *)secKey;
 
 -(ZeePointGroup *)createZipointGroup:(NSDictionary *)dict;
 

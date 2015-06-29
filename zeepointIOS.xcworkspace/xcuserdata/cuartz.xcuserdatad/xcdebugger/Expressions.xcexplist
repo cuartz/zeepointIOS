@@ -83,14 +83,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[ZeePointGroup isEqual:]:ZeePointGroup.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "[self isEqualToWidget:other]">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "-[ZeePointGroup isEqualToWidget:]:ZeePointGroup.m">
          <PersistentStrings>
             <PersistentString
@@ -100,10 +92,18 @@
                value = "[zeePointGroup zpointId]">
             </PersistentString>
             <PersistentString
-               value = "[self name]">
+               value = "[zeePointGroup name]">
             </PersistentString>
             <PersistentString
-               value = "[zeePointGroup name]">
+               value = "[self name]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[ZeePointGroup isEqual:]:ZeePointGroup.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[self isEqualToWidget:other]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -111,10 +111,10 @@
          contextName = "-[JSQMessagesViewController scrollToBottomAnimated:]:JSQMessagesViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "self.collectionView.collectionViewLayout">
+               value = "[self.collectionView.collectionViewLayout collectionViewContentSize]">
             </PersistentString>
             <PersistentString
-               value = "[self.collectionView.collectionViewLayout collectionViewContentSize]">
+               value = "self.collectionView.collectionViewLayout">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -141,22 +141,22 @@
          contextName = "-[ZeePointViewController receiveMessage:putMessageAtFirst:]:ZeePointViewController.m">
          <PersistentStrings>
             <PersistentString
+               value = "[self.demoData.messages objectAtIndex:[((NSNumber *)[message objectForKey:@&quot;id&quot;]) intValue]]">
+            </PersistentString>
+            <PersistentString
                value = "([[self.demoData.messages objectAtIndex:[((NSNumber *)[message objectForKey:@&quot;id&quot;]) intValue]] received]==FALSE)">
             </PersistentString>
             <PersistentString
-               value = "[self.demoData.messages objectAtIndex:[((NSNumber *)[message objectForKey:@&quot;id&quot;]) intValue]]">
+               value = "[self.demoData.messages count] &gt; [((NSNumber *)[message objectForKey:@&quot;id&quot;]) intValue]">
             </PersistentString>
             <PersistentString
                value = "[[message objectForKey:@&quot;userId&quot;] description]">
             </PersistentString>
             <PersistentString
-               value = "zipService">
-            </PersistentString>
-            <PersistentString
                value = "self.toolbarItems">
             </PersistentString>
             <PersistentString
-               value = "[self.demoData.messages count] &gt; [((NSNumber *)[message objectForKey:@&quot;id&quot;]) intValue]">
+               value = "zipService">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -192,6 +192,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[ZiPointWSService receiveMessage:putMessageAtFirst:]:ZiPointWSService.m">
+      </ContextState>
+      <ContextState
          contextName = "__39-[ZeePointsViewController getMoreData:]_block_invoke:ZeePointsViewController.m">
       </ContextState>
       <ContextState
@@ -206,19 +209,45 @@
          contextName = "__56-[ZeePointViewController connect:messageId:messageType:]_block_invoke:ZeePointViewController.m">
       </ContextState>
       <ContextState
+         contextName = "-[ZiPointUsersViewController tableView:didSelectRowAtIndexPath:]:ZiPointUsersViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.revealViewController.frontViewController">
+            </PersistentString>
+            <PersistentString
+               value = "self.revealViewController.childViewControllers[0]">
+            </PersistentString>
+            <PersistentString
+               value = "[self.revealViewController.childViewControllers[0] childViewControllers]">
+            </PersistentString>
+            <PersistentString
+               value = "self.revealViewController.frontViewController.childViewControllers">
+            </PersistentString>
+            <PersistentString
+               value = "self.revealViewController">
+            </PersistentString>
+            <PersistentString
+               value = "[self.revealViewController.childViewControllers[0] childViewControllers[0]">
+            </PersistentString>
+            <PersistentString
+               value = "self.revealViewController.childViewControllers[0] childViewControllers[1]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[ZeePointViewController sendMessage:]:ZeePointViewController.m">
       </ContextState>
       <ContextState
          contextName = "-[ZeePointViewController collectionView:cellForItemAtIndexPath:]:ZeePointViewController.m">
          <PersistentStrings>
             <PersistentString
+               value = "[msg.senderId isEqualToString:self.senderId]">
+            </PersistentString>
+            <PersistentString
                value = "msg.received">
             </PersistentString>
             <PersistentString
                value = "msg.received==NULL">
-            </PersistentString>
-            <PersistentString
-               value = "[msg.senderId isEqualToString:self.senderId]">
             </PersistentString>
             <PersistentString
                value = "([msg.senderId isEqualToString:self.senderId] &amp;&amp; (msg.received==NULL || !msg.received))">

@@ -14,6 +14,7 @@
 #import "Constants.h"
 #import "SWRevealViewController.h"
 #import "LoadingView.h"
+#import "ZiPointDataService.h"
 #import "ZiPointWSService.h"
 
 @interface FavZiPointsViewController ()
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) NSArray *sortedZeePoints;
 @property (strong, nonatomic) NSArray *filteredZeePoints;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property ZiPointDataService *zipDataService;
 @property ZiPointWSService *zipService;
 @end
 
@@ -37,8 +39,7 @@
     
     _zipService = [ZiPointWSService sharedManager];
     
-    
-    
+    _zipDataService = [ZiPointDataService sharedManager];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -113,7 +114,7 @@
 
 -(void)getData{
     
-    NSString *zpointFinalURL=[NSString stringWithFormat:GET_FAV_ZPOINTS_SERVICE,WS_ENVIROMENT,_zipService.lat,_zipService.lon,_zipService.getUserId];
+    NSString *zpointFinalURL=[NSString stringWithFormat:GET_FAV_ZPOINTS_SERVICE,WS_ENVIROMENT,_zipDataService.lat,_zipDataService.lon,_zipDataService.getUserId];
     NSURL *url = [NSURL URLWithString:zpointFinalURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request
@@ -138,7 +139,7 @@
     
     //[self.zeePoints adaddObjects:[_zipService createZipointGroups:dict]];//[greeting objectForKey:@"zeePointsOut"];
     
-    self.sortedZeePoints=[_zipService.myZiPoints sortedArrayUsingDescriptors:[ZeePointGroup getSortDescriptors]];
+    self.sortedZeePoints=[_zipDataService.myZiPoints sortedArrayUsingDescriptors:[ZeePointGroup getSortDescriptors]];
     [self.tableView reloadData];
     
 }
@@ -178,9 +179,9 @@
     
     zeePointCell.zeePointDistanceLabel.text = [ZeePointGroup getDistanceLabelText:zeePoint.distance alwaysDisplayDistance:true];
     zeePointCell.zeePointDistanceLabel.textColor=[ZeePointGroup getDistanceLabelColor:zeePoint.distance];
-    zeePointCell.zeePointNameLabel.textColor=[ZeePointGroup getTitleLabelColor:zeePoint.distance senderId:_zipService.getUserId ownerId:zeePoint.ownerId];
+    zeePointCell.zeePointNameLabel.textColor=[ZeePointGroup getTitleLabelColor:zeePoint.distance senderId:_zipDataService.getUserId ownerId:zeePoint.ownerId];
     
-    if ([zeePoint.referenceId isEqualToString:_zipService.getZiPoint.referenceId]){//zeePoint.joined ) {
+    if ([zeePoint.referenceId isEqualToString:[_zipService getZiPoint].referenceId]){//zeePoint.joined ) {
         zeePointCell.zeePointNameLabel.textColor= [ZeePointGroup getJoinTitleLabelColor];
     }
     
