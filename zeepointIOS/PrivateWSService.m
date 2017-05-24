@@ -8,10 +8,11 @@
 #import "PrivateWSService.h"
 #import "ZiPointDataService.h"
 #import "MMPReactiveStompClient.h"
-#import <SocketRocket/SRWebSocket.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import "SRWebSocket.h"
+#import "ReactiveCocoa.h"
 #import "Constants.h"
 #import "LoadingView.h"
+#import "AppDelegate.h"
 
 @interface PrivateWSService ()
 
@@ -54,7 +55,7 @@
                                   };
         [request setAllHTTPHeaderFields:headers];
         
-        client = [[MMPReactiveStompClient alloc] initWithOutSocket];
+        client = [[MMPReactiveStompClient alloc] initWithURLRequest:request];
         
         [self connect];
         
@@ -67,7 +68,7 @@
 -(void)connect {
     // channel=newChannel;
     
-    [[client open:request]
+    [[client open]
      subscribeNext:^(id x) {
          if ([x class] == [SRWebSocket class]) {
              self.connected=TRUE;
@@ -127,9 +128,7 @@
     self.oldestMessage=0;
     
     //[delegate finishReceivingMessageAnimatedNoScroll];
-    if (self.connected){
-        [client unSubscribe];
-    }
+
 }
 
 
@@ -158,7 +157,7 @@
     NSDictionary *dict = @{
                            @"message": message,
                            @"id": myMsgId,
-                           //@"channel":self.zeePoint.referenceId,
+                           @"toUserId":self.zeePointUser.userId,
                            @"userId":[_dataService getUserId],
                            @"fbId":[_dataService getFbUserId],
                            @"userName":[_dataService getUserName],
@@ -173,7 +172,7 @@
 }
 
 - (void)sendMessage:(NSString *)body{
-    //[client sendMessage:body toDestination:[NSString stringWithFormat:STOMP_DESTINATION,self.zeePoint.referenceId]];
+    [client sendMessage:body toDestination:[NSString stringWithFormat:STOMP_PRIVATE_DESTINATION,self.zeePointUser.userId]];
 }
 
 
@@ -212,8 +211,20 @@
     [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
     [delegate finishReceivingMessageAnimated:YES];
 }
-/*
+
 - (void)receiveMessage:(ZiPointMessage *)message putMessageAtFirst:(bool)atFirst{
+    //AppDelegate *appDelegate =[[UIApplication sharedApplication] delegate];
+    //NSManagedObjectContext *context =[appDelegate managedObjectContext];
+    //NSEntityDescription *descr = [NSEntityDescription entityForName:@"ZiPuser" inManagedObjectContext:context];
+    
+    
+    
+    
+
+    
+}
+
+    /*
     if ([self.zeePoint.referenceId isEqualToString:message.channel]){
         if ([[_dataService getUserId] isEqualToString:message.userId]  && (message.messageId==nil || message.messageId==(id)[NSNull null])){
             // YOUR MESSAGE HAS BEEN RECEIVED
@@ -355,12 +366,12 @@
     });
     return imageData;
 }
-/*
-- (void)joinZiPoint{
+
+- (void)joinPrivate{
     [delegate connecting:_dataService.loadingView];
     //[self unSubscribeZip];
     //self.messages = [NSMutableArray new];
-    NSString *zpointFinalURL=[NSString stringWithFormat:JOIN_ZPOINT_SERVICE,WS_ENVIROMENT,self.zeePoint.zpointId,_dataService.getUserId,_dataService.lat,_dataService.lon];
+    NSString *zpointFinalURL=[NSString stringWithFormat:JOIN_ZPOINT_SERVICE,WS_ENVIROMENT,_zeePointUser.userId,_dataService.getUserId,_dataService.lat,_dataService.lon];
     NSURL *url = [NSURL URLWithString:[zpointFinalURL stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     NSURLRequest *requestJoin = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:requestJoin
@@ -374,7 +385,7 @@
              NSDictionary *ziPointJoinInfo = [NSJSONSerialization JSONObjectWithData:data
                                                                              options:0
                                                                                error:NULL];
-             
+             /*
              NSMutableArray *messagesArray=[self createZipointMessages:ziPointJoinInfo];//[ziPointJoinInfo objectForKey:@"zMessages"];
              
              for (ZiPointMessage *message in messagesArray) {
@@ -392,7 +403,7 @@
              
              
              
-             [[client stompMessagesFromDestination:[NSString stringWithFormat:@"/topic/channels/%@",self.zeePoint.referenceId]]
+             [[client stompMessagesFromDestination:[NSString stringWithFormat:@"/topic/private/%@",self.dataService.getUserId]]
               subscribeNext:^(MMPStompMessage *message) {
                   NSString *jsonString=[message body];
                   NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
@@ -402,13 +413,13 @@
                   [self receiveWSMessage:[self createZipointMessage:messageData]];
                   
               }];
-             
+             */
              
              //[delegate didJustConnect];
          }
      }];
     
     
-}*/
+}
 
 @end

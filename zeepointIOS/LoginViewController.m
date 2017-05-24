@@ -26,10 +26,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //_loginButton = [[FBSDKLoginButton alloc] init];
     
+    //loginButton.center = self.view.center;
+    //[self.view addSubview:loginButton];
     
-    FBSDKLoginButton *loginButton = (FBSDKLoginButton *)[self.view viewWithTag:1];
-    loginButton.readPermissions=@[@"public_profile", @"email"];
+    //FBSDKLoginButton *loginButton = (FBSDKLoginButton *)[self.view viewWithTag:1];
+    
+    NSString *userId=_zipDataService.getUserId;
+    NSString *fbUserId=_zipDataService.getFbUserId;
+    NSString *email=_zipDataService.getEmail;
+    
+    if ([FBSDKAccessToken currentAccessToken] && (userId!=nil && fbUserId!=nil && email!=nil )){
+        
+        [self goToMainView];
+    }
+    
+    self.loginButton.readPermissions=@[@"public_profile", @"email"];
+    self.loginButton.delegate=self;
     _zipService = [ZiPointWSService sharedManager];
     _zipDataService = [ZiPointDataService sharedManager];
 }
@@ -50,14 +64,7 @@
     
     //ZiPointWSService *zipService = [ZiPointWSService sharedManager];
     
-    NSString *userId=_zipDataService.getUserId;
-    NSString *fbUserId=_zipDataService.getFbUserId;
-    NSString *email=_zipDataService.getEmail;
-    
-    if ([FBSDKAccessToken currentAccessToken] || (userId!=nil && fbUserId!=nil && email!=nil )){
-        
-        [self goToMainView];
-    }
+   /* */
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,7 +85,7 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
     
     
     if ([FBSDKAccessToken currentAccessToken]) {
-        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:nil]
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"id, name, email, gender"}]
          startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
                                       id result, NSError *error) {
              if (error) {
@@ -90,6 +97,7 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                  [alert show];*/
              }else{
                  //NSString *fbUserId=[[result token] userID];
+                 NSLog( @"### running FB sdk version: %@", [FBSDKSettings sdkVersion] );
                  NSString *fbUserId=[result valueForKeyPath:@"id"];
                  NSString *username=[result valueForKeyPath:@"name"];
                  NSString *gender=[result valueForKeyPath:@"gender"];
@@ -123,7 +131,7 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                           
                       }else{
                           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error Code 002","Error code")
-                                                                          message:@"Problem Occurred, you need internet connection"
+                                                                          message:@"Problem Occurred, not able to communicate with the server"
                                                                          delegate:nil
                                                                 cancelButtonTitle:@"OK"
                                                                 otherButtonTitles: nil];

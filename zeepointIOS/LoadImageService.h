@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "ZiPointMessage.h"
+#import "Constants.h"
 
 @class LoadImageService;
 
 @protocol LoadImageServiceDelegatessage
 
 -(void)finishLoadingImage;
+
+-(void)finishUploadingImage:(NSString *)urlMessage messageId:(NSNumber *)myMsgid messageType:(NSString *)PHOTO_MESSAGE;
 
 @end
 
@@ -24,6 +27,6 @@
 
 -(void)imageMessageReceived:(ZiPointMessage*) message;
 -(void)loadUserImage:(NSString *) currentUserId faceBookId:(NSString *) currentFbId;
--(NSNumber *)uploadImage:(NSData *)dataImage;
+-(void)uploadImage:(NSData *)dataImage randomNumber:(NSNumber *)randomPublicId;
 
 @end

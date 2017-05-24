@@ -21,7 +21,7 @@
 @property (nonatomic, strong) NSString *gender;
 @property (nonatomic, strong) ZeePointGroup *zeePoint;
 @property (nonatomic, strong) ZeePointUser *zeePointUser;
-@property ZiPointDataService *zipService;
+//@property ZiPointDataService *zipService;
 
 @end
 

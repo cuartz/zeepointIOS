@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0B0C923D1AD9A63700C76E9F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0C923C1AD9A63700C76E9F /* LoginViewController.m */; };
-		0B0C95311ADB230E00C76E9F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B0C939E1AD9B4BF00C76E9F /* FBSDKCoreKit.framework */; };
-		0B0C95321ADB230E00C76E9F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B0C939C1AD9B4B300C76E9F /* FBSDKLoginKit.framework */; };
 		0B0D372C1B1ED1650019697C /* ZiPointUserTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0D372B1B1ED1650019697C /* ZiPointUserTableCell.m */; };
 		0B0D37301B1F08320019697C /* LeftToRightSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0D372F1B1F08320019697C /* LeftToRightSegue.m */; };
 		0B0D37401B20E1C20019697C /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B0D37341B20E1C20019697C /* Icon-Small.png */; };
@@ -282,17 +280,25 @@
 		0B36CE491B40AE6400B23CBB /* ZiPointDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B36CE481B40AE6400B23CBB /* ZiPointDataService.m */; };
 		0B36CE4C1B40F0DB00B23CBB /* PrivateWSService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B36CE4B1B40F0DB00B23CBB /* PrivateWSService.m */; };
 		0B36CE4F1B40F6DC00B23CBB /* LoadImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B36CE4E1B40F6DC00B23CBB /* LoadImageService.m */; };
+		0B36CE521B4151BB00B23CBB /* CoreDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B36CE511B4151BB00B23CBB /* CoreDataService.m */; };
 		0B37ED7A1AD10FB6006A961F /* bubble-left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37ED771AD10FB6006A961F /* bubble-left@2x.png */; };
 		0B37ED7B1AD10FB6006A961F /* bubble-right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37ED781AD10FB6006A961F /* bubble-right@2x.png */; };
 		0B37ED7C1AD10FB6006A961F /* PhotoButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B37ED791AD10FB6006A961F /* PhotoButton@2x.png */; };
 		0B37ED7E1AD11751006A961F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B37ED7D1AD11751006A961F /* CoreLocation.framework */; };
 		0B37ED811AD11795006A961F /* CreateZeePointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B37ED801AD11795006A961F /* CreateZeePointViewController.m */; };
+		0B4280B51C926F5E003F4133 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4280B31C926F5E003F4133 /* FBSDKCoreKit.framework */; };
+		0B4280B61C926F5E003F4133 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4280B41C926F5E003F4133 /* FBSDKLoginKit.framework */; };
+		0B4280B81C9273C2003F4133 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4280B71C9273C2003F4133 /* FBSDKShareKit.framework */; };
 		0B601E571B23F93B001E87EA /* libCloudinary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B601E561B23F93B001E87EA /* libCloudinary.a */; };
 		0B601E941B2BC55C001E87EA /* ZiPointWSService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B601E931B2BC55C001E87EA /* ZiPointWSService.m */; };
 		0B601E991B2BE9BD001E87EA /* messages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B601E9B1B2BE9BD001E87EA /* messages.plist */; };
 		0B601EAA1B2BFDE4001E87EA /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B601EA91B2BFDE4001E87EA /* LoadingView.m */; };
 		0B601EAF1B2CF093001E87EA /* ZipLocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B601EAE1B2CF093001E87EA /* ZipLocationService.m */; };
 		0B601EB31B2D9ECE001E87EA /* ZiPointMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B601EB21B2D9ECE001E87EA /* ZiPointMessage.m */; };
+		0B71CF8D1B76A6A200FC27F7 /* ZiPPrivateMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B71CF8C1B76A6A200FC27F7 /* ZiPPrivateMessage.m */; };
+		0B71CF901B76A6A200FC27F7 /* ZiPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B71CF8F1B76A6A200FC27F7 /* ZiPUser.m */; };
+		0B71CF931B76A6A300FC27F7 /* ZiPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B71CF921B76A6A300FC27F7 /* ZiPoint.m */; };
+		0B71CF951B7834C700FC27F7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B71CF941B7834C700FC27F7 /* Info.plist */; };
 		0B822E9C1B1ECB5300A34FEF /* ZiPointUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B822E9B1B1ECB5300A34FEF /* ZiPointUsersViewController.m */; };
 		0BAF0E5B1AF20225000D8519 /* mini_icon_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BAF0E5A1AF20225000D8519 /* mini_icon_gray.png */; };
 		0BAF0E5D1AF20484000D8519 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BAF0E5C1AF20484000D8519 /* Icon-72@2x.png */; };
@@ -328,7 +334,9 @@
 		0BF2002D1B3F753C0071E51A /* ZiPointTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2002C1B3F753C0071E51A /* ZiPointTabBarController.m */; };
 		0BF969661B3698A200A24F84 /* AGPushNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF969641B3698A200A24F84 /* AGPushNoteView.m */; };
 		0BF969671B3698A200A24F84 /* AGPushNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF969651B3698A200A24F84 /* AGPushNoteView.xib */; };
-		3F7C0540DF870C9E0CE5A678 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C325636125299D85A110EB8C /* libPods.a */; };
+		0BFE838C1D124E3000FCF01F /* ZiPointWSocketService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFE838B1D124E3000FCF01F /* ZiPointWSocketService.m */; };
+		25D21D6C4D4B01CB27AC9B83 /* Pods_zeepointIOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 736ECB08980BACFCB693AD6F /* Pods_zeepointIOSTests.framework */; };
+		90677566349D5A6B555ED648 /* Pods_zeepointIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8597E21D851A8B212FF13DC /* Pods_zeepointIOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -344,8 +352,6 @@
 /* Begin PBXFileReference section */
 		0B0C923B1AD9A63700C76E9F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		0B0C923C1AD9A63700C76E9F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		0B0C939C1AD9B4B300C76E9F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		0B0C939E1AD9B4BF00C76E9F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		0B0D372A1B1ED1650019697C /* ZiPointUserTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZiPointUserTableCell.h; sourceTree = "<group>"; };
 		0B0D372B1B1ED1650019697C /* ZiPointUserTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZiPointUserTableCell.m; sourceTree = "<group>"; };
 		0B0D372E1B1F08320019697C /* LeftToRightSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftToRightSegue.h; sourceTree = "<group>"; };
@@ -626,12 +632,17 @@
 		0B36CE4B1B40F0DB00B23CBB /* PrivateWSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateWSService.m; sourceTree = "<group>"; };
 		0B36CE4D1B40F6DC00B23CBB /* LoadImageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadImageService.h; sourceTree = "<group>"; };
 		0B36CE4E1B40F6DC00B23CBB /* LoadImageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadImageService.m; sourceTree = "<group>"; };
+		0B36CE501B4151BB00B23CBB /* CoreDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataService.h; sourceTree = "<group>"; };
+		0B36CE511B4151BB00B23CBB /* CoreDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataService.m; sourceTree = "<group>"; };
 		0B37ED771AD10FB6006A961F /* bubble-left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble-left@2x.png"; sourceTree = "<group>"; };
 		0B37ED781AD10FB6006A961F /* bubble-right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble-right@2x.png"; sourceTree = "<group>"; };
 		0B37ED791AD10FB6006A961F /* PhotoButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PhotoButton@2x.png"; sourceTree = "<group>"; };
 		0B37ED7D1AD11751006A961F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0B37ED7F1AD11795006A961F /* CreateZeePointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateZeePointViewController.h; sourceTree = "<group>"; };
 		0B37ED801AD11795006A961F /* CreateZeePointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateZeePointViewController.m; sourceTree = "<group>"; };
+		0B4280B31C926F5E003F4133 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		0B4280B41C926F5E003F4133 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		0B4280B71C9273C2003F4133 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		0B601E561B23F93B001E87EA /* libCloudinary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCloudinary.a; sourceTree = "<group>"; };
 		0B601E591B23F96D001E87EA /* CLCloudinary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCloudinary.h; sourceTree = "<group>"; };
 		0B601E5A1B23F96D001E87EA /* CLEagerTransformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEagerTransformation.h; sourceTree = "<group>"; };
@@ -649,12 +660,19 @@
 		0B601EA11B2BEA2D001E87EA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		0B601EA81B2BFDE4001E87EA /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		0B601EA91B2BFDE4001E87EA /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
-		0B601EAB1B2CE8C0001E87EA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
+		0B601EAB1B2CE8C0001E87EA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../zeepointIOS/Info.plist; sourceTree = "<group>"; };
 		0B601EAD1B2CF093001E87EA /* ZipLocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipLocationService.h; sourceTree = "<group>"; };
 		0B601EAE1B2CF093001E87EA /* ZipLocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipLocationService.m; sourceTree = "<group>"; };
 		0B601EB01B2D4A33001E87EA /* ZiPJSQMessagesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZiPJSQMessagesViewController.h; sourceTree = "<group>"; };
 		0B601EB11B2D9ECE001E87EA /* ZiPointMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZiPointMessage.h; sourceTree = "<group>"; };
 		0B601EB21B2D9ECE001E87EA /* ZiPointMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZiPointMessage.m; sourceTree = "<group>"; };
+		0B71CF8B1B76A6A200FC27F7 /* ZiPPrivateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZiPPrivateMessage.h; sourceTree = "<group>"; };
+		0B71CF8C1B76A6A200FC27F7 /* ZiPPrivateMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZiPPrivateMessage.m; sourceTree = "<group>"; };
+		0B71CF8E1B76A6A200FC27F7 /* ZiPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZiPUser.h; sourceTree = "<group>"; };
+		0B71CF8F1B76A6A200FC27F7 /* ZiPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZiPUser.m; sourceTree = "<group>"; };
+		0B71CF911B76A6A300FC27F7 /* ZiPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZiPoint.h; sourceTree = "<group>"; };
+		0B71CF921B76A6A300FC27F7 /* ZiPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZiPoint.m; sourceTree = "<group>"; };
+		0B71CF941B7834C700FC27F7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B822E9A1B1ECB5300A34FEF /* ZiPointUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZiPointUsersViewController.h; sourceTree = "<group>"; };
 		0B822E9B1B1ECB5300A34FEF /* ZiPointUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZiPointUsersViewController.m; sourceTree = "<group>"; };
 		0BAF0E5A1AF20225000D8519 /* mini_icon_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mini_icon_gray.png; path = goldengate.imageset/mini_icon_gray.png; sourceTree = "<group>"; };
@@ -670,7 +688,6 @@
 		0BC9877A1AD0A13E000BE278 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0BC9877D1AD0A13E000BE278 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0BC987831AD0A13E000BE278 /* zeepointIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zeepointIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0BC987881AD0A13E000BE278 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0BC987891AD0A13E000BE278 /* zeepointIOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zeepointIOSTests.m; sourceTree = "<group>"; };
 		0BC987961AD0A4C5000BE278 /* ZeePointsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZeePointsViewController.h; sourceTree = "<group>"; };
 		0BC987971AD0A4C5000BE278 /* ZeePointsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZeePointsViewController.m; sourceTree = "<group>"; };
@@ -706,9 +723,15 @@
 		0BF969631B3698A200A24F84 /* AGPushNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGPushNoteView.h; sourceTree = "<group>"; };
 		0BF969641B3698A200A24F84 /* AGPushNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPushNoteView.m; sourceTree = "<group>"; };
 		0BF969651B3698A200A24F84 /* AGPushNoteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AGPushNoteView.xib; sourceTree = "<group>"; };
-		4EA1E3EAF5C33B56A0EC7A64 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		C325636125299D85A110EB8C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E77808AB02967B040A2C86E0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		0BFE838B1D124E3000FCF01F /* ZiPointWSocketService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZiPointWSocketService.m; sourceTree = "<group>"; };
+		0BFE838E1D124E6800FCF01F /* ZiPointWSocketService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZiPointWSocketService.h; sourceTree = "<group>"; };
+		2FA1DFFE9FEE4CFA5163837C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		574B803539EA4BE544935A59 /* Pods-zeepointIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zeepointIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-zeepointIOS/Pods-zeepointIOS.debug.xcconfig"; sourceTree = "<group>"; };
+		736ECB08980BACFCB693AD6F /* Pods_zeepointIOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_zeepointIOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE1F0D16D849A913DC8E0CA5 /* Pods-zeepointIOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zeepointIOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-zeepointIOSTests/Pods-zeepointIOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		CC940CE66365064C85ACB80F /* Pods-zeepointIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zeepointIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-zeepointIOS/Pods-zeepointIOS.release.xcconfig"; sourceTree = "<group>"; };
+		E35962675E2D7AF090A3DDC0 /* Pods-zeepointIOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zeepointIOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-zeepointIOSTests/Pods-zeepointIOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F8597E21D851A8B212FF13DC /* Pods_zeepointIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_zeepointIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -721,12 +744,13 @@
 				0BE263AC1ADB6FD700F3B619 /* QuartzCore.framework in Frameworks */,
 				0BE263AA1ADB6FD000F3B619 /* MapKit.framework in Frameworks */,
 				0BE263A81ADB6FC800F3B619 /* Foundation.framework in Frameworks */,
+				0B4280B51C926F5E003F4133 /* FBSDKCoreKit.framework in Frameworks */,
 				0BE263A61ADB6FBA00F3B619 /* CoreGraphics.framework in Frameworks */,
 				0B37ED7E1AD11751006A961F /* CoreLocation.framework in Frameworks */,
-				0B0C95311ADB230E00C76E9F /* FBSDKCoreKit.framework in Frameworks */,
+				0B4280B81C9273C2003F4133 /* FBSDKShareKit.framework in Frameworks */,
+				0B4280B61C926F5E003F4133 /* FBSDKLoginKit.framework in Frameworks */,
 				0B601E571B23F93B001E87EA /* libCloudinary.a in Frameworks */,
-				0B0C95321ADB230E00C76E9F /* FBSDKLoginKit.framework in Frameworks */,
-				3F7C0540DF870C9E0CE5A678 /* libPods.a in Frameworks */,
+				90677566349D5A6B555ED648 /* Pods_zeepointIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,6 +758,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25D21D6C4D4B01CB27AC9B83 /* Pods_zeepointIOSTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +768,9 @@
 		0B0C939B1AD9B47400C76E9F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B4280B71C9273C2003F4133 /* FBSDKShareKit.framework */,
+				0B4280B31C926F5E003F4133 /* FBSDKCoreKit.framework */,
+				0B4280B41C926F5E003F4133 /* FBSDKLoginKit.framework */,
 				0B601E561B23F93B001E87EA /* libCloudinary.a */,
 				0BE264841ADB784400F3B619 /* AudioToolbox.framework */,
 				0BE263AD1ADB6FDD00F3B619 /* UIKit.framework */,
@@ -750,10 +778,10 @@
 				0BE263A91ADB6FD000F3B619 /* MapKit.framework */,
 				0BE263A71ADB6FC800F3B619 /* Foundation.framework */,
 				0BE263A51ADB6FBA00F3B619 /* CoreGraphics.framework */,
-				0B0C939E1AD9B4BF00C76E9F /* FBSDKCoreKit.framework */,
-				0B0C939C1AD9B4B300C76E9F /* FBSDKLoginKit.framework */,
 				0B37ED7D1AD11751006A961F /* CoreLocation.framework */,
-				C325636125299D85A110EB8C /* libPods.a */,
+				2FA1DFFE9FEE4CFA5163837C /* Pods.framework */,
+				F8597E21D851A8B212FF13DC /* Pods_zeepointIOS.framework */,
+				736ECB08980BACFCB693AD6F /* Pods_zeepointIOSTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -797,6 +825,19 @@
 			name = custom;
 			sourceTree = "<group>";
 		};
+		0B6C20751B57538500FA0009 /* coreEntities */ = {
+			isa = PBXGroup;
+			children = (
+				0B71CF911B76A6A300FC27F7 /* ZiPoint.h */,
+				0B71CF921B76A6A300FC27F7 /* ZiPoint.m */,
+				0B71CF8E1B76A6A200FC27F7 /* ZiPUser.h */,
+				0B71CF8F1B76A6A200FC27F7 /* ZiPUser.m */,
+				0B71CF8B1B76A6A200FC27F7 /* ZiPPrivateMessage.h */,
+				0B71CF8C1B76A6A200FC27F7 /* ZiPPrivateMessage.m */,
+			);
+			name = coreEntities;
+			sourceTree = "<group>";
+		};
 		0BC9875E1AD0A13E000BE278 = {
 			isa = PBXGroup;
 			children = (
@@ -807,7 +848,7 @@
 				0BC987691AD0A13E000BE278 /* zeepointIOS */,
 				0BC987861AD0A13E000BE278 /* zeepointIOSTests */,
 				0BC987681AD0A13E000BE278 /* Products */,
-				2AA3965B1703AC17809404C2 /* Pods */,
+				B1BD88A05FF70F61F0931C84 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -823,6 +864,7 @@
 		0BC987691AD0A13E000BE278 /* zeepointIOS */ = {
 			isa = PBXGroup;
 			children = (
+				0B6C20751B57538500FA0009 /* coreEntities */,
 				0B601EA71B2BFDBB001E87EA /* custom */,
 				0B0D372D1B1F07F80019697C /* segues */,
 				0B157A5F1B1BE7EC00B7E3A7 /* modified */,
@@ -851,6 +893,7 @@
 		0BC9876A1AD0A13E000BE278 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0B71CF941B7834C700FC27F7 /* Info.plist */,
 				0BC9876C1AD0A13E000BE278 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -868,7 +911,7 @@
 		0BC987871AD0A13E000BE278 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0BC987881AD0A13E000BE278 /* Info.plist */,
+				0B601EAB1B2CE8C0001E87EA /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -915,6 +958,10 @@
 				0B36CE4B1B40F0DB00B23CBB /* PrivateWSService.m */,
 				0B36CE4D1B40F6DC00B23CBB /* LoadImageService.h */,
 				0B36CE4E1B40F6DC00B23CBB /* LoadImageService.m */,
+				0B36CE501B4151BB00B23CBB /* CoreDataService.h */,
+				0B36CE511B4151BB00B23CBB /* CoreDataService.m */,
+				0BFE838B1D124E3000FCF01F /* ZiPointWSocketService.m */,
+				0BFE838E1D124E6800FCF01F /* ZiPointWSocketService.h */,
 			);
 			name = services;
 			sourceTree = "<group>";
@@ -1219,7 +1266,6 @@
 				0BE264AC1ADB7D3A00F3B619 /* goldengate.png */,
 				0BE264AD1ADB7D3A00F3B619 /* goldengate@2x.png */,
 				0BE264AE1ADB7D3A00F3B619 /* goldengate@3x.png */,
-				0B601EAB1B2CE8C0001E87EA /* Info.plist */,
 			);
 			path = goldengate.imageset;
 			sourceTree = "<group>";
@@ -1234,11 +1280,13 @@
 			path = AGPushNote;
 			sourceTree = "<group>";
 		};
-		2AA3965B1703AC17809404C2 /* Pods */ = {
+		B1BD88A05FF70F61F0931C84 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4EA1E3EAF5C33B56A0EC7A64 /* Pods.debug.xcconfig */,
-				E77808AB02967B040A2C86E0 /* Pods.release.xcconfig */,
+				574B803539EA4BE544935A59 /* Pods-zeepointIOS.debug.xcconfig */,
+				CC940CE66365064C85ACB80F /* Pods-zeepointIOS.release.xcconfig */,
+				E35962675E2D7AF090A3DDC0 /* Pods-zeepointIOSTests.debug.xcconfig */,
+				BE1F0D16D849A913DC8E0CA5 /* Pods-zeepointIOSTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1250,11 +1298,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0BC9878D1AD0A13E000BE278 /* Build configuration list for PBXNativeTarget "zeepointIOS" */;
 			buildPhases = (
-				0EF653878B46C1430BC56E09 /* Check Pods Manifest.lock */,
+				A87194C4D27087BBF322B1B3 /* [CP] Check Pods Manifest.lock */,
 				0BC987631AD0A13E000BE278 /* Sources */,
 				0BC987641AD0A13E000BE278 /* Frameworks */,
 				0BC987651AD0A13E000BE278 /* Resources */,
-				D5FA7464EA4AE744AA6B0689 /* Copy Pods Resources */,
+				5119DE2D956408035AE8B99F /* [CP] Embed Pods Frameworks */,
+				D3A30B18529F8E97BC5125A3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1269,9 +1318,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0BC987901AD0A13E000BE278 /* Build configuration list for PBXNativeTarget "zeepointIOSTests" */;
 			buildPhases = (
+				B66700B25003090F76C9392C /* [CP] Check Pods Manifest.lock */,
 				0BC9877F1AD0A13E000BE278 /* Sources */,
 				0BC987801AD0A13E000BE278 /* Frameworks */,
 				0BC987811AD0A13E000BE278 /* Resources */,
+				172B3A175C952B5022F6F2ED /* [CP] Embed Pods Frameworks */,
+				6975F97262E14B6E62DB7E6D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1289,12 +1341,13 @@
 		0BC9875F1AD0A13E000BE278 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = zeepoint;
 				TargetAttributes = {
 					0BC987661AD0A13E000BE278 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = FGV6U536QH;
+						LastSwiftMigration = 0820;
 					};
 					0BC987821AD0A13E000BE278 = {
 						CreatedOnToolsVersion = 6.2;
@@ -1349,6 +1402,7 @@
 				0B0D38611B20E4740019697C /* zoom_out-50.png in Resources */,
 				0B0D38301B20E4740019697C /* male_filled-50.png in Resources */,
 				0B0D38341B20E4740019697C /* no_idea_filled-50.png in Resources */,
+				0B71CF951B7834C700FC27F7 /* Info.plist in Resources */,
 				0B0D38261B20E4740019697C /* icons8_cup_filled-50.png in Resources */,
 				0B0D392D1B20E4AC0019697C /* share-32.png in Resources */,
 				0B37ED7C1AD10FB6006A961F /* PhotoButton@2x.png in Resources */,
@@ -1621,34 +1675,94 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0EF653878B46C1430BC56E09 /* Check Pods Manifest.lock */ = {
+		172B3A175C952B5022F6F2ED /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-zeepointIOSTests/Pods-zeepointIOSTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D5FA7464EA4AE744AA6B0689 /* Copy Pods Resources */ = {
+		5119DE2D956408035AE8B99F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-zeepointIOS/Pods-zeepointIOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6975F97262E14B6E62DB7E6D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-zeepointIOSTests/Pods-zeepointIOSTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A87194C4D27087BBF322B1B3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B66700B25003090F76C9392C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D3A30B18529F8E97BC5125A3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-zeepointIOS/Pods-zeepointIOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1659,13 +1773,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BC987A11AD0FDCA000BE278 /* ZeePointTableViewCell.m in Sources */,
+				0B71CF931B76A6A300FC27F7 /* ZiPoint.m in Sources */,
+				0B71CF8D1B76A6A200FC27F7 /* ZiPPrivateMessage.m in Sources */,
 				0B822E9C1B1ECB5300A34FEF /* ZiPointUsersViewController.m in Sources */,
 				0B0D39441B23A6ED0019697C /* ZiPointUserViewController.m in Sources */,
 				0BE264B91ADF09CD00F3B619 /* Constants.m in Sources */,
+				0B71CF901B76A6A200FC27F7 /* ZiPUser.m in Sources */,
 				0BC987731AD0A13E000BE278 /* zeepointIOS.xcdatamodeld in Sources */,
 				0B157A681B1C1C6A00B7E3A7 /* ZiPJSQMessagesViewController.m in Sources */,
 				0BE2648D1ADB7A1600F3B619 /* DemoModelData.m in Sources */,
 				0B601E941B2BC55C001E87EA /* ZiPointWSService.m in Sources */,
+				0BFE838C1D124E3000FCF01F /* ZiPointWSocketService.m in Sources */,
 				0B37ED811AD11795006A961F /* CreateZeePointViewController.m in Sources */,
 				0B0D372C1B1ED1650019697C /* ZiPointUserTableCell.m in Sources */,
 				0BF969661B3698A200A24F84 /* AGPushNoteView.m in Sources */,
@@ -1676,6 +1794,7 @@
 				0BC9879B1AD0A556000BE278 /* ZeePointGroup.m in Sources */,
 				0B36CE461B40AAEF00B23CBB /* UserNavigationController.m in Sources */,
 				0B36CE4F1B40F6DC00B23CBB /* LoadImageService.m in Sources */,
+				0B36CE521B4151BB00B23CBB /* CoreDataService.m in Sources */,
 				0B157A5B1B1A931100B7E3A7 /* ZeePointUser.m in Sources */,
 				0B36CE4C1B40F0DB00B23CBB /* PrivateWSService.m in Sources */,
 				0BF2002A1B3F746E0071E51A /* ZipointTabBar.m in Sources */,
@@ -1764,6 +1883,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: com.zipoints.zipointios";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1778,7 +1898,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "4e6f1a1b-0e94-42ac-a041-351c073e4482";
@@ -1816,7 +1936,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "4e6f1a1b-0e94-42ac-a041-351c073e4482";
 				SDKROOT = iphoneos;
@@ -1827,11 +1947,12 @@
 		};
 		0BC9878E1AD0A13E000BE278 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4EA1E3EAF5C33B56A0EC7A64 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 574B803539EA4BE544935A59 /* Pods-zeepointIOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1842,18 +1963,21 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zeepoint.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		0BC9878F1AD0A13E000BE278 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E77808AB02967B040A2C86E0 /* Pods.release.xcconfig */;
+			baseConfigurationReference = CC940CE66365064C85ACB80F /* Pods-zeepointIOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1864,13 +1988,16 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zeepoint.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		0BC987911AD0A13E000BE278 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E35962675E2D7AF090A3DDC0 /* Pods-zeepointIOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1885,6 +2012,7 @@
 				);
 				INFOPLIST_FILE = zeepointIOSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zeepoint.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/zeepointIOS.app/zeepointIOS";
@@ -1893,6 +2021,7 @@
 		};
 		0BC987921AD0A13E000BE278 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE1F0D16D849A913DC8E0CA5 /* Pods-zeepointIOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1903,6 +2032,7 @@
 				);
 				INFOPLIST_FILE = zeepointIOSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zeepoint.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/zeepointIOS.app/zeepointIOS";

@@ -19,7 +19,7 @@
 
 //-(void)receiveWSMessage:(ZiPointMessage *)message;
 
--(void)connecting:(UIView *)loadingView;
+-(void)connecting;
 
 //-(void)imageLoaded:(NSData *)imageData messageKey:(NSString *)key isImageForMessage:(bool) isMessage;
 
@@ -66,6 +66,8 @@
 
 + (id)sharedManager;
 
+- (BOOL)isConnected;
+
 -(void)setZiPoint:(ZeePointGroup *)ziPoint;
 
 -(ZeePointGroup *) getZiPoint;
@@ -79,6 +81,8 @@
 //-(ZeePointUser *) getZiPointUser;
 
 //- (void)sendMessage:(NSString *)body;
+
+-(void)uploadImage:(NSData *)dataImage randomNumber:(NSNumber *)randomPublicId;
 
 - (void)sendMessage:(NSString *)message
           messageId:(NSNumber *)myMsgId

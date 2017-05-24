@@ -147,7 +147,8 @@
         [alert show];
         self.tabBarController.selectedIndex = 0;
     }
-    //else if (!zipService.connected){
+    //else
+    [self checkEditable];
     //    [self connecting:zipService.loadingView];
     //}
     [self finishReceivingMessage];
@@ -164,12 +165,12 @@
     [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
 }*/
 
-
+/*
 - (void)closePressed:(UIBarButtonItem *)sender
 {
     [self.delegateModal didDismissJSQDemoViewController:self];
 }
-
+*/
 
 
 
@@ -275,7 +276,10 @@
     
  
         //UPLOAD CLAUDINARY IMAGE
-        NSNumber *randomPublicId=[imageService uploadImage:dataImage];
+        NSNumber *randomPublicId = [[NSNumber alloc] initWithInt:arc4random_uniform(99999999)];
+        [zipService uploadImage:dataImage randomNumber:randomPublicId];
+        
+        //NSNumber *randomPublicId=[imageService uploadImage:dataImage];
         
     JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithMaskAsOutgoing:YES];
     JSQMessage *photoMessage = [JSQMessage messageWithSenderId:self.senderId
@@ -588,21 +592,24 @@
 }
 
 -(void)checkEditable{
-    if ([zipService.getZiPoint.distance intValue]<=100 || ([zipService.getZiPoint.ownerId isEqualToString:zipDataService.getUserId])){
+    if (zipService.isConnected && ([zipService.getZiPoint.distance intValue]<=100 || ([zipService.getZiPoint.ownerId isEqualToString:zipDataService.getUserId]))){
         [self ableToParticipate];
     }else{
         [self notAbleToParticipate];
     }
 }
 
--(void)connecting:(UIView *)loadingView{
+-(void)connecting{
     
     self.navigationItem.title=nil;
-    self.navigationItem.titleView =loadingView;
+    
     [self notAbleToParticipate];
 }
 
 -(void)notAbleToParticipate{
+    if (![zipService isConnected]){
+        self.navigationItem.titleView =zipDataService.loadingView;
+    }
     [self.inputToolbar.contentView.textView setEditable:false];
     if (self.inputToolbar.sendButtonOnRight) {
         self.inputToolbar.contentView.rightBarButtonItem.enabled=false;

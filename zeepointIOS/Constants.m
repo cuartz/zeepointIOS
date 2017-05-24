@@ -10,10 +10,10 @@
 
 @implementation Constants
 
-//NSString *const IP = @"localhost:8080";
-//NSString *const WS_ENVIROMENT = @"http://localhost:8080";
-NSString *const IP = @"52.25.157.20";
-NSString *const WS_ENVIROMENT = @"http://52.25.157.20";
+NSString *const IP = @"localhost:8080";
+NSString *const WS_ENVIROMENT = @"http://localhost:8080";
+//NSString *const IP = @"52.25.157.20";
+//NSString *const WS_ENVIROMENT = @"http://52.25.157.20";
 NSString *const WS = @"ws://%@/chat/websocket";
 
 NSString *const CREATE_ZPOINT_SERVICE = @"%@/mobilews/zeepointgroups/addzpoint?lat=%.8f&lon=%.8f&name=%@&fb_id=%@&country=%@&state=%@&city=%@";
@@ -36,5 +36,7 @@ NSString *const PHOTO_MESSAGE = @"1";
 NSString *const TEXT_MESSAGE = @"0";
 
 NSString *const STOMP_DESTINATION = @"/app/chat/%@";
+
+NSString *const STOMP_PRIVATE_DESTINATION = @"/app/chat/private/%@";
 
 @end

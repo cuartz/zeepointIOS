@@ -17,15 +17,9 @@
 
 @class ZeePointViewController;
 
-@protocol JSQDemoViewControllerDelegate <NSObject>
-
-- (void)didDismissJSQDemoViewController:(ZeePointViewController *)vc;
-
-@end
-
 @interface ZeePointViewController : JSQMessagesViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
-@property (weak, nonatomic) id<JSQDemoViewControllerDelegate> delegateModal;
+//@property (weak, nonatomic) id<JSQDemoViewControllerDelegate> delegateModal;
 
 //@property (strong, nonatomic) DemoModelData *demoData;
 

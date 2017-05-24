@@ -8,11 +8,12 @@
 #import "ZiPointWSService.h"
 #import "ZiPointDataService.h"
 #import "MMPReactiveStompClient.h"
-#import <SocketRocket/SRWebSocket.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import "SRWebSocket.h"
+#import "ReactiveCocoa.h"
 #import "Constants.h"
 #import "LoadingView.h"
 #import "LoadImageService.h"
+#import "CoreDataService.h"
 
 @interface ZiPointWSService ()<LoadImageServiceDelegatessage>
 
@@ -24,10 +25,6 @@
 
 @property int oldestMessage;
 
-@property (nonatomic, strong) NSMutableURLRequest *request;
-
-
-
 @property (nonatomic, strong) ZeePointGroup *zeePoint;
 
 @property (nonatomic, strong) ZeePointUser *zeePointUser;
@@ -36,6 +33,7 @@
 
 @property (nonatomic, strong) LoadImageService *imageService;
 
+@property (nonatomic, strong) CoreDataService *coreDataService;
 
 //-(void)subscribeZip;
 
@@ -44,8 +42,6 @@
 @implementation ZiPointWSService
 
 @synthesize delegate;
-
-@synthesize request;
 
 @synthesize client;
 //@synthesize channel;
@@ -84,20 +80,16 @@
 - (id)init {
     if (self = [super init]) {
         
-        request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:WS,IP]]];
-        NSDictionary *headers = @{
-                                  @"content-type": @"application/json;charset=utf-8",
-                                  @"origin": WS_ENVIROMENT
-                                  };
-        [request setAllHTTPHeaderFields:headers];
-        
-        client = [[MMPReactiveStompClient alloc] initWithOutSocket];
+
+        //client =[[MMPReactiveStompClient alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:WS,IP]]];
+
+        //client = [[MMPReactiveStompClient alloc] initWithURLRequest:request];//initWithOutSocket];
         
         [self connect];
         
         self.dataService=[ZiPointDataService sharedManager];
-        
-        self.imageService=[LoadImageService init];
+        self.coreDataService=[CoreDataService sharedManager];
+        self.imageService=[[LoadImageService alloc] init];
         self.imageService.delegate=self;
 
     }
@@ -106,8 +98,16 @@
 
 -(void)connect {
    // channel=newChannel;
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:WS,IP]]];
+    NSDictionary *headers = @{
+                              @"content-type": @"application/json;charset=utf-8",
+                              @"origin": WS_ENVIROMENT
+                              };
+    [request setAllHTTPHeaderFields:headers];
     
-    [[client open:request]
+    client = [[MMPReactiveStompClient alloc] initWithURLRequest:request];//initWithOutSocket];
+    
+    [[client open]
      subscribeNext:^(id x) {
          if ([x class] == [SRWebSocket class]) {
              self.connected=TRUE;
@@ -127,14 +127,30 @@
          }
      }
      error:^(NSError *error) {
-         NSLog(@"web socket failed");
+         NSLog(@"web socket failed error");
          [self reConnect];
      }
      completed:^{
-         NSLog(@"web socket failed");
+         NSLog(@"web socket failed completed");
          [self reConnect];
      }];
     
+}
+
+-(BOOL)isConnected{
+    return self.connected;
+}
+
+-(void)uploadImage:(NSData *)dataImage randomNumber:(NSNumber *)randomPublicId{
+    [_imageService uploadImage:dataImage randomNumber:randomPublicId];
+}
+
+-(void)finishLoadingImage{
+    
+}
+
+-(void)finishUploadingImage:(NSString *)urlMessage messageId:(NSNumber *)myMsgid messageType:(NSString *)PHOTO_MESSAGE{
+    [self sendMessage:urlMessage messageId:myMsgid messageType:PHOTO_MESSAGE];
 }
 
 
@@ -145,9 +161,9 @@
             [self subscribeZip];
         }
     }else{
-        if (!ziPoint){
+/*        if (!ziPoint){
             [self unSubscribeZip];
-        }
+        }*/
         self.zeePoint=ziPoint;
     }
 }
@@ -158,8 +174,8 @@
 
 -(void)subscribeZip{
     
-    [self unSubscribeZip];
-    
+    //[self unSubscribeZip];
+    //@synchronized(self.connected) {
     if (!self.connected){
         [self connect];
     }else{
@@ -169,12 +185,13 @@
         
         }
     }
+    //}
 }
 /*
 -(void) channelConnected{
     
 }
-*/
+
 -(void)unSubscribeZip{
     self.oldestMessage=0;
     
@@ -182,12 +199,12 @@
     if (self.connected){
         [client unSubscribe];
     }
-}
+}*/
 
 
 -(void)reConnect{
     self.connected=FALSE;
-    [delegate connecting:_dataService.loadingView];
+    [delegate connecting];
     //[self subscribe:channel];
     [self performSelector:@selector(subscribeZip) withObject:nil afterDelay:2];
 }
@@ -353,6 +370,8 @@ NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
     item.listeners = [dict objectForKey:@"listeners"];
     item.referenceId = [dict objectForKey:@"referenceId"];
     item.ownerId = [dict objectForKey:@"ownerId"];
+    item.latitud = [dict objectForKey:@"latitud"];
+    item.longitud = [dict objectForKey:@"longitud"];
     
     item.joined=[[dict objectForKey:@"joined"] boolValue];
     if (item.joined){
@@ -452,6 +471,8 @@ NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
     }else{
         item.title=@"User";
     }
+    [_coreDataService createZiPUser:item];
+    
     [self.imageService loadUserImage:item.userId faceBookId:item.fbId];
 
     
@@ -496,7 +517,7 @@ NSURLRequest *serviceRequest = [NSURLRequest requestWithURL:url];
 }
 
 - (void)joinZiPoint{
-    [delegate connecting:_dataService.loadingView];
+    [delegate connecting];
     //[self unSubscribeZip];
     //self.messages = [NSMutableArray new];
 NSString *zpointFinalURL=[NSString stringWithFormat:JOIN_ZPOINT_SERVICE,WS_ENVIROMENT,self.zeePoint.zpointId,_dataService.getUserId,_dataService.lat,_dataService.lon];
@@ -528,7 +549,6 @@ NSURLRequest *requestJoin = [NSURLRequest requestWithURL:url];
          _dataService.zeePointUsers=[self createZipointUsers:ziPointJoinInfo];
          
          [delegate didJustConnect];
-         
          
          
          [[client stompMessagesFromDestination:[NSString stringWithFormat:@"/topic/channels/%@",self.zeePoint.referenceId]]

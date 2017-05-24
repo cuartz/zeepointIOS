@@ -17,15 +17,9 @@
 
 @class ZiPointUserViewController;
 
-@protocol JSQDemoViewControllerDelegate <NSObject>
-
-- (void)didDismissJSQDemoViewController:(ZiPointUserViewController *)vc;
-
-@end
-
 @interface ZiPointUserViewController : JSQMessagesViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
-@property (weak, nonatomic) id<JSQDemoViewControllerDelegate> delegateModal;
+//@property (weak, nonatomic) id<JSQDemoViewControllerDelegate> delegateModal;
 
 //@property (strong, nonatomic) DemoModelData *demoData;
 

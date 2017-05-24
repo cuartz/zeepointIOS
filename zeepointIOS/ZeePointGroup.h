@@ -22,6 +22,8 @@
     @property  NSNumber *distance;
     @property  BOOL *hiddenn;
     @property BOOL *favorite;
+    @property NSNumber *latitud;
+    @property  NSNumber *longitud;
 
 +(NSString *)getUsersLabelText: (NSNumber *)numberOfUsers
                   friendsParam:(NSNumber *)numberOfFriends

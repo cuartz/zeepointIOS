@@ -84,16 +84,16 @@ static AGPushNoteView *_sharedPushView;
     //OS Specific:
     if (isIOS7) {
         self.barTintColor = nil;
-        self.translucent = YES;
+        //self.translucent = YES;
         self.barStyle = UIBarStyleBlack;
     } else {
-        [self setTintColor:[UIColor colorWithRed:5 green:31 blue:75 alpha:1]];
+        //[self setTintColor:[UIColor colorWithRed:5 green:31 blue:75 alpha:1]];
         [self.messageLabel setTextAlignment:NSTextAlignmentCenter];
-        self.messageLabel.shadowColor = [UIColor blackColor];
+        //self.messageLabel.shadowColor = [UIColor blackColor];
     }
     
     self.layer.zPosition = MAXFLOAT;
-    self.backgroundColor = [UIColor clearColor];
+    //self.backgroundColor = [UIColor clearColor];
     self.multipleTouchEnabled = NO;
     self.exclusiveTouch = YES;
     

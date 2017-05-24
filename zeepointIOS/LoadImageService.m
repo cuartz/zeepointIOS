@@ -46,16 +46,14 @@
     return self;
 }
 
--(NSNumber *)uploadImage:(NSData *)dataImage{
+-(void)uploadImage:(NSData *)dataImage randomNumber:(NSNumber *)randomPublicId{
     
     CLTransformation *transformation = [CLTransformation transformation];
     [transformation setWidthWithInt: 210];
     [transformation setHeightWithInt: 150];
     [transformation setCrop: @"fill"];
     
-    NSNumber *randomPublicId = [[NSNumber alloc] initWithInt:arc4random_uniform(99999999)];
     [self.uploader upload:dataImage options:@{@"resource_type": @"auto",@"transformation": transformation,@"public_id": randomPublicId}];
-    return randomPublicId;
 
 }
 
@@ -66,9 +64,10 @@
     NSString* urlMessage = [result valueForKey:@"url"];
     
     NSNumber *myMsgid = @((NSUInteger)self.dataService.messages.count);
-    [zipService sendMessage:urlMessage messageId:myMsgid messageType:PHOTO_MESSAGE];
+    
     NSURL *imageURL = [NSURL URLWithString:[urlMessage stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     [self loadImageAsync:imageURL imageKey:urlMessage isImageForAmessage:true secondImageKey:fileName];
+    [delegate finishUploadingImage:urlMessage messageId:myMsgid messageType:PHOTO_MESSAGE];
 }
 
 - (void) uploaderError:(NSString *)result code:(NSInteger)code context:(id)context {

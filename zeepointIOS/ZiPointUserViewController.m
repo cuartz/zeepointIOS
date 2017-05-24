@@ -12,7 +12,6 @@
 #import "JSQMessage.h"
 #import "SWRevealViewController.h"
 #import "ZeePointUser.h"
-#import "Cloudinary.h"
 #import "ZiPointWSService.h"
 #import "PrivateWSService.h"
 #import "ZiPointDataService.h"
@@ -22,7 +21,6 @@
 
 //@property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
 //@property (weak, nonatomic) IBOutlet UIBarButtonItem *sideBarButton;
-@property CLCloudinary *cloudinary;
 //@property ZiPointWSService *zipService;
 @property PrivateWSService *privateService;
 @property ZiPointDataService *zipDataService;
@@ -42,7 +40,6 @@
     privateService = [PrivateWSService sharedManager];
  //   zipService.delegate=self;
     zipDataService = [ZiPointDataService sharedManager];
-    self.cloudinary = [[CLCloudinary alloc] initWithUrl: CLOUDINARY_SERVICE];
     
     /**
      *  You MUST set your senderId and display name
@@ -263,13 +260,7 @@
         
         NSData *dataImage = UIImagePNGRepresentation(selectedImage);
         
-        CLUploader* uploader = [[CLUploader alloc] init:self.cloudinary delegate:self];
-        
-        
-        CLTransformation *transformation = [CLTransformation transformation];
-        [transformation setWidthWithInt: 210];
-        [transformation setHeightWithInt: 150];
-        [transformation setCrop: @"fill"];
+
         /*
          UIImage *image = selectedImage;
          UIImage *tempImage = nil;
@@ -295,7 +286,7 @@
         //dataImage = UIImagePNGRepresentation(photoProcessed.mediaView.image);
         
         NSNumber *randomPublicId = [[NSNumber alloc] initWithInt:arc4random_uniform(99999999)];
-        [uploader upload:dataImage options:@{@"resource_type": @"auto",@"transformation": transformation,@"public_id": randomPublicId}];
+        //[uploader upload:dataImage options:@{@"resource_type": @"auto",@"transformation": transformation,@"public_id": randomPublicId}];
         
         JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithMaskAsOutgoing:YES];
         JSQMessage *photoMessage = [JSQMessage messageWithSenderId:self.senderId
